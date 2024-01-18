@@ -1086,8 +1086,6 @@
     )
   )
 
-  (bus_alias "addr_ctrl_post" (members "we" "oe" "cs_raml" "cs_ramh" "cs_roml" "cs_romh" "cs_duart"))
-  (bus_alias "addr_ctrl_pre" (members "as" "uds" "lds" "rw" "dtack"))
   (junction (at 119.38 41.91) (diameter 0) (color 0 0 0 0)
     (uuid 0a888098-e513-4b5e-aad5-7aa8c57be9fa)
   )
@@ -2584,6 +2582,10 @@
       (effects (font (size 1.27 1.27) italic) (justify left) hide)
     )
   )
+  (label "int_ctrl" (at 187.96 91.44 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right bottom))
+    (uuid 3679a02d-4083-429b-aafb-c82e51fa67d5)
+  )
   (label "{as,uds,lds,rw,dtack,berr}" (at 71.12 135.89 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 36f4bbbc-7b57-4e13-80cc-581acf0c386d)
@@ -2839,10 +2841,6 @@
   (label "data6" (at 251.46 124.46 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid c3f00dee-c27a-4ee6-9e9a-adb9b39e4327)
-  )
-  (label "int_ctrl" (at 187.96 91.44 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid c60753ae-09bb-4b16-82ea-bb14fc74eaad)
   )
   (label "addr18" (at 121.92 123.19 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -3278,9 +3276,6 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe"
-          (reference "SW1") (unit 1)
-        )
-        (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
           (reference "SW1") (unit 1)
         )
       )
