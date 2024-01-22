@@ -2515,7 +2515,7 @@
     (property "Value" "LED" (at 59.69 157.7975 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P5.08mm_Vertical_KathodeUp" (at 55.88 154.94 0)
+    (property "Footprint" "LED_THT:LED_D5.0mm" (at 55.88 154.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 55.88 154.94 0)
