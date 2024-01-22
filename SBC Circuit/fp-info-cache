@@ -1,4 +1,4 @@
-22642419646069843
+22642419646113855
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -3717,6 +3717,13 @@ CP Axial series Axial Horizontal pin pitch 100mm  length 93mm diameter 35.0mm El
 2
 2
 Capacitor_THT
+CP_Box_L5.50mm_W4.00mm_P2.50mm_NonPolarized
+CP, Radial series, Radial, pin pitch=2.50mm, , diameter=6.3mm, Electrolytic Capacitor
+CP Radial series Radial pin pitch 2.50mm  diameter 6.3mm Electrolytic Capacitor
+0
+2
+2
+Capacitor_THT
 CP_Radial_D4.0mm_P1.50mm
 CP, Radial series, Radial, pin pitch=1.50mm, , diameter=4mm, Electrolytic Capacitor
 CP Radial series Radial pin pitch 1.50mm  diameter 4mm Electrolytic Capacitor
@@ -3741,13 +3748,6 @@ Capacitor_THT
 CP_Radial_D5.0mm_P2.50mm
 CP, Radial series, Radial, pin pitch=2.50mm, , diameter=5mm, Electrolytic Capacitor
 CP Radial series Radial pin pitch 2.50mm  diameter 5mm Electrolytic Capacitor
-0
-2
-2
-Capacitor_THT
-CP_Radial_D5.8mm_P2.50mm_NonPolarized
-CP, Radial series, Radial, pin pitch=2.50mm, , diameter=6.3mm, Electrolytic Capacitor
-CP Radial series Radial pin pitch 2.50mm  diameter 6.3mm Electrolytic Capacitor
 0
 2
 2

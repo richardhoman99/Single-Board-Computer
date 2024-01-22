@@ -3626,7 +3626,7 @@
   (symbol (lib_id "Device:C") (at 64.77 114.3 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 046d2f74-e04c-4fa4-b214-58f651b9c9dd)
-    (property "Reference" "C4" (at 64.77 120.65 90)
+    (property "Reference" "C23" (at 64.77 120.65 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1u" (at 64.77 118.11 90)
@@ -3643,7 +3643,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C4") (unit 1)
+          (reference "C23") (unit 1)
         )
       )
     )
@@ -3752,7 +3752,7 @@
   (symbol (lib_id "Device:C") (at 64.77 109.22 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 318cb2e8-5b7e-418e-b7a1-fe7e0549ff2a)
-    (property "Reference" "C3" (at 64.77 101.6 90)
+    (property "Reference" "C22" (at 64.77 101.6 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" ".1u" (at 64.77 104.14 90)
@@ -3769,7 +3769,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C3") (unit 1)
+          (reference "C22") (unit 1)
         )
       )
     )
@@ -3778,7 +3778,7 @@
   (symbol (lib_id "Memory_RAM:MCM6206CP") (at 130.81 64.77 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3662e941-265a-4975-96e0-5deaa919d855)
-    (property "Reference" "U6" (at 130.81 62.23 0)
+    (property "Reference" "U5" (at 130.81 62.23 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "MCM6206CP" (at 133.0041 41.91 0)
@@ -3824,7 +3824,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "U6") (unit 1)
+          (reference "U5") (unit 1)
         )
       )
     )
@@ -3958,7 +3958,7 @@
   (symbol (lib_id "Device:C") (at 238.76 50.8 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4f37d613-74b6-4cc3-acdb-7aac2e4f045d)
-    (property "Reference" "C13" (at 238.76 43.18 90)
+    (property "Reference" "C16" (at 238.76 43.18 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" ".1u" (at 238.76 45.72 90)
@@ -3975,7 +3975,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C13") (unit 1)
+          (reference "C16") (unit 1)
         )
       )
     )
@@ -4064,7 +4064,7 @@
   (symbol (lib_id "Device:C") (at 238.76 55.88 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5a3bef3c-1512-45b0-a6c4-1102ba492bfc)
-    (property "Reference" "C14" (at 238.76 62.23 90)
+    (property "Reference" "C17" (at 238.76 62.23 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1u" (at 238.76 59.69 90)
@@ -4081,7 +4081,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C14") (unit 1)
+          (reference "C17") (unit 1)
         )
       )
     )
@@ -4171,7 +4171,7 @@
   (symbol (lib_id "Device:C") (at 62.23 35.56 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 867db3ce-f813-4092-8205-b711584dc5bd)
-    (property "Reference" "C2" (at 62.23 41.91 90)
+    (property "Reference" "C19" (at 62.23 41.91 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1u" (at 62.23 39.37 90)
@@ -4188,7 +4188,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C2") (unit 1)
+          (reference "C19") (unit 1)
         )
       )
     )
@@ -4247,7 +4247,7 @@
   (symbol (lib_id "Device:C") (at 140.97 114.3 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a58d4957-3ab8-40f0-b757-0640ad028183)
-    (property "Reference" "C8" (at 140.97 120.65 90)
+    (property "Reference" "C25" (at 140.97 120.65 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1u" (at 140.97 118.11 90)
@@ -4264,7 +4264,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C8") (unit 1)
+          (reference "C25") (unit 1)
         )
       )
     )
@@ -4273,7 +4273,7 @@
   (symbol (lib_id "Device:C") (at 140.97 109.22 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b0a307fd-316c-4aed-bbc5-9e06d1265f8e)
-    (property "Reference" "C7" (at 140.97 101.6 90)
+    (property "Reference" "C24" (at 140.97 101.6 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" ".1u" (at 140.97 104.14 90)
@@ -4290,7 +4290,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C7") (unit 1)
+          (reference "C24") (unit 1)
         )
       )
     )
@@ -4324,7 +4324,7 @@
   (symbol (lib_id "Device:C") (at 138.43 35.56 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bb7ce688-9859-4bcc-98ac-0816a3706bf3)
-    (property "Reference" "C6" (at 138.43 41.91 90)
+    (property "Reference" "C21" (at 138.43 41.91 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "1u" (at 138.43 39.37 90)
@@ -4341,7 +4341,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C6") (unit 1)
+          (reference "C21") (unit 1)
         )
       )
     )
@@ -4350,7 +4350,7 @@
   (symbol (lib_id "Device:C") (at 62.23 30.48 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bcd62761-46af-4757-a6ce-868ee97b0b61)
-    (property "Reference" "C1" (at 62.23 22.86 90)
+    (property "Reference" "C18" (at 62.23 22.86 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" ".1u" (at 62.23 25.4 90)
@@ -4367,7 +4367,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C1") (unit 1)
+          (reference "C18") (unit 1)
         )
       )
     )
@@ -4376,7 +4376,7 @@
   (symbol (lib_id "Connector:Conn_01x03_Pin") (at 259.08 35.56 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bfcdfad2-7011-46bd-8aab-0f3ba4f04f37)
-    (property "Reference" "J10" (at 260.35 33.02 0)
+    (property "Reference" "J5" (at 260.35 33.02 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x03_Pin" (at 260.35 35.56 0)
@@ -4397,7 +4397,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "J10") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
@@ -4406,7 +4406,7 @@
   (symbol (lib_id "Connector:Conn_01x06_Pin") (at 265.43 110.49 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c1f87a2f-9d53-4c0c-8458-6dc529423fa9)
-    (property "Reference" "J9" (at 266.7 110.49 0)
+    (property "Reference" "J7" (at 266.7 110.49 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x06_Pin" (at 266.7 113.03 0)
@@ -4430,7 +4430,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "J9") (unit 1)
+          (reference "J7") (unit 1)
         )
       )
     )
@@ -4489,7 +4489,7 @@
   (symbol (lib_id "Interface:68681") (at 231.14 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c5268d87-a18b-4cd0-9ca6-dc1c550c6648)
-    (property "Reference" "U2" (at 231.14 92.71 0)
+    (property "Reference" "U3" (at 231.14 92.71 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "68681" (at 231.14 95.25 0)
@@ -4547,7 +4547,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "U2") (unit 1)
+          (reference "U3") (unit 1)
         )
       )
     )
@@ -4556,7 +4556,7 @@
   (symbol (lib_id "Device:C") (at 138.43 30.48 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ce13c194-5dca-4b9c-9bea-d4e07b46ec57)
-    (property "Reference" "C5" (at 138.43 22.86 90)
+    (property "Reference" "C20" (at 138.43 22.86 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" ".1u" (at 138.43 25.4 90)
@@ -4573,7 +4573,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "C5") (unit 1)
+          (reference "C20") (unit 1)
         )
       )
     )
@@ -4582,7 +4582,7 @@
   (symbol (lib_id "Connector:Conn_01x08_Pin") (at 265.43 90.17 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid da801eb4-9c9b-4d2c-857b-de17a63fcb85)
-    (property "Reference" "J8" (at 266.7 90.17 0)
+    (property "Reference" "J6" (at 266.7 90.17 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x08_Pin" (at 266.7 92.71 0)
@@ -4608,7 +4608,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "J8") (unit 1)
+          (reference "J6") (unit 1)
         )
       )
     )
@@ -4642,7 +4642,7 @@
   (symbol (lib_id "Memory_EEPROM:28C256") (at 57.15 148.59 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e42442dd-4c20-4448-ba6f-fdbd6d127226)
-    (property "Reference" "U5" (at 57.15 146.05 0)
+    (property "Reference" "U6" (at 57.15 146.05 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "28C256" (at 54.61 146.05 0)
@@ -4688,7 +4688,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/58631114-4a93-4344-80be-9965735307cd"
-          (reference "U5") (unit 1)
+          (reference "U6") (unit 1)
         )
       )
     )
