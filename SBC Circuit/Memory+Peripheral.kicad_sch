@@ -6,8 +6,8 @@
 
   (title_block
     (title "MEMORY & PERIPHERAL")
-    (date "2024-01-24")
-    (rev "0.4")
+    (date "2024-01-26")
+    (rev "0.5")
     (company "LeTourneau University")
     (comment 1 "Richard Homan")
   )
