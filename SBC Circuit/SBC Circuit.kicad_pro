@@ -597,6 +597,7 @@
       "duart_dtack": "signal",
       "duart_iack": "signal",
       "duart_irq": "signal",
+      "duart_rw": "signal",
       "hlt_rst": "signal",
       "oe": "bus",
       "ramh_cs": "signal",
