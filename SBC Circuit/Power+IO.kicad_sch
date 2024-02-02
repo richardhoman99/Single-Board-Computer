@@ -6,8 +6,8 @@
 
   (title_block
     (title "POWER & IO")
-    (date "2024-01-26")
-    (rev "0.6")
+    (date "2024-01-31")
+    (rev "0.7")
     (company "LeTourneau University")
     (comment 1 "Richard Homan")
   )
@@ -2959,7 +2959,7 @@
     (property "Reference" "TP2" (at 129.54 142.748 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "3V TEST" (at 129.54 145.288 0)
+    (property "Value" "3.3V TEST" (at 129.54 145.288 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "TestPoint:TestPoint_Keystone_5000-5004_Miniature" (at 132.08 147.32 0)
