@@ -6,8 +6,8 @@
 
   (title_block
     (title "MICROPROCESSOR & ADDRESS ROUTER")
-    (date "2024-01-31")
-    (rev "0.7")
+    (date "2024-02-04")
+    (rev "0.8")
     (company "LeTourneau University")
     (comment 1 "Richard Homan")
   )
