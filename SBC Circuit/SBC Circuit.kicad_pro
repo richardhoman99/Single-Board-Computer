@@ -172,7 +172,8 @@
         }
       ],
       "track_widths": [
-        0.0
+        0.0,
+        0.254
       ],
       "via_dimensions": [
         {
@@ -480,7 +481,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.2032,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -490,7 +491,7 @@
         "name": "signal_periph",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgb(0, 0, 132)",
-        "track_width": 0.25,
+        "track_width": 0.254,
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
@@ -517,11 +518,13 @@
       "/Memory+Peripheral/po_6": "signal_periph",
       "/Memory+Peripheral/po_7": "signal_periph",
       "/Power+IO/n1": "power",
+      "/Power+IO/n10": "signal",
       "/Power+IO/n2": "power",
       "/Power+IO/n3": "power",
       "/Power+IO/n4": "power",
       "/Power+IO/n5": "power",
       "/Power+IO/n7": "power",
+      "/Power+IO/n9": "signal",
       "/Power+IO/rx_led": "signal",
       "/Power+IO/rx_s": "signal",
       "/Power+IO/serial_3.3": "signal",
@@ -614,10 +617,6 @@
     "netclass_patterns": [
       {
         "netclass": "power",
-        "pattern": "+3.3V"
-      },
-      {
-        "netclass": "power",
         "pattern": "GNDREF"
       },
       {
@@ -625,16 +624,24 @@
         "pattern": "+5V"
       },
       {
-        "netclass": "signal",
-        "pattern": "/berr"
+        "netclass": "power",
+        "pattern": "+3.3V"
+      },
+      {
+        "netclass": "signal_periph",
+        "pattern": "/Memory+Peripheral/pi_*"
+      },
+      {
+        "netclass": "signal_periph",
+        "pattern": "/Memory+Peripheral/po_*"
       },
       {
         "netclass": "signal",
-        "pattern": "/hlt{slash}rst"
+        "pattern": "*"
       },
       {
-        "netclass": "signal",
-        "pattern": "/n0"
+        "netclass": "power",
+        "pattern": "/Power+IO/vbus"
       }
     ]
   },
