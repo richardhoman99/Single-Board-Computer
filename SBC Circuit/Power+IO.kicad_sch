@@ -2193,7 +2193,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 116.84 69.85 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0828b8f2-4e9c-4ee1-b2d5-40d2a1733e10)
-    (property "Reference" "TP4" (at 121.92 68.58 90)
+    (property "Reference" "TP5" (at 121.92 68.58 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "VBUS SENSE" (at 121.92 71.12 90)
@@ -2209,7 +2209,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
-          (reference "TP4") (unit 1)
+          (reference "TP5") (unit 1)
         )
       )
     )
@@ -2295,6 +2295,56 @@
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
           (reference "C4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GNDREF") (at 232.41 58.42 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 14d9e519-ac7d-431f-bc36-8406f0e6a007)
+    (property "Reference" "#PWR048" (at 232.41 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GNDREF" (at 232.41 63.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 232.41 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 232.41 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 152e4368-f9de-4ed0-8bb9-b7b1aebbb0ba))
+    (instances
+      (project "SBC Circuit"
+        (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
+          (reference "#PWR048") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Connector:TestPoint") (at 232.41 58.42 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 2657edcf-786d-44b5-bcb7-a48061356ad9)
+    (property "Reference" "TP1" (at 234.95 53.848 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "GND POINT" (at 234.95 56.388 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "TestPoint:TestPoint_Keystone_5000-5004_Miniature" (at 237.49 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 237.49 58.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 72d5cc1c-b076-4dfa-9b1d-8560083c8282))
+    (instances
+      (project "SBC Circuit"
+        (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
+          (reference "TP1") (unit 1)
         )
       )
     )
@@ -2970,7 +3020,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 127 147.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b2d7d0d0-71d1-4379-a1fa-b7fc3cee3536)
-    (property "Reference" "TP2" (at 129.54 142.748 0)
+    (property "Reference" "TP3" (at 129.54 142.748 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "3.3V TEST" (at 129.54 145.288 0)
@@ -2986,7 +3036,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
-          (reference "TP2") (unit 1)
+          (reference "TP3") (unit 1)
         )
       )
     )
@@ -3098,7 +3148,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 55.88 142.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c0fdb7f8-52bf-4835-a4e9-03eed70ab45c)
-    (property "Reference" "TP1" (at 58.42 137.668 0)
+    (property "Reference" "TP2" (at 58.42 137.668 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "5V TEST" (at 58.42 140.208 0)
@@ -3114,7 +3164,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe/8994c9f5-fa11-4f2a-a0bf-cd999f9436d0"
-          (reference "TP1") (unit 1)
+          (reference "TP2") (unit 1)
         )
       )
     )

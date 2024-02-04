@@ -3845,7 +3845,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 31.75 102.87 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b76eac4e-a69d-4cf0-a3c9-7ca1e34ef6d9)
-    (property "Reference" "TP6" (at 36.83 101.6 90)
+    (property "Reference" "TP7" (at 36.83 101.6 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "~{DTACK}" (at 36.83 104.14 90)
@@ -3861,7 +3861,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe"
-          (reference "TP6") (unit 1)
+          (reference "TP7") (unit 1)
         )
       )
     )
@@ -3971,7 +3971,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 31.75 97.79 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d96fde58-1d63-4362-98c7-dd488fe66b10)
-    (property "Reference" "TP5" (at 36.83 96.52 90)
+    (property "Reference" "TP6" (at 36.83 96.52 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "~{AS}" (at 36.83 99.06 90)
@@ -3987,7 +3987,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe"
-          (reference "TP5") (unit 1)
+          (reference "TP6") (unit 1)
         )
       )
     )
@@ -4167,7 +4167,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 129.54 38.1 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f9b514de-e0f8-49e8-926b-14ec0390a822)
-    (property "Reference" "TP3" (at 132.08 33.528 0)
+    (property "Reference" "TP4" (at 132.08 33.528 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "~{HLT}/~{RST}" (at 132.08 36.068 0)
@@ -4183,7 +4183,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe"
-          (reference "TP3") (unit 1)
+          (reference "TP4") (unit 1)
         )
       )
     )
@@ -4192,7 +4192,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 31.75 107.95 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fa3ed61d-1244-443b-b855-dd46b9697427)
-    (property "Reference" "TP7" (at 36.83 106.68 90)
+    (property "Reference" "TP8" (at 36.83 106.68 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "~{BERR}" (at 36.83 109.22 90)
@@ -4208,7 +4208,7 @@
     (instances
       (project "SBC Circuit"
         (path "/3db026c4-f98d-4c94-ab2a-d9924b8daebe"
-          (reference "TP7") (unit 1)
+          (reference "TP8") (unit 1)
         )
       )
     )
