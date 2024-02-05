@@ -1,2 +1,3 @@
 # ignore Finder cache
 .DS_Store
+m68k-elf-gcc/*
