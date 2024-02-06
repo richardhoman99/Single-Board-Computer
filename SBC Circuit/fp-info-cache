@@ -1,4 +1,4 @@
-22642421955782666
+22644129144622013
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -86435,6 +86435,13 @@ Logo CE certification
 0
 0
 0
+Symbol
+Chassis_GND_Graphic
+
+
+0
+1
+1
 Symbol
 ESD-Logo_6.6x6mm_SilkScreen
 Electrostatic discharge Logo
