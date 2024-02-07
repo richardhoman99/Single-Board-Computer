@@ -45,7 +45,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.508
         }
       },
       "diff_pair_dimensions": [
@@ -604,12 +604,13 @@
       "duart_iack": "signal",
       "duart_irq": "signal",
       "duart_rw": "signal",
-      "hlt_rst": "signal",
+      "hlt": "signal",
       "oe": "bus",
       "ramh_cs": "signal",
       "raml_cs": "signal",
       "romh_cs": "signal",
       "roml_cs": "signal",
+      "rst": "signal",
       "rx_a": "signal",
       "rx_b": "signal",
       "tx_a": "signal",
