@@ -56,7 +56,12 @@
         }
       ],
       "drc_exclusions": [
-        "unconnected_items|185814600|104245000|06ecd304-7be3-4af4-9c48-1ced66cd5374|338da895-0c52-43f5-a39e-2a5f564bfb85",
+        "lib_footprint_issues|122068380|136924851|9f22bd12-4252-40be-9926-1ced7d127631|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_issues|93955328|136914514|dd7d49da-ee8a-40de-b85d-395e94b567c1|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|78700000|119405400|4cdc0442-5a4c-4da3-a2db-b80834033d3e|00000000-0000-0000-0000-000000000000",
+        "silk_overlap|130842605|34616801|ccfd5e32-22b7-4a79-a0b8-5c96f6eab401|d2fa9336-ebae-4870-8b36-8d0df07bfa53",
+        "unconnected_items|185814600|104745000|06ecd304-7be3-4af4-9c48-1ced66cd5374|338da895-0c52-43f5-a39e-2a5f564bfb85",
+        "unconnected_items|192814600|108745000|181e9ab0-8c75-42fb-9d40-bcd26c4173ee|4e36ce9f-d980-4a14-9246-8e7154618378",
         "unconnected_items|80567500|113385400|750614d5-fd20-4f7c-a798-7058aa90ee97|9775b922-cd14-4635-80bc-42caa9aece31"
       ],
       "meta": {
@@ -505,7 +510,7 @@
     },
     "net_colors": null,
     "netclass_assignments": {
-      "/Memory+Peripheral/n8": "signal",
+      "/Memory+Peripheral/duart_clk": "signal",
       "/Memory+Peripheral/pi_0": "signal_periph",
       "/Memory+Peripheral/pi_1": "signal_periph",
       "/Memory+Peripheral/pi_2": "signal_periph",
