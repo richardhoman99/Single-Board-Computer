@@ -280,7 +280,7 @@
         "microvia_drill": 0.1,
         "name": "power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(255, 153, 0)",
         "track_width": 0.25,
         "via_diameter": 0.8,
         "via_drill": 0.4,
@@ -295,6 +295,7 @@
       "/as": "bus",
       "/berr": "bus",
       "/dtack": "bus",
+      "/duart_clk": "signal",
       "/fc0": "bus",
       "/fc1": "bus",
       "/fc2": "bus",
@@ -303,13 +304,13 @@
       "/ipl2": "bus",
       "/lds": "bus",
       "/n1": "power",
+      "/n10": "signal",
       "/n2": "power",
       "/n3": "power",
       "/n4": "power",
       "/n5": "power",
       "/n6": "signal",
-      "/n7": "power",
-      "/n8": "signal",
+      "/n9": "signal",
       "/pi_0": "signal_periph",
       "/pi_1": "signal_periph",
       "/pi_2": "signal_periph",
@@ -389,12 +390,13 @@
       "duart_iack": "signal",
       "duart_irq": "signal",
       "duart_rw": "signal",
-      "hlt_rst": "signal",
+      "hlt": "signal",
       "oe": "bus",
       "ramh_cs": "signal",
       "raml_cs": "signal",
       "romh_cs": "signal",
       "roml_cs": "signal",
+      "rst": "signal",
       "rx_a": "signal",
       "rx_b": "signal",
       "tx_a": "signal",
@@ -402,7 +404,16 @@
       "we": "bus",
       "{oe,we}": "bus"
     },
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "Default",
+        "pattern": "+*"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "GNDREF"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -440,7 +451,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "./",
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
     "spice_model_current_sheet_as_root": true,
