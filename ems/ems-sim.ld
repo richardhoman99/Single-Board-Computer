@@ -3,20 +3,22 @@
  * Richard Homan
  * 02/11/2024
  * Linker script for Enemigo Monitor System
+ * Specifically for testing on EASy68K simulator
  */
 
 ENTRY(main)
 
-MEMORY
+/*MEMORY
 {
 	rom	(rx)	:	ORIGIN = 0x0000, LENGTH = 0x8000
 	ram	(rwx)	:	ORIGIN = 0x8000, LENGTH = 0x8000
-}
+} provided by host
+*/
 
 /* reset vector points to main */
-PROVIDE(__reset = main);
+/*PROVIDE(__reset = main); provided by host */
 /* stack begins at bottom of ram */
-PROVIDE(__stack = 0x8000 + 0x8000 - 1);
+/*PROVIDE(__stack = 0x8000 + 0x8000 - 1); provided by host */
 
 /* 
  * text & data in ROM
@@ -24,29 +26,22 @@ PROVIDE(__stack = 0x8000 + 0x8000 - 1);
  */
 SECTIONS
 {
-	.text :
+	.text 0x2000 : /* standard placement */
 	{
-		*(.isv);
-		. = 0x400; /* incase isv is not defined, seek */
+		/**(.isv); provided by host */
 		*(.text);
-	}> rom
+	}
 
-	.rodata :
+	.data 0x3000 : /* standard sim placement */
 	{
-		. = ALIGN(0x10); /* easy to read alignment */
 		*(.rodata);
-	}> rom
-
-	.data :
-	{
-		. = ALIGN(0x10); /* easy to read alignment */
 		*(.data);
-	}> ram AT> rom
+	}
 
 	/* There shouldn't exist a bss section anyway but just in case */
 	.bss (NOLOAD) :
 	{
-		. = ALIGN(0x10); /* easy to read alignment */
 		*(.bss);
-	}> ram
+		*(COMMON);
+	}
 }
