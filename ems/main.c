@@ -7,15 +7,8 @@
 
 #include "types.h"
 #include "convert.h"
+#include "lsrec.h"
 #include "serial-sim.h"
-
-// valid commands
-// mr [register]: modify register
-// mm [location] [value]: modify memory
-// dr: dump registers
-// dm: [location] [len]: dump memory
-// l: load record
-// h: help (list commands and usage)
 
 const char prompt[] = "ems% _\b"; // len = 8
 const char delete[] = " \b\b \b"; // len = 6
@@ -395,5 +388,6 @@ byte dm()
 
 byte l()
 {
+	
 	return 0;
 }
