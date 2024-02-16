@@ -1,12 +1,12 @@
 PROG_NAME=ems
 
-PROG_CSRCS = main.c isr.c convert.c lsrec.c
+PROG_CSRCS = main.c isr.c convert.c lsrec.c mem.c
 PROG_SSRCS= isv.s
 PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))
 PROG_LDSRPT= ems.ld
 
-SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c
+SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c mem.c
 SIM_SSRCS= 
 SIM_COBJS= $(patsubst %.c,%.sim.o,$(SIM_CSRCS))
 SIM_SOBJS= $(patsubst %.s,%.sim.o,$(SIM_SSRCS))

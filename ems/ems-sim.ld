@@ -32,7 +32,7 @@ SECTIONS
 		*(.text);
 	}
 
-	.data 0x3000 : /* standard sim placement */
+	.data 0x4000 : /* standard sim placement */
 	{
 		*(.rodata);
 		*(.data);

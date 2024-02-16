@@ -5,8 +5,10 @@
  * Parser and loader of srec executables for Enemigo Monitor System
  */
 
+#include "lsrec_errstr.h"
 #include "lsrec.h"
 #include "convert.h"
+#include "mem.h"
 
 static byte lsrec_parsing = 0;
 static word s1_record_count;
@@ -210,6 +212,25 @@ int lsrec_end(lword *entryptr)
 // returns descriptive error given an error
 void lsrec_errstr(char *errstr, byte len)
 {
+	byte c = 0;
+	// concat unsupported type
+	switch (err)
+	{
+	case LSREC_ERR_UNSUPPORTED_TYPE_S2:
+	case LSREC_ERR_UNSUPPORTED_TYPE_S3:
+	case LSREC_ERR_UNSUPPORTED_TYPE_S4:
+	case LSREC_ERR_UNSUPPORTED_TYPE_S6:
+	case LSREC_ERR_UNSUPPORTED_TYPE_S7:
+	case LSREC_ERR_UNSUPPORTED_TYPE_S8:
+		memcpy(&(*errstr[0]),
+			   lsrec_errstr_unsupported_type,
+			   STRLEN(lsrec_errstr_unsupported_type));
+		c += STRLEN(lsrec_errstr_unsupported_type);
+		break;
+	default:
+		break;
+	}
+
 
 }
 

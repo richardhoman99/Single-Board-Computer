@@ -56,11 +56,11 @@ byte l();
 int main(void)
 {
 	char inchar;
-prompt:
+mprompt:
 	inbuf_len = 0;
 	serial_puts(prompt, 8);
 
-waitc:
+mwaitc:
 	while (!serial_isc())
 		__asm__ __volatile__ ("nop");
 	inchar = serial_getc();
@@ -68,7 +68,7 @@ waitc:
 	{
 		inbuf[inbuf_len] = 0;
 		serial_puts(delete, 6);
-		goto eval;
+		goto meval;
 	}
 	if (inchar == 8)
 	{
@@ -84,9 +84,9 @@ waitc:
 		inbuf_len++;
 	}
 	serial_puts(cursor, 3);
-	goto waitc;
+	goto mwaitc;
 
-eval:
+meval:
 	if (inbuf[0] == 'c')
 	{
 		if (inbuf[1] == 'r')
@@ -149,13 +149,13 @@ eval:
 		goto print_invalid;
 	}
 
-goto prompt;
+goto mprompt;
 print_invalid:
 	serial_puts(invalid, 17);
-goto prompt;
+goto mprompt;
 print_badarg:
 	serial_puts(badarg, 15);
-goto prompt;
+goto mprompt;
 
 	while (1)
 		__asm__ __volatile__ ("nop");
@@ -388,6 +388,47 @@ byte dm()
 
 byte l()
 {
-	
+	char inchar;
+	int r;
+
+	r = lsrec_begin();
+	if (r != 0)
+		return -1;
+lprompt:
+	// load in bytes into inbuf
+	inbuf_len = 0;
+	serial_puts(cursor, 3);
+lwaitc:
+	while (!serial_isc())
+		__asm__ __volatile__ ("nop");
+	inchar = serial_getc();
+	if (inchar == 3) // ctrl c
+	{
+		return 0;
+	}
+	else if (inchar == 8)
+	{
+		if (inbuf_len != 0)
+		{
+			inbuf_len--;
+			serial_puts(delete, 6);
+		}
+	}
+	else if (inchar == '\r')
+	{
+		inbuf[inbuf_len] = 0;
+		serial_puts(delete, 6);
+		goto leval;
+	}
+	else
+	{
+		inbuf[inbuf_len] = inchar;
+		inbuf_len++;
+	}
+	serial_puts(cursor, 3);
+	goto lwaitc;
+
+leval:
+
 	return 0;
 }
