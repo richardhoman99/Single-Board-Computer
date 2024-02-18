@@ -12,6 +12,7 @@
 
 #define STRLEN(s) (sizeof(s)/sizeof(s[0]))
 
-void *memcpy(void *__restrict dest, const void *__restrict src, lword n);
+// returns new length of string
+lword strncpy(char *dest, const char *src, lword n);
 
 #endif

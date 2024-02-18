@@ -40,9 +40,12 @@ const char a5s[] = " a5: "; // len = 6
 const char fps[] = " fp: "; // len = 6
 const char sps[] = " sp: "; // len = 6
 const char pcs[] = "pc: "; // len = 5
+const char errstr[] = "error "; // len = 6
 
 const char debug[] = "debug\r\n"; // len = 8
 // serial_puts(debug, 8);
+
+const char debug_lsrec_instr[] = "S10780004E56FFFCD9";
 
 char inbuf[256];
 word inbuf_len;
@@ -388,47 +391,60 @@ byte dm()
 
 byte l()
 {
-	char inchar;
+// 	char inchar;
 	int r;
 
 	r = lsrec_begin();
 	if (r != 0)
 		return -1;
-lprompt:
-	// load in bytes into inbuf
-	inbuf_len = 0;
-	serial_puts(cursor, 3);
-lwaitc:
-	while (!serial_isc())
-		__asm__ __volatile__ ("nop");
-	inchar = serial_getc();
-	if (inchar == 3) // ctrl c
-	{
-		return 0;
-	}
-	else if (inchar == 8)
-	{
-		if (inbuf_len != 0)
-		{
-			inbuf_len--;
-			serial_puts(delete, 6);
-		}
-	}
-	else if (inchar == '\r')
-	{
-		inbuf[inbuf_len] = 0;
-		serial_puts(delete, 6);
-		goto leval;
-	}
-	else
-	{
-		inbuf[inbuf_len] = inchar;
-		inbuf_len++;
-	}
-	serial_puts(cursor, 3);
-	goto lwaitc;
+// lprompt:
+// 	inbuf_len = 0;
+// 	serial_puts(cursor, 3);
+// lwaitc:
+// 	while (!serial_isc())
+// 		__asm__ __volatile__ ("nop");
+// 	inchar = serial_getc();
+// 	if (inchar == 3) // ctrl c
+// 	{
+// 		serial_putc('\r');
+// 		serial_putc('\n');
+// 		return 0;
+// 	}
+// 	else if (inchar == 8)
+// 	{
+// 		if (inbuf_len != 0)
+// 		{
+// 			inbuf_len--;
+// 			serial_puts(delete, 6);
+// 		}
+// 	}
+// 	else if (inchar == '\r')
+// 	{
+// 		inbuf[inbuf_len] = 0;
+// 		serial_puts(delete, 6);
+// 		goto leval;
+// 	}
+// 	else
+// 	{
+// 		inbuf[inbuf_len] = inchar;
+// 		inbuf_len++;
+// 	}
+// 	serial_puts(cursor, 3);
+// 	goto lwaitc;
 
 leval:
+	// inbuf[inbuf_len] = 0;
+	// r = lsrec_in(inbuf, inbuf_len);
+	r = lsrec_in(debug_lsrec_instr, sizeof(debug_lsrec_instr)/sizeof(debug_lsrec_instr[0])-1);
+	if (r != 0)
+	{
+		serial_puts(errstr, sizeof(errstr)/sizeof(errstr[0]));
+		btoah(r, inbuf);
+		inbuf[2] = 0;
+		serial_puts(inbuf, 2);
+		serial_putc('\r');
+		serial_putc('\n');
+	}
 
 	return 0;
 }

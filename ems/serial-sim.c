@@ -8,7 +8,7 @@
 #include "serial-sim.h"
 
 // trap 15, d0=1, a1=string, d1=string len
-void serial_puts(const char *in, byte len)
+void serial_puts(const char *in, ubyte len)
 {
 	__asm__ __volatile__ ("move.l	%/a1,-(%/sp)\n" // save registers
 						  "move.l	%/d1,-(%/sp)\n"

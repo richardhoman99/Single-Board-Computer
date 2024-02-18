@@ -6,7 +6,7 @@ PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))
 PROG_LDSRPT= ems.ld
 
-SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c mem.c
+SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c
 SIM_SSRCS= 
 SIM_COBJS= $(patsubst %.c,%.sim.o,$(SIM_CSRCS))
 SIM_SOBJS= $(patsubst %.s,%.sim.o,$(SIM_SSRCS))
@@ -20,7 +20,7 @@ LD=m68k-elf-ld
 #LD_OPTS=--defsym=_start=main -Ttext=0x2000 -Tdata=0x3000 -Tbss=0x4000 --section-start=.rodata=0x5000
 LDFLAGS=
 OBJCOPY=m68k-elf-objcopy
-OBJCOPYFLAGS=-I elf32-m68k -O srec --srec-len=16
+OBJCOPYFLAGS=-I elf32-m68k -O srec --srec-len=4
 
 all: $(PROG_COBJS) $(PROG_SOBJS)
 	$(LD) $(LDFLAGS) -T ${PROG_LDSRPT} $(PROG_COBJS) $(PROG_SOBJS) -o $(PROG_NAME).out
