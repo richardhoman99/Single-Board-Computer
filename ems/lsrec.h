@@ -31,6 +31,6 @@
 int lsrec_begin();
 // line is null terminated, last char is end of checksum byte
 int lsrec_in(char *line, ubyte len);
-int lsrec_end(lword *entryptr);
+int lsrec_end(int (**entryptr)(void));
 
 #endif

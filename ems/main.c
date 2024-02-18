@@ -10,6 +10,8 @@
 #include "lsrec.h"
 #include "serial-sim.h"
 
+#define STR_SIZEOF(v) sizeof(v)/sizeof(v[0])
+
 const char prompt[] = "ems% _\b"; // len = 8
 const char delete[] = " \b\b \b"; // len = 6
 const char cursor[] = "_\b"; // len = 3
@@ -45,7 +47,68 @@ const char errstr[] = "error "; // len = 6
 const char debug[] = "debug\r\n"; // len = 8
 // serial_puts(debug, 8);
 
-const char debug_lsrec_instr[] = "S10780004E56FFFCD9";
+const char noexecloadedstr[] = "no executable loaded";
+const char nlstr[] = "\r\n";
+
+static byte has_exec = 0;
+static int (*exec_entry_ptr)(void);
+
+const char hwprogline0[] = 	"S11380004E5600004878000E4879000080C04EB9F2";
+const char hwprogline1[] = "S113801000008030508F487800034879000080CEFB";
+const char hwprogline2[] = "S11380204EB900008030508F70004E5E4E750000D7";
+const char hwprogline3[] = "S11380304E56FFFC202E000C10001D40FFFE2F09A1";
+const char hwprogline4[] = "S11380402F012F00226E0008222EFFFE103C00019B";
+const char hwprogline5[] = "S11380504E4F201F221F225F4E714E5E4E754E56AC";
+const char hwprogline6[] = "S1138060FFFC202E000810001D40FFFE2F012F00F2";
+const char hwprogline7[] = "S1138070122EFFFE103C00064E4F201F221F4E7191";
+const char hwprogline8[] = "S11380804E5E4E754E56FFFC2F012F00103C00072C";
+const char hwprogline9[] = "S11380904E4F1D41FFFF201F221F102EFFFF4E5E7B";
+const char hwprogline10[] = "S11380A04E754E56FFFC2F012F00103C00054E4F1D";
+const char hwprogline11[] = "S11380B01D41FFFF201F221F102EFFFF4E5E4E7535";
+const char hwprogline12[] = "S11380C048656C6C6F2C20776F726C6421000D0A0C";
+const char hwprogline13[] = "S10480D000AB";
+const char hwprogline14[] = "S10F80D40000000000000000000000009C";
+const char hwprogline15[] = "S90380007C";
+
+const char *hwproglines[] = 
+{
+	hwprogline0,
+	hwprogline1,
+	hwprogline2,
+	hwprogline3,
+	hwprogline4,
+	hwprogline5,
+	hwprogline6,
+	hwprogline7,
+	hwprogline8,
+	hwprogline9,
+	hwprogline10,
+	hwprogline11,
+	hwprogline12,
+	hwprogline13,
+	hwprogline14,
+	hwprogline15
+};
+
+ubyte hwproglines_len[] = 
+{
+	STR_SIZEOF(hwprogline0),
+	STR_SIZEOF(hwprogline1),
+	STR_SIZEOF(hwprogline2),
+	STR_SIZEOF(hwprogline3),
+	STR_SIZEOF(hwprogline4),
+	STR_SIZEOF(hwprogline5),
+	STR_SIZEOF(hwprogline6),
+	STR_SIZEOF(hwprogline7),
+	STR_SIZEOF(hwprogline8),
+	STR_SIZEOF(hwprogline9),
+	STR_SIZEOF(hwprogline10),
+	STR_SIZEOF(hwprogline11),
+	STR_SIZEOF(hwprogline12),
+	STR_SIZEOF(hwprogline13),
+	STR_SIZEOF(hwprogline14),
+	STR_SIZEOF(hwprogline15)
+};
 
 char inbuf[256];
 word inbuf_len;
@@ -55,14 +118,17 @@ byte cm();
 byte dr();
 byte dm();
 byte l();
+byte r();
 
 int main(void)
 {
 	char inchar;
+
+	has_exec = 0;
+	
 mprompt:
 	inbuf_len = 0;
 	serial_puts(prompt, 8);
-
 mwaitc:
 	while (!serial_isc())
 		__asm__ __volatile__ ("nop");
@@ -142,6 +208,12 @@ meval:
 		if (inbuf[1] != 0)
 			goto print_invalid;
 		l();
+	}
+	else if (inbuf[0] == 'r')
+	{
+		if (inbuf[1] != 0)
+			goto print_invalid;
+		r();
 	}
 	else if (inbuf[0] == 'h')
 	{
@@ -435,16 +507,49 @@ byte l()
 leval:
 	// inbuf[inbuf_len] = 0;
 	// r = lsrec_in(inbuf, inbuf_len);
-	r = lsrec_in(debug_lsrec_instr, sizeof(debug_lsrec_instr)/sizeof(debug_lsrec_instr[0])-1);
+	for (int i = 0; i < 16; i++)
+	{
+		r = lsrec_in(hwproglines[i], hwproglines_len[i]-1);
+		if (r != 0)
+		{
+			serial_puts(errstr, STR_SIZEOF(errstr));
+			btoah(r, inbuf);
+			inbuf[2] = 0;
+			serial_puts(inbuf, 2);
+			serial_putc('\r');
+			serial_putc('\n');
+			return r;
+		}
+	}
+	// goto lprompt;
+getentry:
+	r = lsrec_end(&exec_entry_ptr);
 	if (r != 0)
 	{
-		serial_puts(errstr, sizeof(errstr)/sizeof(errstr[0]));
-		btoah(r, inbuf);
-		inbuf[2] = 0;
-		serial_puts(inbuf, 2);
-		serial_putc('\r');
-		serial_putc('\n');
+		has_exec = 0;
+		return -1;
 	}
 
+	// btoah(((lword)exec_entry_ptr >>  0) & 0xff, &(inbuf[6]));
+	// btoah(((lword)exec_entry_ptr >>  8) & 0xff, &(inbuf[4]));
+	// btoah(((lword)exec_entry_ptr >> 16) & 0xff, &(inbuf[2]));
+	// btoah(((lword)exec_entry_ptr >> 24) & 0xff, &(inbuf[0]));
+	// inbuf[8] = 0;
+	// serial_puts(inbuf, 8);
+	// serial_putc('\r');
+	// serial_putc('\n');
+
+	has_exec = 1;
 	return 0;
+}
+
+byte r()
+{
+	if (!has_exec)
+	{
+		serial_puts(noexecloadedstr, STR_SIZEOF(noexecloadedstr));
+		serial_puts(nlstr, STR_SIZEOF(nlstr));
+		return -1;
+	}
+	return exec_entry_ptr();
 }

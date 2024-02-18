@@ -1,23 +1,22 @@
-PROG_NAME=ems
+PROG_NAME=ee
 
-PROG_CSRCS = main.c isr.c convert.c lsrec.c mem.c
-PROG_SSRCS= isv.s
+PROG_CSRCS = main.c serial.c
+PROG_SSRCS= 
 PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))
-PROG_LDSRPT= ems.ld
+PROG_LDSRPT= ee.ld
 
-SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c
+SIM_CSRCS = main.c serial-sim.c
 SIM_SSRCS= 
 SIM_COBJS= $(patsubst %.c,%.sim.o,$(SIM_CSRCS))
 SIM_SOBJS= $(patsubst %.s,%.sim.o,$(SIM_SSRCS))
-SIM_LDSRPT= ems-sim.ld
+SIM_LDSRPT= ee-sim.ld
 
 CC=m68k-elf-gcc
 CCFLAGS=-Wall -nostdlib -nodefaultlibs -m68000
 AS=m68k-elf-as
 ASFLAGS=
 LD=m68k-elf-ld
-#LD_OPTS=--defsym=_start=main -Ttext=0x2000 -Tdata=0x3000 -Tbss=0x4000 --section-start=.rodata=0x5000
 LDFLAGS=
 OBJCOPY=m68k-elf-objcopy
 OBJCOPYFLAGS=-I elf32-m68k -O srec --srec-len=16

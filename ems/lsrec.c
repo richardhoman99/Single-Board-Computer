@@ -104,8 +104,7 @@ int lsrec_in(char *recstr, ubyte len)
 		}
 
 		s1_record_count = 0;
-		// return LSREC_SUCCESS;
-		return 1;
+		return LSREC_SUCCESS;
 	}
 	if (type == 9) // entry is specified
 	{
@@ -126,8 +125,7 @@ int lsrec_in(char *recstr, ubyte len)
 		}
 
 		entry = e;
-		// return LSREC_SUCCESS;
-		return 2;
+		return LSREC_SUCCESS;
 	}
 
 	s1_record_count++;
@@ -170,14 +168,18 @@ int lsrec_in(char *recstr, ubyte len)
 		return err;
 	}
 
-	return 3;
-	// return LSREC_SUCCESS;
+	return LSREC_SUCCESS;
 }
 
 // returns -1 on not parsing
-int lsrec_end(lword *entryptr)
+int lsrec_end(int (**entryptr)(void))
 {
-	*entryptr = entry;
+	if (entry == 0)
+	{
+		*entryptr = 0;
+		return -1;
+	}
+	*entryptr = (int (*)(void))entry;
 	return 0;
 }
 
