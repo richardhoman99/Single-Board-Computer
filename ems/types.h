@@ -16,4 +16,6 @@ typedef unsigned char ubyte;
 typedef unsigned short uword;
 typedef unsigned int ulword;
 
+#define ARR_LEN(a) sizeof(a)/sizeof(a[0])
+
 #endif

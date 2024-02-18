@@ -6,7 +6,8 @@ PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))
 PROG_LDSRPT= ems.ld
 
-SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c
+SIM_CSRCS = main.c serial-sim.c convert.c lsrec.c ems_cr.c ems_cm.c ems_dr.c \
+			ems_cm.c ems_l.c ems_r.c ems_h.c
 SIM_SSRCS= 
 SIM_COBJS= $(patsubst %.c,%.sim.o,$(SIM_CSRCS))
 SIM_SOBJS= $(patsubst %.s,%.sim.o,$(SIM_SSRCS))
