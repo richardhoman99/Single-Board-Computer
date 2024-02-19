@@ -67,6 +67,6 @@ char calc(const char *str, size_t len, int slots)
 		sum += str[len-1];
 	}
 
-	sum = (unsigned char)(~sum) % slots;
+	sum = sum % slots;
 	return sum;
 }

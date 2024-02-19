@@ -38,7 +38,6 @@ SECTIONS
 		*(.data);
 	}
 
-	/* There shouldn't exist a bss section anyway but just in case */
 	.bss (NOLOAD) :
 	{
 		*(.bss);

@@ -7,17 +7,14 @@
 
 #include "serial-sim.h"
 
-#define STR_SIZEOF(v) sizeof(v)/sizeof(v[0])
+#define ARR_LEN(v) sizeof(v)/sizeof(v[0])
 
-const char hellostr[] = "Hello, world!";
-#define HELLOSTR_LEN STR_SIZEOF(hellostr)
-
-const char nlstr[] = "\r\n";
-#define NLSTR_LEN STR_SIZEOF(nlstr)
+const char hello_str[] = "VADIUM BLAYT";
+const char nl_str[] = "\r\n";
 
 int main(void)
 {
-	serial_puts(hellostr, HELLOSTR_LEN);
-	serial_puts(nlstr, NLSTR_LEN);
+	serial_puts(hello_str, ARR_LEN(hello_str));
+	serial_puts(nl_str, ARR_LEN(nl_str));
 	return 0;
 }

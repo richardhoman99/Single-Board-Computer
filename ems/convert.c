@@ -6,49 +6,60 @@
  */
 
 #include "convert.h"
+#include "err.h"
 
 // char to half, -1 for error
-byte ctoh(char i);
+int ctoh(char i, ubyte *ret);
 // half to char, -1 for error (never)
 char htoc(ubyte i);
 
-word ahtob(char *in)
+int ahtob(const char *in, ubyte *ret)
 {
-	word h, l;
-	h = ctoh(in[0]);
-	if (h == -1)
-		return -1;
-	l = ctoh(in[1]);
-	if (l == -1)
-		return -1;
-	return (h << 4) | l;
+	ubyte a, b;
+	int i, r;
+
+	a = 0;
+	for (i = 0; i < 2; i++)
+	{
+		r = ctoh(in[i], &b);
+		if (r != 0)
+			return r;
+		a = (a << 4) | b;
+	}
+
+	*ret = a;
+	return 0;
 }
 
-void btoah(byte in, char *ret)
+int btoah(byte in, char *ret)
 {
 	ubyte h, l;
 	h = (in >> 4) & 0xf;
 	l = in & 0xf;
 	ret[0] = htoc(h);
 	ret[1] = htoc(l);
+	return 0;
 }
 
-inline byte ctoh(char i)
+inline int ctoh(char i, ubyte *ret)
 {
 	if (i >= '0' && i <= '9' ) // digit
 	{
-		return i - '0';
+		*ret = i - '0';
+		return 0;
 	}
 	else if (i >= 'A' && i <= 'F') // valid upper letter
 	{
-		return i - 'A' + 0xa;
+		*ret = i - 'A' + 0xa;
+		return 0;
 	}
 	else if (i >= 'a' && i <= 'f') // valid lower letter
 	{
-		return i - 'a' + 0xa;
+		*ret = i - 'a' + 0xa;
+		return 0;
 	}
 
-	return -1;
+	return EMS_NOT_HEX;
 }
 
 inline char htoc(ubyte i)

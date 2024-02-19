@@ -5,12 +5,18 @@
  * Load record logic for Enemigo Monitor System
  */
 
-#include "command_err.h"
+#include "err.h"
 #include "types.h"
 #include "convert.h"
+#include "strings.h"
+#include "exec.h"
 #include "lsrec.h"
 #include "serial-sim.h"
 #include "debug_prog.h"
+
+#define INBUF_LEN 64
+static char inbuf[INBUF_LEN];
+static int inbuf_len;
 
 // no arguments
 int ems_l(const char **argv, int argc)
@@ -18,9 +24,7 @@ int ems_l(const char **argv, int argc)
 // 	char inchar;
 	int r;
 
-	r = lsrec_begin();
-	if (r != 0)
-		return -1;
+	lsrec_init();
 // lprompt:
 // 	inbuf_len = 0;
 // 	serial_puts(cursor, 3);
@@ -59,28 +63,26 @@ int ems_l(const char **argv, int argc)
 leval:
 	// inbuf[inbuf_len] = 0;
 	// r = lsrec_in(inbuf, inbuf_len);
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < ARR_LEN(debug_prog_l); i++)
 	{
-		r = lsrec_in(hwproglines[i], hwproglines_len[i]-1);
+		r = lsrec_in(debug_prog[i], debug_prog_l[i], &(exec_entry_ptr));
 		if (r != 0)
 		{
-			serial_puts(errstr, STR_SIZEOF(errstr));
+			serial_puts(err_str, ERR_STR_LEN);
 			btoah(r, inbuf);
-			inbuf[2] = 0;
+			inbuf[2] = '\0';
 			serial_puts(inbuf, 2);
-			serial_putc('\r');
-			serial_putc('\n');
+			serial_puts(nl_str, NL_STR_LEN);
 			return r;
+		}
+
+		if (exec_entry_ptr != 0x0)
+		{
+			has_exec = 1;
+			return 0; // found entry, exit out of loader
 		}
 	}
 	// goto lprompt;
-getentry:
-	r = lsrec_end(&exec_entry_ptr);
-	if (r != 0)
-	{
-		has_exec = 0;
-		return -1;
-	}
 
 	// btoah(((lword)exec_entry_ptr >>  0) & 0xff, &(inbuf[6]));
 	// btoah(((lword)exec_entry_ptr >>  8) & 0xff, &(inbuf[4]));
@@ -91,6 +93,5 @@ getentry:
 	// serial_putc('\r');
 	// serial_putc('\n');
 
-	has_exec = 1;
 	return 0;
 }

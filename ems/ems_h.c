@@ -5,18 +5,19 @@
  * Help menu logic for Enemigo Monitor System
  */
 
-#include "command_err.h"
 #include "types.h"
+#include "strings.h"
+#include "serial-sim.h"
 
-const char help_str0 = "cr [reg] [val] : change register";
-const char help_str1 = "cm [loc] [val] : change memory";
-const char help_str2 = "dr             : dump registers";
-const char help_str3 = "dm [loc] [len] : dump memory";
-const char help_str4 = "l              : load srecord executable";
-const char help_str5 = "r              : run srecord executable";
-const char help_str6 = "h              : display this message";
+const char help_str0[] = "cr [reg] [val] : change register";
+const char help_str1[] = "cm [loc] [val] : change memory";
+const char help_str2[] = "dr             : dump registers";
+const char help_str3[] = "dm [loc] [len] : dump memory";
+const char help_str4[] = "l              : load srecord executable";
+const char help_str5[] = "r              : run srecord executable";
+const char help_str6[] = "h              : display this message";
 
-const char *help_str[]
+const char *help_str[] =
 {
 	help_str0,
 	help_str1,
@@ -27,20 +28,26 @@ const char *help_str[]
 	help_str6
 };
 
-const char *help_str_len[]
+const ubyte help_str_len[] =
 {
-	STR_SIZEOF(help_str0),
-	STR_SIZEOF(help_str1),
-	STR_SIZEOF(help_str2),
-	STR_SIZEOF(help_str3),
-	STR_SIZEOF(help_str4),
-	STR_SIZEOF(help_str5),
-	STR_SIZEOF(help_str6)
+	ARR_LEN(help_str0),
+	ARR_LEN(help_str1),
+	ARR_LEN(help_str2),
+	ARR_LEN(help_str3),
+	ARR_LEN(help_str4),
+	ARR_LEN(help_str5),
+	ARR_LEN(help_str6)
 };
-
 
 // no arguments
 int ems_h(const char **argv, int argc)
 {
+	int i;
+	for (i = 0; i < ARR_LEN(help_str); i++)
+	{
+		serial_puts(help_str[i], help_str_len[i]);
+		serial_puts(nl_str, NL_STR_LEN);
+	}
 
+	return 0;
 }

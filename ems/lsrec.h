@@ -10,6 +10,9 @@
 #ifndef LSREC_H
 #define LSREC_H
 
+#define LSREC_MIN_ADDR	0x8000
+#define LSREC_MAX_ADDR	0xffff
+
 #define LSREC_SUCCESS 0
 #define LSREC_ERR_NOT_SREC_FORMAT -1 // below minimum length, or doesn't start with 'S'
 #define LSREC_ERR_UNSUPPORTED_TYPE_S2 -2
@@ -28,9 +31,10 @@
 #define LSREC_ERR_INVALID_FORMAT -15 // if S5 len is not 3
 #define LSREC_ERR_INVALID_HEX -16
 
-int lsrec_begin();
-// line is null terminated, last char is end of checksum byte
-int lsrec_in(char *line, ubyte len);
-int lsrec_end(int (**entryptr)(void));
+// must be called before calling lsrec_in
+void lsrec_init();
+// line is null terminated, returns the entry function when it gets it
+// recieving the entry function means the end of the srec
+int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void));
 
 #endif

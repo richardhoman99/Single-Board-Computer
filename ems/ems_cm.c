@@ -5,33 +5,35 @@
  * Change memory logic for Enemigo Monitor System
  */
 
-#include "command_err.h"
+#include "err.h"
 #include "types.h"
 #include "convert.h"
 
-// argv[0] = addres, argv[1] = value
+// argv[1] = address, argv[2] = value
 int ems_cm(const char **argv, int argc)
 {
-	char *saddr, *sval;
-	word addr, val;
-	register word i, j;
+	word addr;
+	ubyte b, val;
+	register int i, r;
 
-	saddr = argv[0];
-	sval = argv[1];
+	if (argv[1][4] != '\0' || // address not len 4
+		argv[2][2] != '\0')   // value not len 2
+		return EMS_BAD_ARG;
 
 	addr = 0;
 	val = 0;
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 4; i+=2)
 	{
-		j = ahtob(&(saddr[i*2]));
-		if (j == -1)
-			return -1;
-		addr = (addr << 8) | (j & 0xff);
+		r = ahtob(&(argv[1][i]), &b);
+		if (r != 0)
+			return r;
+		addr = (addr << 8) | b;
 	}
 
-	val = ahtob(sval);
-	if (val == -1)
-		return -1;
+	r = ahtob(argv[2], &b);
+	if (r != 0)
+		return r;
+	val = b;
 
 	*(byte *)((lword)addr & 0xffff) = val;
 

@@ -8,49 +8,55 @@
 #include "lsrec.h"
 #include "convert.h"
 
-static word s1_record_count;
-static lword entry;
-static lword dbeginaddr;
-static lword dendaddr;
+static uword drec_count;
+static ubyte has_entry;
+static ulword dbegin_addr;
+static ulword dend_addr;
 static lword err;
 
-lword srec_gtype(char *); // get type
-lword srec_gcount(char *); // get count
-lword srec_gaddr(char *); // get address
-lword srec_gdatab(char *, word); // gets one byte from data section
+int srec_gtype(const char *, ubyte *); // get type
+int srec_gcount(const char *, ubyte *); // get count
+int srec_gaddr(const char *, uword *); // get address
+int srec_gdatab(const char *, ubyte, ubyte *); // gets one byte from data section
 
-int lsrec_begin()
+void lsrec_init()
 {
-	s1_record_count = 0;
-	dbeginaddr = 0xffffffff;
-	dendaddr = 0x00000000;
-	entry = 0;
+	drec_count = 0;
+	dbegin_addr = LSREC_MAX_ADDR;
+	dend_addr = LSREC_MIN_ADDR;
+	has_entry = 0;
 	err = 0;
-	return 0;
 }
 
-int lsrec_in(char *recstr, ubyte len)
+int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 {
-	lword type, count, addr;
-	register byte idx;
-	lword calc_chksum, chksum;
+	register int i, r;
+	ubyte type, count, calc_chksum, chksum;
+	uword addr;
 	
 	err = 0;
+	len -= 1;
 	if (len < 10) // absolute minimum length is 10
 		return LSREC_ERR_NOT_SREC_FORMAT;
 
-	if (entry != 0)
+	if (has_entry)  // entry should be the last value given, if we get any more
+					// records, give an error
 	{
 		err = LSREC_ERR_DATA_GIVEN_AFTER_ENTRY;
 		return err;
 	}
-	type = srec_gtype(recstr);
-	if (type < 0)
+
+	*entry_func = 0x0;
+
+	// get type value
+	r = srec_gtype(recstr, &type);
+	if (r < 0)
 	{
-		err = type;
-		return err;
+		err = r;
+		return r;
 	}
-	switch (type)
+
+	switch (type) // don't support S2, S3, S4, S6, S7, S8
 	{
 	case 2: err = LSREC_ERR_UNSUPPORTED_TYPE_S2;
 		err = LSREC_ERR_UNSUPPORTED_TYPE_S2;
@@ -76,114 +82,118 @@ int lsrec_in(char *recstr, ubyte len)
 	if (err != 0)
 		return err;
 
-	count = srec_gcount(recstr);
-	if (count < 0)
-		return count; // actually returning the error
-	if (count * 2 != len - 4)
+	// get count value
+	r = srec_gcount(recstr, &count);
+	if (r < 0)
+	{
+		err = r;
+		return r;
+	}
+
+	if (count * 2 != len - 4) // check that actual length matches said count
 	{
 		err = LSREC_ERR_LENGTH_NONEQUAL;
 		return err;
 	}
 
-	if (type == 5) // check that the encountered records is what this record says
+	// get address value
+	r = srec_gaddr(recstr, &addr);
+	if (r != 0)
 	{
-		if (count != 3)
+		err = r;
+		return r;
+	}
+
+	if (type == 5) // verify that we got the number of S1 records specified
+				   // in S5
+	{
+		if (count != 3) // S5 record count should only be 3
 		{
 			err = LSREC_ERR_INVALID_FORMAT;
 			return err;
 		}
 
-		lword n = srec_gaddr(recstr); // count is in addr location
-		if (n < 0)
-			return err;
-
-		if (n != s1_record_count)
+		if (addr != drec_count) // value is contained in address
 		{
 			err = LSREC_ERR_RECORD_COUNT_NONEQUAL;
 			return err;
 		}
 
-		s1_record_count = 0;
+		drec_count = 0;
 		return LSREC_SUCCESS;
 	}
 	if (type == 9) // entry is specified
 	{
-		if (count != 3)
+		if (count != 3) // S9 record count should only be 3
 		{
 			err = LSREC_ERR_INVALID_FORMAT;
 			return err;
 		}
-
-		lword e = srec_gaddr(recstr); // count is in addr location
-		if (e < 0)
-			return err;
 		
-		if (e < dbeginaddr || e > dendaddr)
+		if (addr < dbegin_addr || addr > dend_addr)
 		{
 			err = LSREC_ERR_ENTRY_OUT_OF_BOUNDS;
 			return err;
 		}
 
-		entry = e;
+		// cast to ulword then to func pointer
+		*entry_func = (int (*)(void))(ulword)addr;
 		return LSREC_SUCCESS;
 	}
 
-	s1_record_count++;
-	addr = srec_gaddr(recstr);
-	if (addr < 0)
-		return addr; // acturally returning error
-	if (addr < 0x8000 || addr > 0xffff) // out of bounds
+	drec_count++; // if we got to this point, then we have a data record
+	 // verify that the address isn't out of bounds
+	if (addr < LSREC_MIN_ADDR || addr > LSREC_MAX_ADDR)
 	{
 		err = LSREC_ERR_ADDRESS_OUT_OF_BOUNDS;
 		return err;
 	}
-	if (addr + count - 2 - 1 > 0xffff) // subtract out address and checksum
+	// subtract out address and checksum and verify that memory doesn't go out
+	// of bounds
+	if (addr + count - 2 - 1 > LSREC_MAX_ADDR)
 	{
 		err = LSREC_ERR_LENGTH_EXTENDS_OUT_OF_BOUNDS;
 		return err;
 	}
-	if (addr < dbeginaddr)
-		dbeginaddr = addr;
-	else if (addr > dendaddr)
-		dendaddr = addr;
+	// update min and max given values
+	if (addr < dbegin_addr)
+		dbegin_addr = addr;
+	else if (addr > dend_addr)
+		dend_addr = addr;
 
-	calc_chksum = count + (addr >> 8 & 0xff) + (addr & 0xff);
-	for (idx = 0; idx < (byte)count-2-1; idx++)
+	// initialize calculated checksum
+	calc_chksum = count +
+				  (addr >> 8 & 0xff) + // add addr high
+				  (addr & 0xff); // add addr low
+	for (i = 0; i < count-2-1; i++)
 	{
-		byte *baddr;
-		byte b;
+		ubyte *baddr;
+		ubyte b;
 
-		b = srec_gdatab(recstr, idx);
+		r = srec_gdatab(recstr, i, &b);
+		if (r != 0)
+		{
+			err = r;
+			return r;
+		}
 		calc_chksum += b;
 
-		baddr = (byte *)((lword)addr + (lword)idx);
+		baddr = (ubyte *)((ulword)addr + (ulword)i);
 		*baddr = b;
 	}
 
-	calc_chksum = 0xff - (calc_chksum & 0xff);
-	chksum = srec_gdatab(recstr, (byte)count-3);
-	if (calc_chksum != chksum)
+	calc_chksum = 0xff - (calc_chksum & 0xff); // do final calculation
+	r = srec_gdatab(recstr, count-3, &chksum);
+	if (r != 0)
 	{
-		err = LSREC_ERR_INVALID_CHECKSUM;
-		return err;
+		err = r;
+		return r;
 	}
 
 	return LSREC_SUCCESS;
 }
 
-// returns -1 on not parsing
-int lsrec_end(int (**entryptr)(void))
-{
-	if (entry == 0)
-	{
-		*entryptr = 0;
-		return -1;
-	}
-	*entryptr = (int (*)(void))entry;
-	return 0;
-}
-
-lword srec_gtype(char *recstr)
+int srec_gtype(const char *recstr, ubyte *ret)
 {
 	if ((recstr[0] != 'S') ||
 		!(recstr[1] >= '0' && recstr[1] <= '9'))
@@ -192,50 +202,52 @@ lword srec_gtype(char *recstr)
 		return err;
 	}
 
-	return (recstr[1] - '0');
+	*ret = (byte)(recstr[1] - '0');
+	return 0;
 }
 
-lword srec_gcount(char *recstr)
+int srec_gcount(const char *recstr, ubyte *ret)
 {
-	word c;
-	c = ahtob(&(recstr[2]));
-	if (c == -1)
+	ubyte b;
+	int r;
+
+	r = ahtob(&(recstr[2]), &b);
+	if (r != 0)
+		return r;
+
+	*ret = b;
+	return 0;
+}
+
+int srec_gaddr(const char *recstr, uword *ret)
+{
+	ubyte b;
+	uword addr;
+	register int i, r;
+
+	addr = 0;
+	for (i = 4; i < 7; i+=2)
 	{
-		err = LSREC_ERR_INVALID_HEX;
-		return err;
+		r = ahtob(&(recstr[i]), &b);
+		if (r != 0)
+			return r;
+		addr = (addr << 8) | b;
 	}
-	return c;
+
+	*ret = addr;
+	return 0;
 }
 
-lword srec_gaddr(char *recstr)
+int srec_gdatab(const char *recstr, ubyte byte_num, ubyte *ret)
 {
-	word h, l;
-	lword r;
+	const ubyte b_idx = 2+2+4+(byte_num*2);
+	ubyte b;
+	register int r;
 
-	r = 0;
-	h = ahtob(&(recstr[4]));
-	if (h == -1)
-		goto gaddr_invalid_hex;
-	l = ahtob(&(recstr[6]));
-	if (l == -1)
-		goto gaddr_invalid_hex;
-	r = (h << 8) | l;
-	return r;
-gaddr_invalid_hex:
-	err = LSREC_ERR_INVALID_HEX;
-	return err;
-}
+	r = ahtob(&(recstr[b_idx]), &b);
+	if (r != 0)
+		return r;
 
-lword srec_gdatab(char *recstr, word byte_num)
-{
-	const word b_idx = 2+2+4+(byte_num*2);
-	word b;
-
-	b = ahtob(&(recstr[b_idx]));
-	if (b == -1)
-	{
-		err = LSREC_ERR_INVALID_HEX;
-		return err;
-	}
-	return b;
+	*ret = b;
+	return 0;
 }

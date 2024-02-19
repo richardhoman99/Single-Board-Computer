@@ -5,39 +5,34 @@
  * Change register logic for Enemigo Monitor System
  */
 
-#include "command_err.h"
+#include "err.h"
 #include "types.h"
 #include "convert.h"
+#include "serial-sim.h"
 
-// argv[0] = register num, argv[1] = value
+// argv[1] = register num, argv[2] = value
 int ems_cr(const char **argv, int argc)
 {
-	char *sval;
-	lword valh, vall;
+	register int i, r;
+	ubyte b;
 	lword val;
 
-	sval = &(argv[1][0]);
-	valh = ahtob(sval);
-	if (valh == -1)
-		return EMS_INV_BADARG;
-	sval = &(argv[1][2]);
-	vall = ahtob(sval);
-	if (vall == -1)
-		return EMS_INV_BADARG;
-	val = (valh << 8) | (vall & 0xff);
-	sval = &(argv[1][4]);
-	valh = ahtob(sval);
-	if (valh == -1)
-		return EMS_INV_BADARG;
-	sval = &(argv[1][6]);
-	vall = ahtob(sval);
-	if (vall == -1)
-		return EMS_INV_BADARG;
-	val = (val << 16) | ((valh << 8) | (vall & 0xff));
+	if (argv[1][2] != '\0' || // arg 1 isn't len 2
+		argv[2][8] != '\0')   // arg 2 isn't len 8
+		return EMS_BAD_ARG;
 
-	if (argv[0][0] == 'd')
+	val = 0;
+	for (i = 0; i < 8; i+=2)
 	{
-		switch(argv[0][1])
+		r = ahtob(&(argv[2][i]), &b);
+		if (r != 0)
+			return r;
+		val = (val << 8) | b;
+	}
+
+	if (argv[1][0] == 'd')
+	{
+		switch(argv[1][1])
 		{
 		case '0':
 			__asm__ ("move.l	%0,%/d0\n" :: "m" (val) : "cc");
@@ -67,33 +62,33 @@ int ems_cr(const char **argv, int argc)
 			return -1;
 		}
 	}
-	else if (argv[0][0] == 'a')
+	else if (argv[1][0] == 'a')
 	{
-		switch(argv[0][1])
+		switch(argv[1][1])
 		{
 		case '0':
-			__asm__ ("move.l	%0,%/a0\n" :: "rm" (val) : "cc");
+			__asm__ ("move.l	%0,%/a0\n" :: "m" (val) : "cc");
 			break;
 		case '1':
-			__asm__ ("move.l	%0,%/a1\n" :: "rm" (val) : "cc");
+			__asm__ ("move.l	%0,%/a1\n" :: "m" (val) : "cc");
 			break;
 		case'2':
-			__asm__ ("move.l	%0,%/a2\n" :: "rm" (val) : "cc");
+			__asm__ ("move.l	%0,%/a2\n" :: "m" (val) : "cc");
 			break;
 		case'3':
-			__asm__ ("move.l	%0,%/a3\n" :: "rm" (val) : "cc");
+			__asm__ ("move.l	%0,%/a3\n" :: "m" (val) : "cc");
 			break;
 		case '4':
-			__asm__ ("move.l	%0,%/a4\n" :: "rm" (val) : "cc");
+			__asm__ ("move.l	%0,%/a4\n" :: "m" (val) : "cc");
 			break;
 		case '5':
-			__asm__ ("move.l	%0,%/a5\n" :: "rm" (val) : "cc");
+			__asm__ ("move.l	%0,%/a5\n" :: "m" (val) : "cc");
 			break;
 		default:
 			return -1;
 		}
 	}
 	else
-		return EMS_INV_BADARG;
+		return EMS_BAD_ARG;
 	return 0;
 }

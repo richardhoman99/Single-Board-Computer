@@ -8,6 +8,6 @@
 #include "types.h"
 
 // ascii hex to byte (-1 on error)
-word ahtob(char *in);
+int ahtob(const char *in, ubyte *ret);
 // word to ascii hex
-void btoah(byte in, char *ret);
+int btoah(byte in, char *ret);
