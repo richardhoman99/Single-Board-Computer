@@ -4,3 +4,5 @@ m68k-util/*
 .gconfd
 .gstreamer-0.10
 .nautilus
+.local
+.thumbnails
