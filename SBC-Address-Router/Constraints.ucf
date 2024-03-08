@@ -1,0 +1,51 @@
+// MCD SBC Project
+// Richard Homan
+// 03/07/2024
+// Constraints.ucf
+// Target: XC9572XL-10PC44
+// r0.1
+// description:
+//		User constraints file for SBC Address Router
+// dependancies:
+//		none
+
+net "i_clk"         loc = "P05";
+net "io_hlt"        loc = "P22";
+net "i_rst"         loc = "P44";
+
+net "o_oe"          loc = "P06";
+net "o_we"          loc = "P07";
+net "o_duart_rw"    loc = "P03";
+
+net "o_cs_roml"     loc = "P40";
+net "o_cs_romh"     loc = "P43";
+net "o_cs_raml"     loc = "P09";
+net "o_cs_ramh"     loc = "P08";
+net "o_cs_duart"    loc = "P01";
+	
+net "o_duart_iack"  loc = "P42";
+net "i_duart_dtack" loc = "P02";
+net "i_duart_irq"   loc = "P04";
+	
+net "o_berr"        loc = "P18";
+net "o_dtack"       loc = "P24";
+net "i_rw"          loc = "P25";
+net "i_lds"         loc = "P26";
+net "i_uds"         loc = "P27";
+net "i_as"          loc = "P28";
+	
+net "i_fc<0>"       loc = "P19";
+net "i_fc<1>"       loc = "P11";
+net "i_fc<2>"       loc = "P13";
+net "o_ipl<0>"      loc = "P12";
+net "o_ipl<1>"      loc = "P14";
+net "o_ipl<2>"      loc = "P20";
+
+net "i_addr<0>"     loc = "P39"; // 15
+net "i_addr<1>"     loc = "P37"; // 16
+net "i_addr<2>"     loc = "P38"; // 17
+net "i_addr<3>"     loc = "P35"; // 18
+net "i_addr<4>"     loc = "P36"; // 19
+net "i_addr<5>"     loc = "P33"; // 20
+net "i_addr<6>"     loc = "P29"; // 21
+net "i_addr<7>"     loc = "P34"; // 22
