@@ -66,6 +66,9 @@ signal o_berr        : std_logic;
 signal test_clk      : std_logic;
 constant test_clk_period : time := 10 ns;
 
+signal s_in          : std_logic_vector(4 downto 0) := "11111";
+signal s_out         : std_logic_vector(5 downto 0);
+
 begin
  
 -- Instantiate the Unit Under Test (UUT)
@@ -107,7 +110,45 @@ begin
 
   -- insert stimulus here 
 
+  s_in <= s_in + 1;
+  if      s_in = "00101" then -- ram low write
+    assert (s_out = "100010") report "ram low write" severity error;
+  elsif s_in = "00110" then -- ram high write
+    assert (s_out = "100100") report "ram high write" severity error;
+  elsif s_in = "01001" then -- duart write
+    assert (s_out = "100001") report "duart write" severity error;
+  elsif s_in = "10001" then -- rom low read
+    assert (s_out = "101000") report "rom low read" severity error;
+  elsif s_in = "10010" then -- rom high read
+    assert (s_out = "100010") report "rom high read" severity error;
+  elsif s_in = "10101" then -- ram low read
+    assert (s_out = "100100") report "ram low read" severity error;
+  elsif s_in = "10110" then -- ram high read
+    assert (s_out = "100010") report "ram high read" severity error;
+  elsif s_in = "11001" then -- duart read
+    assert (s_out = "100001") report "duart read" severity error;
+  else 
+    assert (o_berr = '0') report "did not reject" severity error;
+  end if;
+
+  if s_in = "11111" then
+    assert '1' = '1' report "accepted" severity note;
+  end if;
+
   wait;
 end process;
+
+i_rw       <= s_in(4);
+i_addr(1)  <= s_in(3);
+i_addr(0)  <= s_in(2);
+i_uds      <= s_in(1);
+i_lds      <= s_in(0);
+
+o_berr     <= s_out(5);
+o_cs_romh  <= s_out(4);
+o_cs_roml  <= s_out(3);
+o_cs_ramh  <= s_out(2);
+o_cs_raml  <= s_out(1);
+o_cs_duart <= s_out(0);
 
 end;
