@@ -55,9 +55,9 @@ architecture behavioral of AddressRouter is
 begin
 
 -- assert hlt when rst is 
-with i_rst select
-	io_hlt <= 'Z' when '1',
-	          '0' when '0';
+with i_rst select io_hlt <=
+	'0' when '0',
+	'Z' when others;
 
 end behavioral;
 

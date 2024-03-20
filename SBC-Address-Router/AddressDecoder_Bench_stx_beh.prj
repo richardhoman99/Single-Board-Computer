@@ -1,0 +1,2 @@
+vhdl isim_temp "AddressDecoder.vhd"
+vhdl isim_temp "AddressDecoder_Bench.vhd"

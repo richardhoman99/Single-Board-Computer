@@ -1,0 +1,5 @@
+set -tmpdir "/home/ise/Single-Board-Computer/SBC-Address-Router/xst/projnav.tmp"
+set -xsthdpdir "/home/ise/Single-Board-Computer/SBC-Address-Router/xst"
+elaborate
+-ifn AddressDecoder.prj
+-ifmt mixed

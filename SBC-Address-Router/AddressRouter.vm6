@@ -1,0 +1,75 @@
+NDS Database:  version P.20131013
+
+NDS_INFO | xc9500xl | 9572XL44PC | XC9572XL-10-PC44
+
+DEVICE | 9572XL | 9572XL44PC | 
+
+NETWORK | AddressRouter | 0 | 0 | 16391
+
+INPUT_INSTANCE | 0 | 0 | NULL | i_rst_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | i_rst | 71 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | i_rst_IBUF | 67 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rst_IBUF | 0 | 5 | II_IMUX
+
+MACROCELL_INSTANCE | FbkInv+PinTrst+Merge+OptxMapped | N0 | AddressRouter_COPY_0_COPY_0 | 2155923456 | 1 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | i_rst_IBUF | 67 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rst_IBUF | 0 | 5 | II_IMUX
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | N0 | 68 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.Q | N0 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 2 | 0 | MC_OE
+NODE | N0$OE | 69 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.BUFOE.OUT | N0 | 2 | 0 | MC_OE
+
+SIGNAL_INSTANCE | N0.SI | N0 | 0 | 1 | 3
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | i_rst_IBUF | 67 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rst_IBUF | 0 | 5 | II_IMUX
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | N0.D1 | 73 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | N0.D2 | 74 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 4 | 9 | MC_SI_TRST
+SIGNAL | NODE | N0.TRST | 76 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 4 | 9 | MC_SI_TRST
+SPPTERM | 1 | IV_FALSE | i_rst_IBUF
+
+SRFF_INSTANCE | N0.REG | N0 | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | N0.D | 72 | ? | 0 | 0 | N0 | NULL | NULL | N0.XOR | 0 | 7 | ALU_F
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | N0.Q | 77 | ? | 0 | 0 | N0 | NULL | NULL | N0.REG | 0 | 8 | SRFF_Q
+
+BUF_INSTANCE | N0.BUFOE | N0 | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 10 | CTOR_UNKNOWN
+SIGNAL | NODE | N0.TRST | 76 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 4 | 9 | MC_SI_TRST
+SPPTERM | 1 | IV_FALSE | i_rst_IBUF
+OUTPUT_NODE_TYPE | 0 | 10 | BUF_OUT
+NODE | N0.BUFOE.OUT | 75 | ? | 0 | 0 | N0 | NULL | NULL | N0.BUFOE | 0 | 10 | BUF_OUT
+
+OUTPUT_INSTANCE | 0 | io_hlt | AddressRouter_COPY_0_COPY_0 | 7 | 2 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | N0 | 68 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.Q | N0 | 0 | 0 | MC_Q
+INPUT_NODE_TYPE | 2 | 6 | OI_OE
+NODE | N0$OE | 69 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.BUFOE.OUT | N0 | 2 | 0 | MC_OE
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | io_hlt | 70 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | io_hlt | 0 | 6 | OI_OUT
+
+FB_INSTANCE | FOOBAR1_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
+
+FB_INSTANCE | FOOBAR2_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 17 | NULL | 0 | i_rst_IBUF | 1 | NULL | 0 | 44 | 49152
+
+FB_INSTANCE | FOOBAR3_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 17 | N0 | 1 | NULL | 0 | io_hlt | 1 | 22 | 49152
+
+FB_INSTANCE | FOOBAR4_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
+
+FB_INSTANCE | INPUTPINS_FOOBAR5_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
+
+BUSINFO | I_ADDR<7:0> | 8 | 0 | 0 | i_addr<0> | 7 | i_addr<1> | 6 | i_addr<2> | 5 | i_addr<3> | 4 | i_addr<4> | 3 | i_addr<5> | 2 | i_addr<6> | 1 | i_addr<7> | 0
+BUSINFO | I_FC<2:0> | 3 | 0 | 0 | i_fc<0> | 2 | i_fc<1> | 1 | i_fc<2> | 0
+
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 14 | i_rst | 44
+
+FB_IMUX_INDEX | FOOBAR3_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 104 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
+
