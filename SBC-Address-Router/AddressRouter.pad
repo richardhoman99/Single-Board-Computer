@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 3-22-2024  1:53AM
+ 3-22-2024  2:52PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -51,7 +51,7 @@ P30|TDO||TDO||||||||||
 P31|GND||GND||||||||||
 P32|VCC||VCCIO||||||||||
 P33|TIE||I/O||||||||||
-P34|TIE||I/O||||||||||
+P34|i_addr<7>|I|I/O|INPUT|||||||||
 P35|TIE||I/O||||||||||
 P36|TIE||I/O||||||||||
 P37|i_addr<1>|I|I/O|INPUT|||||||||
@@ -61,7 +61,7 @@ P40|o_cs_roml|O|I/O/GTS2|OUTPUT|||||||||
 P41|VCC||VCCINT||||||||||
 P42|o_duart_iack|O|I/O/GTS1|OUTPUT|||||||||
 P43|o_cs_romh|O|I/O|OUTPUT|||||||||
-P44|i_rst|I|I/O|INPUT|||||||||
+P44|TIE||I/O||||||||||
 
 To preserve the pinout above for future design iterations in
 Project Navigator simply execute the (Lock Pins) process

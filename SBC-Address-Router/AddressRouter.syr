@@ -79,11 +79,10 @@ wysiwyg                            : NO
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd" in Library work.
-WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd" is newer than current system time.
 Architecture behavioral of Entity addressdecoder is up to date.
 Compiling vhdl file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd" in Library work.
-WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd" is newer than current system time.
-Architecture behavioral of Entity addressrouter is up to date.
+Entity <addressrouter> compiled.
+Entity <addressrouter> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -122,10 +121,13 @@ Unit <AddressDecoder> synthesized.
 Synthesizing Unit <AddressRouter>.
     Related source file is "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd".
 WARNING:Xst:647 - Input <i_duart_irq> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <i_rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <i_fc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <i_clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit tristate buffer for signal <io_hlt>.
+    Found 1-bit register for signal <s_latch_hlt>.
     Summary:
+	inferred   1 D-type flip-flop(s).
 	inferred   1 Tristate(s).
 Unit <AddressRouter> synthesized.
 
@@ -134,6 +136,8 @@ Unit <AddressRouter> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
+# Registers                                            : 1
+ 1-bit register                                        : 1
 # Tristates                                            : 2
  1-bit tristate buffer                                 : 2
 
@@ -143,19 +147,27 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+WARNING:Xst:1426 - The value init of the FF/Latch 0 hinder the constant cleaning in the block s_latch_hlt.
+   You should achieve better results by setting this init to 0.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Registers                                            : 1
+ Flip-Flops                                            : 1
+
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch s_latch_hlt hinder the constant cleaning in the block AddressRouter.
+   You should achieve better results by setting this init to 0.
 WARNING:Xst:1348 - Unit AddressDecoder is merged (output interface has tristates)
 
 Optimizing unit <AddressRouter> ...
+  implementation constraint: INIT=s	 : s_latch_hlt
 
 =========================================================================
 *                           Partition Report                            *
@@ -196,6 +208,8 @@ Cell Usage :
 #      OR3                         : 5
 #      OR4                         : 2
 #      VCC                         : 1
+# FlipFlops/Latches                : 1
+#      FD                          : 1
 # IO Buffers                       : 22
 #      IBUF                        : 7
 #      OBUF                        : 13
@@ -204,14 +218,14 @@ Cell Usage :
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.12 secs
+Total CPU time to Xst completion: 8.15 secs
  
 --> 
 
 
-Total memory usage is 604284 kilobytes
+Total memory usage is 604424 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
+Number of warnings :    9 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

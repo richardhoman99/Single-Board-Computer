@@ -58,7 +58,7 @@ EQ | 5 |
 MACROCELL | 2 | 15 | N0
 ATTRIBUTES | 265986 | 0
 INPUTS | 4 | i_as  | i_addr<1>  | $OpTx$$OpTx$FX_DC$13_INV$23  | $OpTx$FX_DC$14
-INPUTMC | 2 | 3 | 16 | 3 | 17
+INPUTMC | 2 | 0 | 15 | 0 | 17
 INPUTP | 2 | 68 | 89
 EQ | 3 | 
    o_dtack = Gnd;
@@ -67,11 +67,20 @@ EQ | 3 |
 
 MACROCELL | 2 | 16 | N0$BUF0
 ATTRIBUTES | 265986 | 0
-INPUTS | 1 | i_rst
-INPUTP | 1 | 10
+INPUTS | 1 | s_latch_hlt
+INPUTMC | 1 | 0 | 12
 EQ | 2 | 
    io_hlt = Gnd;
-   io_hlt.OE = !i_rst;
+   io_hlt.OE = !s_latch_hlt;
+
+MACROCELL | 0 | 12 | s_latch_hlt
+ATTRIBUTES | 8520484 | 0
+OUTPUTMC | 1 | 2 | 16
+INPUTS | 1 | i_addr<7>
+INPUTP | 1 | 83
+EQ | 2 | 
+   s_latch_hlt.D = Gnd;
+   s_latch_hlt.CLK = i_addr<7>;
 
 MACROCELL | 0 | 10 | i_as_IBUF$BUF0
 ATTRIBUTES | 264962 | 0
@@ -111,7 +120,7 @@ INPUTS | 0
 EQ | 1 | 
    o_duart_iack = Vcc;
 
-MACROCELL | 3 | 16 | $OpTx$$OpTx$FX_DC$13_INV$23
+MACROCELL | 0 | 15 | $OpTx$$OpTx$FX_DC$13_INV$23
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 2 | 15
 INPUTS | 2 | i_addr<0>  | i_rw
@@ -119,7 +128,7 @@ INPUTP | 2 | 92 | 62
 EQ | 1 | 
    $OpTx$$OpTx$FX_DC$13_INV$23 = !i_addr<0> & !i_rw;
 
-MACROCELL | 3 | 17 | $OpTx$FX_DC$14
+MACROCELL | 0 | 17 | $OpTx$FX_DC$14
 ATTRIBUTES | 133888 | 0
 OUTPUTMC | 1 | 2 | 15
 INPUTS | 2 | i_lds  | i_uds
@@ -130,11 +139,11 @@ EQ | 2 |
 
 PIN | i_as | 64 | 0 | N/A | 68 | 10 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 0 | 13 | 2 | 10 | 2 | 15 | 0 | 10 | 0 | 5
 PIN | i_addr<1> | 64 | 0 | N/A | 89 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 2 | 15
-PIN | i_addr<0> | 64 | 0 | N/A | 92 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 3 | 16
-PIN | i_lds | 64 | 0 | N/A | 63 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 3 | 17
-PIN | i_uds | 64 | 0 | N/A | 65 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 3 | 17
-PIN | i_rw | 64 | 0 | N/A | 62 | 6 | 1 | 14 | 1 | 10 | 0 | 13 | 2 | 10 | 0 | 5 | 3 | 16
-PIN | i_rst | 64 | 0 | N/A | 10 | 1 | 2 | 16
+PIN | i_addr<0> | 64 | 0 | N/A | 92 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 0 | 15
+PIN | i_lds | 64 | 0 | N/A | 63 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 0 | 17
+PIN | i_uds | 64 | 0 | N/A | 65 | 7 | 1 | 14 | 1 | 10 | 0 | 1 | 0 | 14 | 0 | 16 | 2 | 10 | 0 | 17
+PIN | i_rw | 64 | 0 | N/A | 62 | 6 | 1 | 14 | 1 | 10 | 0 | 13 | 2 | 10 | 0 | 5 | 0 | 15
+PIN | i_addr<7> | 64 | 0 | N/A | 83 | 1 | 0 | 12
 PIN | o_cs_romh | 536871040 | 0 | N/A | 9
 PIN | o_cs_roml | 536871040 | 0 | N/A | 3
 PIN | o_cs_duart | 536871040 | 0 | N/A | 11
