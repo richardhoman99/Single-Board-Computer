@@ -16,7 +16,7 @@ $OpTx$FX_DC$14 <= i_lds
 </td></tr><tr><td>
 io_hlt_I <= '0';
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io_hlt <= io_hlt_I when io_hlt_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io_hlt_OE <= NOT i_rst;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io_hlt_OE <= NOT s_latch_hlt;
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_berr <= NOT (((NOT i_as AND i_addr(1) AND i_addr(0))
@@ -68,6 +68,8 @@ o_oe <= i_as;
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_we <= NOT ((NOT i_as AND NOT i_rw));
+</td></tr><tr><td>
+FDCPE_s_latch_hlt: FDCPE port map (s_latch_hlt,'0',i_addr(7),'0','0');
 </td></tr><tr><td>
 Register Legend:
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 

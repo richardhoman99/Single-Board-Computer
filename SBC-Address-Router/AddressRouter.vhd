@@ -78,6 +78,8 @@ port(
 );
 end component;
 
+signal s_latch_hlt : std_logic := '1';
+
 begin
 
 -- address decoder module
@@ -107,9 +109,20 @@ port map(
 );
 
 -- assert hlt when rst is 
-with i_rst select io_hlt <=
-	'0' when '0',
-	'Z' when others;
+--with i_rst select io_hlt <=
+--	'0' when '0',
+--	'Z' when others;
+
+-- only  for debugging
+-- latch hlt when addr2..7 are asserted
+process (i_addr(7))
+begin
+	if rising_edge(i_addr(7)) then
+		s_latch_hlt <= '0';
+	end if;
+end process;
+
+io_hlt <= '0' when s_latch_hlt = '0' else 'Z';
 
 -- don't assert iack for now
 o_duart_iack <= '1';

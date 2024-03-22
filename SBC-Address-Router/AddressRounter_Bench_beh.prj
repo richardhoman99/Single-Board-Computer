@@ -1,0 +1,3 @@
+vhdl work "AddressDecoder.vhd"
+vhdl work "AddressRouter.vhd"
+vhdl work "AddressRounter_Bench.vhd"
