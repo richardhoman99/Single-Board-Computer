@@ -6,7 +6,7 @@
 -- r0.1
 -- description:
 --		Root hardware description for SBC.
--- dependancies:
+-- dependencies:
 --		AddressDecoder.vhd
 
 library ieee;
@@ -52,12 +52,69 @@ end AddressRouter;
 
 architecture behavioral of AddressRouter is
 
+component AddressDecoder is 
+port(
+	o_oe          :   out std_logic;
+	o_we          :   out std_logic;
+	o_duart_rw    :   out std_logic;
+	
+	o_cs_roml     :   out std_logic;
+	o_cs_romh     :   out std_logic;
+	o_cs_raml     :   out std_logic;
+	o_cs_ramh     :   out std_logic;
+	o_cs_duart    :   out std_logic;
+	
+	o_dtack       :   out std_logic;	
+	i_rw          :    in std_logic;
+	i_lds         :    in std_logic;
+	i_uds         :    in std_logic;
+	i_as          :    in std_logic;
+
+	i_duart_dtack :    in std_logic;
+	
+	i_addr        :    in std_logic_vector(7 downto 0);
+	
+	o_berr        :   out std_logic
+);
+end component;
+
 begin
+
+-- address decoder module
+addr_decode : AddressDecoder
+port map(
+	o_oe          => o_oe,
+	o_we          => o_we,
+	o_duart_rw    => o_duart_rw,
+	
+	o_cs_roml     => o_cs_roml,
+	o_cs_romh     => o_cs_romh,
+	o_cs_raml     => o_cs_raml,
+	o_cs_ramh     => o_cs_ramh,
+	o_cs_duart    => o_cs_duart,
+	
+	o_dtack       => o_dtack,
+	i_rw          => i_rw,
+	i_lds         => i_lds,
+	i_uds         => i_uds,
+	i_as          => i_as,
+	
+	i_duart_dtack => i_duart_dtack,
+	
+	i_addr        => i_addr,
+	
+	o_berr        => o_berr
+);
 
 -- assert hlt when rst is 
 with i_rst select io_hlt <=
 	'0' when '0',
 	'Z' when others;
+
+-- don't assert iack for now
+o_duart_iack <= '1';
+-- set at lowest priority (doesn't really matter :\)
+o_ipl        <= (others=>'1');
 
 end behavioral;
 

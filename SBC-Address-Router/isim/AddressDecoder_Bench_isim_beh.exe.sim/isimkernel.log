@@ -2,9 +2,27 @@ Command line:
    AddressDecoder_Bench_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  55291
+     -socket  53148
 
-Mon Mar 18 20:10:47 2024
+Fri Mar 22 01:54:42 2024
 
 
- Elaboration Time: 0.04 sec
+ Elaboration Time: 0.05 sec
+
+ Current Memory Usage: 198.734 Meg
+
+ Total Signals          : 42
+ Total Nets             : 51
+ Total Signal Drivers   : 34
+ Total Blocks           : 4
+ Total Primitive Blocks : 3
+ Total Processes        : 34
+ Total Traceable Variables  : 14
+ Total Scalar Nets and Variables : 535
+
+ Total Simulation Time: 0.07 sec
+
+ Current Memory Usage: 276.333 Meg
+
+Fri Mar 22 01:57:09 2024
+

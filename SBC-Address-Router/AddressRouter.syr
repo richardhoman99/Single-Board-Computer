@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Reading design: AddressRouter.prj
@@ -78,14 +78,19 @@ wysiwyg                            : NO
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling vhdl file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd" in Library work.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd" is newer than current system time.
+Architecture behavioral of Entity addressdecoder is up to date.
 Compiling vhdl file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd" in Library work.
-Entity <addressrouter> compiled.
-Entity <AddressRouter> (Architecture <behavioral>) compiled.
+WARNING:HDLParsers:3530 - Time stamp of file "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd" is newer than current system time.
+Architecture behavioral of Entity addressrouter is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
 Analyzing hierarchy for entity <AddressRouter> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <AddressDecoder> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
@@ -94,6 +99,9 @@ Analyzing hierarchy for entity <AddressRouter> in library <work> (architecture <
 Analyzing Entity <AddressRouter> in library <work> (Architecture <behavioral>).
 Entity <AddressRouter> analyzed. Unit <AddressRouter> generated.
 
+Analyzing Entity <AddressDecoder> in library <work> (Architecture <behavioral>).
+Entity <AddressDecoder> analyzed. Unit <AddressDecoder> generated.
+
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -101,29 +109,21 @@ Entity <AddressRouter> analyzed. Unit <AddressRouter> generated.
 
 Performing bidirectional port resolution...
 
+Synthesizing Unit <AddressDecoder>.
+    Related source file is "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd".
+WARNING:Xst:647 - Input <i_duart_dtack> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <i_addr<7:2>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit tristate buffer for signal <o_dtack>.
+    Summary:
+	inferred   1 Tristate(s).
+Unit <AddressDecoder> synthesized.
+
+
 Synthesizing Unit <AddressRouter>.
     Related source file is "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd".
-WARNING:Xst:1306 - Output <o_berr> is never assigned.
 WARNING:Xst:647 - Input <i_duart_irq> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <o_we> is never assigned.
-WARNING:Xst:1306 - Output <o_dtack> is never assigned.
-WARNING:Xst:1306 - Output <o_cs_ramh> is never assigned.
-WARNING:Xst:647 - Input <i_uds> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <o_cs_raml> is never assigned.
-WARNING:Xst:647 - Input <i_rw> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <i_duart_dtack> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <o_ipl> is never assigned.
-WARNING:Xst:1306 - Output <o_cs_duart> is never assigned.
-WARNING:Xst:1306 - Output <o_duart_iack> is never assigned.
-WARNING:Xst:647 - Input <i_as> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <i_addr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <i_fc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1306 - Output <o_oe> is never assigned.
-WARNING:Xst:1306 - Output <o_duart_rw> is never assigned.
-WARNING:Xst:1306 - Output <o_cs_romh> is never assigned.
-WARNING:Xst:1306 - Output <o_cs_roml> is never assigned.
 WARNING:Xst:647 - Input <i_clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <i_lds> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit tristate buffer for signal <io_hlt>.
     Summary:
 	inferred   1 Tristate(s).
@@ -134,8 +134,8 @@ Unit <AddressRouter> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Tristates                                            : 1
- 1-bit tristate buffer                                 : 1
+# Tristates                                            : 2
+ 1-bit tristate buffer                                 : 2
 
 =========================================================================
 
@@ -153,6 +153,7 @@ Found no macro
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1348 - Unit AddressDecoder is merged (output interface has tristates)
 
 Optimizing unit <AddressRouter> ...
 
@@ -186,24 +187,31 @@ Design Statistics
 # IOs                              : 34
 
 Cell Usage :
-# BELS                             : 2
+# BELS                             : 65
+#      AND2                        : 7
+#      AND3                        : 1
 #      GND                         : 1
-#      INV                         : 1
-# IO Buffers                       : 2
-#      IBUF                        : 1
-#      OBUFE                       : 1
+#      INV                         : 28
+#      OR2                         : 20
+#      OR3                         : 5
+#      OR4                         : 2
+#      VCC                         : 1
+# IO Buffers                       : 22
+#      IBUF                        : 7
+#      OBUF                        : 13
+#      OBUFE                       : 2
 =========================================================================
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.20 secs
+Total CPU time to Xst completion: 8.12 secs
  
 --> 
 
 
-Total memory usage is 607476 kilobytes
+Total memory usage is 604284 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   21 (   0 filtered)
+Number of warnings :    8 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

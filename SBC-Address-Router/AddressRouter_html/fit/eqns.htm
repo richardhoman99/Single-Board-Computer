@@ -3,13 +3,123 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "AddressRouter";
       var device = "XC9572XL";
-      signals = new Array("io_hlt");
-      sigNegs = new Array("OFF");
-      sigTypes = new Array("");
+      signals = new Array("OpTxFX_DC14_SPECSIG","OpTxOpTxFX_DC13_INV23_SPECSIG","io_hlt","o_berr","o_cs_duart","o_cs_ramh","o_cs_raml","o_cs_romh","o_cs_roml","o_dtack","o_duart_iack","o_duart_rw","o_ipl0_SPECSIG","o_ipl1_SPECSIG","o_ipl2_SPECSIG","o_oe","o_we");
+      sigNegs = new Array("OFF","OFF","OFF","ON","ON","ON","ON","ON","ON","OFF","OFF","ON","OFF","OFF","OFF","OFF","ON");
+      sigTypes = new Array("","","","","","","","","","","","","","","","","");
 
       
+        specSig["i_addr1_SPECSIG"]=new Array("i_addr<1>");
+      
+        specSig["i_addr0_SPECSIG"]=new Array("i_addr<0>");
+      
+        specSig["o_ipl0_SPECSIG"]=new Array("o_ipl<0>");
+      
+        specSig["o_ipl1_SPECSIG"]=new Array("o_ipl<1>");
+      
+        specSig["o_ipl2_SPECSIG"]=new Array("o_ipl<2>");
+      
+        specSig["b_SPECSIG"]=new Array("(b)");
+      
+        specSig["OpTxOpTxFX_DC13_INV23_SPECSIG"]=new Array("$OpTx$$OpTx$FX_DC$13_INV$23");
+      
+        specSig["OpTxFX_DC14_SPECSIG"]=new Array("$OpTx$FX_DC$14");
+      
+            pterms["FB1_2_1"]=new Array("/i_as","i_addr1_SPECSIG","/i_addr0_SPECSIG","i_lds","/i_uds");
+          
+            pterms["FB1_6_1"]=new Array("/i_as","/i_rw");
+          
+            pterms["FB1_11_1"]=new Array("i_as");
+          
+            pterms["FB1_14_1"]=new Array("/i_as","/i_rw");
+          
+            pterms["FB1_15_1"]=new Array("/i_as","/i_addr1_SPECSIG","i_addr0_SPECSIG","/i_lds","i_uds");
+          
+            pterms["FB1_17_1"]=new Array("/i_as","/i_addr1_SPECSIG","i_addr0_SPECSIG","i_lds","/i_uds");
+          
+            pterms["FB2_11_1"]=new Array("/i_as","/i_addr1_SPECSIG","/i_addr0_SPECSIG","i_lds","/i_uds","i_rw");
+          
+            pterms["FB2_15_1"]=new Array("/i_as","/i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_lds","i_uds","i_rw");
+          
+            pterms["FB3_11_1"]=new Array("/i_as","i_addr1_SPECSIG","i_addr0_SPECSIG");
+          
+            pterms["FB3_11_2"]=new Array("/i_as","i_addr1_SPECSIG","/i_lds");
+          
+            pterms["FB3_11_3"]=new Array("/i_as","i_lds","i_uds");
+          
+            pterms["FB3_11_4"]=new Array("/i_as","/i_lds","/i_uds");
+          
+            pterms["FB3_11_5"]=new Array("/i_as","/i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_rw");
+          
+            pterms["FB3_16_1"]=new Array("/i_as","/i_addr1_SPECSIG","/OpTxOpTxFX_DC13_INV23_SPECSIG","OpTxFX_DC14_SPECSIG");
+          
             pterms["FB3_17_1"]=new Array("/i_rst");
           
+            pterms["FB4_17_1"]=new Array("/i_addr0_SPECSIG","/i_rw");
+          
+            pterms["FB4_18_1"]=new Array("i_lds");
+          
+            pterms["FB4_18_2"]=new Array("i_uds");
+          
+          d2["o_cs_duart"]=new Array("FB1_2_1");
+          
+            d2imp["o_cs_duart"]=new Array("1");
+          
+          d2["o_duart_rw"]=new Array("FB1_6_1");
+          
+            d2imp["o_duart_rw"]=new Array("1");
+          
+          d2["o_oe"]=new Array("FB1_11_1");
+          
+            d2imp["o_oe"]=new Array("1");
+          
+          d2["o_we"]=new Array("FB1_14_1");
+          
+            d2imp["o_we"]=new Array("1");
+          
+          d2["o_cs_ramh"]=new Array("FB1_15_1");
+          
+            d2imp["o_cs_ramh"]=new Array("1");
+          
+          d2["o_cs_raml"]=new Array("FB1_17_1");
+          
+            d2imp["o_cs_raml"]=new Array("1");
+          
+          d2["o_cs_roml"]=new Array("FB2_11_1");
+          
+            d2imp["o_cs_roml"]=new Array("1");
+          
+          d2["o_duart_iack"]=new Array("VCC");
+          
+            d2imp["o_duart_iack"]=new Array("1");
+          
+          d2["o_cs_romh"]=new Array("FB2_15_1");
+          
+            d2imp["o_cs_romh"]=new Array("1");
+          
+          d2["o_ipl0_SPECSIG"]=new Array("VCC");
+          
+            d2imp["o_ipl0_SPECSIG"]=new Array("1");
+          
+          d2["o_ipl1_SPECSIG"]=new Array("VCC");
+          
+            d2imp["o_ipl1_SPECSIG"]=new Array("1");
+          
+          d2["o_berr"]=new Array("FB3_11_1","FB3_11_2","FB3_11_3","FB3_11_4","FB3_11_5");
+          
+            d2imp["o_berr"]=new Array("1","1","1","1","1");
+          
+          d2["o_ipl2_SPECSIG"]=new Array("VCC");
+          
+            d2imp["o_ipl2_SPECSIG"]=new Array("1");
+          
+          d2["o_dtack"]=new Array("GND");
+          
+            d2imp["o_dtack"]=new Array("1");
+          
+              trst["o_dtack"]=new Array("FB3_16_1");
+              
+                trstimp["o_dtack"]=new Array("1");
+              
           d2["io_hlt"]=new Array("GND");
           
             d2imp["io_hlt"]=new Array("1");
@@ -18,6 +128,18 @@
               
                 trstimp["io_hlt"]=new Array("1");
               
+          d2["OpTxOpTxFX_DC13_INV23_SPECSIG"]=new Array("FB4_17_1");
+          
+            d2imp["OpTxOpTxFX_DC13_INV23_SPECSIG"]=new Array("1");
+          
+          d1["OpTxFX_DC14_SPECSIG"]=new Array("FB4_18_1");
+          
+            d1imp["OpTxFX_DC14_SPECSIG"]=new Array("1");
+          
+          d2["OpTxFX_DC14_SPECSIG"]=new Array("FB4_18_2");
+          
+            d2imp["OpTxFX_DC14_SPECSIG"]=new Array("1");
+          
 
       uimSignals = new Array();
 
