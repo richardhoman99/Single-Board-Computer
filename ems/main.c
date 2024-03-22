@@ -7,9 +7,9 @@
 
 #include "types.h"
 #include "convert.h"
-#include "serial-sim.h"
 #include "command.h"
 #include "exec.h"
+#include "serial.h"
 
 #define INBUF_LEN 16
 #define ARG_MAX 3

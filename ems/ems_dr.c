@@ -7,7 +7,7 @@
 
 #include "types.h"
 #include "convert.h"
-#include "serial-sim.h"
+#include "serial.h"
 
 const char d0_str[] = "d0";
 const char d1_str[] = "d1";

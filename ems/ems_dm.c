@@ -9,7 +9,7 @@
 #include "types.h"
 #include "strings.h"
 #include "convert.h"
-#include "serial-sim.h"
+#include "serial.h"
 
 // argv[1] = address, argv[2] = n lines of 16 bytes
 int ems_dm(const char **argv, int argc)

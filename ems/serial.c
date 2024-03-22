@@ -1,12 +1,39 @@
 /*
- * serial-sim.c
+ * serial.c
  * Richard Homan
  * 02/11/2024
- * Implementations for serial control with SIM68k
+ * Implementations for serial control
  */
 
-#include "serial-sim.h"
+#include "serial.h"
 
+#ifndef SIM
+
+void serial_puts(const char *in, ubyte len)
+{
+	// TODO
+	return;
+}
+
+void serial_putc(char c)
+{
+	// TODO
+	return;
+}
+
+byte serial_isc()
+{
+	// TODO
+	return 0;
+}
+
+char serial_getc()
+{
+	// TODO
+	return '\0';
+}
+
+#else
 // trap 15, d0=1, a1=string, d1=string len
 void serial_puts(const char *in, ubyte len)
 {
@@ -67,3 +94,5 @@ char serial_getc()
 						  : "=m" (r) :: "cc", "memory");
 	return r;
 }
+
+#endif

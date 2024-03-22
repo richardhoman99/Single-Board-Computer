@@ -7,7 +7,7 @@
 
 #include "types.h"
 #include "strings.h"
-#include "serial-sim.h"
+#include "serial.h"
 
 const char help_str0[] = "cr [reg] [val] : change register";
 const char help_str1[] = "cm [loc] [val] : change memory";

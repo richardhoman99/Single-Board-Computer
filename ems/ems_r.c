@@ -10,7 +10,7 @@
 #include "convert.h"
 #include "strings.h"
 #include "exec.h"
-#include "serial-sim.h"
+#include "serial.h"
 
 const char exit_code_str[] = "exit status: ";
 

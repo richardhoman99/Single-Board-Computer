@@ -8,7 +8,7 @@
 #include "err.h"
 #include "types.h"
 #include "convert.h"
-#include "serial-sim.h"
+#include "serial.h"
 
 // argv[1] = register num, argv[2] = value
 int ems_cr(const char **argv, int argc)

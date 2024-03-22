@@ -11,7 +11,7 @@
 #include "strings.h"
 #include "exec.h"
 #include "lsrec.h"
-#include "serial-sim.h"
+#include "serial.h"
 #include "debug_prog.h"
 
 #define INBUF_LEN 64
