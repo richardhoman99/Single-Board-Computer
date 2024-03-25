@@ -3,9 +3,9 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "AddressRouter";
       var device = "XC9572XL";
-      signals = new Array("io_hlt","o_berr","o_cs_duart","o_cs_ramh","o_cs_raml","o_cs_romh","o_cs_roml","o_dtack","o_duart_iack","o_duart_rw","o_ipl0_SPECSIG","o_ipl1_SPECSIG","o_ipl2_SPECSIG","o_oe","o_we");
-      sigNegs = new Array("OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
-      sigTypes = new Array("","","","","","","","","","","","","","","");
+      signals = new Array("io_hlt","o_berr","o_cs_duart","o_cs_ramh","o_cs_raml","o_cs_romh","o_cs_roml","o_dtack","o_duart_iack","o_duart_rw","o_ipl0_SPECSIG","o_ipl1_SPECSIG","o_ipl2_SPECSIG","o_oe","o_we","s_step","s_switched");
+      sigNegs = new Array("OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF");
+      sigTypes = new Array("","","","","","","","D","","","","","","","","D","D");
 
       
         specSig["i_addr1_SPECSIG"]=new Array("i_addr<1>");
@@ -34,9 +34,15 @@
           
             pterms["FB2_15_1"]=new Array("/i_uds","/i_addr1_SPECSIG","/i_addr0_SPECSIG");
           
-            pterms["FB3_16_1"]=new Array("i_addr1_SPECSIG","/i_addr0_SPECSIG");
+            pterms["FB3_16_1"]=new Array("s_step");
           
             pterms["FB3_17_1"]=new Array("/i_rst");
+          
+            pterms["FB4_17_1"]=new Array("/i_duart_dtack","s_switched");
+          
+            pterms["FB4_18_1"]=new Array("i_duart_dtack");
+          
+            pterms["FB4_18_2"]=new Array("/s_step","s_switched");
           
           d2["o_cs_duart"]=new Array("FB1_2_1");
           
@@ -46,7 +52,7 @@
           
             d2imp["o_duart_rw"]=new Array("1");
           
-          d2["o_oe"]=new Array("VCC");
+          d2["o_oe"]=new Array("GND");
           
             d2imp["o_oe"]=new Array("1");
           
@@ -90,14 +96,12 @@
           
             d2imp["o_ipl2_SPECSIG"]=new Array("1");
           
-          d2["o_dtack"]=new Array("GND");
+          d2["o_dtack"]=new Array("FB3_16_1");
           
             d2imp["o_dtack"]=new Array("1");
           
-              trst["o_dtack"]=new Array("FB3_16_1");
-              
-                trstimp["o_dtack"]=new Array("1");
-              
+              gblclk["o_dtack"]=new Array("i_clk");
+            prld["o_dtack"]="GND";
           d2["io_hlt"]=new Array("GND");
           
             d2imp["io_hlt"]=new Array("1");
@@ -106,6 +110,18 @@
               
                 trstimp["io_hlt"]=new Array("1");
               
+          d2["s_step"]=new Array("FB4_17_1");
+          
+            d2imp["s_step"]=new Array("1");
+          
+              gblclk["s_step"]=new Array("i_clk");
+            prld["s_step"]="VCC";
+          d2["s_switched"]=new Array("FB4_18_1","FB4_18_2");
+          
+            d2imp["s_switched"]=new Array("1","1");
+          
+              gblclk["s_switched"]=new Array("i_clk");
+            prld["s_switched"]="VCC";
 
       uimSignals = new Array();
 

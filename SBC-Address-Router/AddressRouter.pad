@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 3-22-2024  9:22PM
+ 3-25-2024  5:14PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -19,10 +19,10 @@ Pinout by Pin Number:
 -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 Pin Number|Signal Name|Pin Usage|Pin Name|Direction|IO Standard|IO Bank Number|{blank}|Slew Rate|Termination|{blank}|Voltage|Constraint|
 P1|o_cs_duart|O|I/O|OUTPUT|||||||||
-P2|TIE||I/O||||||||||
+P2|i_duart_dtack|I|I/O|INPUT|||||||||
 P3|o_duart_rw|O|I/O|OUTPUT|||||||||
 P4|TIE||I/O||||||||||
-P5|TIE||I/O/GCK1||||||||||
+P5|i_clk|GCK|I/O/GCK1||||||||||
 P6|o_oe|O|I/O/GCK2|OUTPUT|||||||||
 P7|o_we|O|I/O/GCK3|OUTPUT|||||||||
 P8|o_cs_ramh|O|I/O|OUTPUT|||||||||

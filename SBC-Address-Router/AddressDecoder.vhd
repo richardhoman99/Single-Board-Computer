@@ -78,7 +78,7 @@ begin
 
 o_berr     <= '1';
 o_dtack    <= 'Z' when s_cs_duart = '0' else '0';
-o_oe       <= '1';
+o_oe       <= '0';
 o_we       <= i_rw;
 o_duart_rw <= i_rw;
 

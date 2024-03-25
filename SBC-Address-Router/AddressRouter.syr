@@ -4,14 +4,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.08 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.08 secs
  
 --> 
@@ -127,9 +127,14 @@ Synthesizing Unit <AddressRouter>.
     Related source file is "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd".
 WARNING:Xst:647 - Input <i_duart_irq> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <i_fc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <i_clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <dummy> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <s_dtack> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <info_sig> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dummy1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dummy0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit tristate buffer for signal <io_hlt>.
+    Found 1-bit register for signal <o_dtack>.
+    Found 1-bit register for signal <s_step>.
+    Found 1-bit register for signal <s_switched>.
     Summary:
 	inferred   1 Tristate(s).
 Unit <AddressRouter> synthesized.
@@ -141,6 +146,8 @@ HDL Synthesis Report
 Macro Statistics
 # ROMs                                                 : 1
  4x3-bit ROM                                           : 1
+# Registers                                            : 3
+ 1-bit register                                        : 3
 # Tristates                                            : 2
  1-bit tristate buffer                                 : 2
 
@@ -163,9 +170,12 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1348 - Unit AddressDecoder is merged (output interface has tristates)
 
 Optimizing unit <AddressRouter> ...
+  implementation constraint: INIT=s	 : s_switched
+  implementation constraint: INIT=s	 : s_step
+
+Optimizing unit <AddressDecoder> ...
 
 =========================================================================
 *                           Partition Report                            *
@@ -197,28 +207,32 @@ Design Statistics
 # IOs                              : 34
 
 Cell Usage :
-# BELS                             : 13
-#      GND                         : 1
-#      INV                         : 4
-#      OR2                         : 5
-#      OR3                         : 2
-#      VCC                         : 1
-# IO Buffers                       : 22
-#      IBUF                        : 7
-#      OBUF                        : 13
-#      OBUFE                       : 2
+# BELS                             : 21
+#      AND2                        : 1
+#      GND                         : 2
+#      INV                         : 6
+#      OR2                         : 7
+#      OR3                         : 3
+#      VCC                         : 2
+# FlipFlops/Latches                : 3
+#      FD                          : 1
+#      FDCE                        : 2
+# IO Buffers                       : 24
+#      IBUF                        : 9
+#      OBUF                        : 14
+#      OBUFE                       : 1
 =========================================================================
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.28 secs
+Total CPU time to Xst completion: 8.31 secs
  
 --> 
 
 
-Total memory usage is 604256 kilobytes
+Total memory usage is 604904 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   10 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

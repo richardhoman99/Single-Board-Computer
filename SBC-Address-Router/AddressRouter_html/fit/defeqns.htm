@@ -28,10 +28,7 @@ o_cs_romh <= NOT ((NOT i_uds AND NOT i_addr(1) AND NOT i_addr(0)));
 </td></tr><tr><td>
 o_cs_roml <= NOT ((NOT i_addr(1) AND NOT i_addr(0) AND NOT i_lds));
 </td></tr><tr><td>
-</td></tr><tr><td>
-o_dtack_I <= '0';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o_dtack <= o_dtack_I when o_dtack_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o_dtack_OE <= NOT ((i_addr(1) AND NOT i_addr(0)));
+FDCPE_o_dtack: FDCPE port map (o_dtack,s_step,i_clk,'0','0');
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_duart_iack <= '1';
@@ -49,10 +46,17 @@ o_ipl(1) <= '1';
 o_ipl(2) <= '1';
 </td></tr><tr><td>
 </td></tr><tr><td>
-o_oe <= '1';
+o_oe <= '0';
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_we <= i_rw;
+</td></tr><tr><td>
+FDCPE_s_step: FDCPE port map (s_step,s_step_D,i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s_step_D <= (NOT i_duart_dtack AND s_switched);
+</td></tr><tr><td>
+FDCPE_s_switched: FDCPE port map (s_switched,s_switched_D,i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s_switched_D <= ((i_duart_dtack)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT s_step AND s_switched));
 </td></tr><tr><td>
 Register Legend:
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 

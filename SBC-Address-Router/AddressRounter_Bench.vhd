@@ -125,15 +125,17 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
-
+      i_duart_dtack <= '1';
+      wait for 100 ns;
+      i_duart_dtack <= '0';
       wait for i_clk_period*10;
-
+      i_duart_dtack <= '1';
+      wait for i_clk_period*10;
+      i_duart_dtack <= '0';
+      wait for i_clk_period*10;
       -- insert stimulus here
 
       wait;
    end process;
-
-i_addr(7) <= i_clk;
 
 END;
