@@ -11,7 +11,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="17" />
    <wvobject fp_name="group27" type="group">
       <obj_property name="label">cs_switch_input</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -87,5 +87,13 @@
    <wvobject fp_name="/addressdecoder_bench/i_duart_dtack" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">i_duart_dtack</obj_property>
       <obj_property name="ObjectShortName">i_duart_dtack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressdecoder_bench/uut/s_dtack_da" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_dtack_da</obj_property>
+      <obj_property name="ObjectShortName">s_dtack_da</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressdecoder_bench/uut/s_dtack" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_dtack</obj_property>
+      <obj_property name="ObjectShortName">s_dtack</obj_property>
    </wvobject>
 </wave_config>

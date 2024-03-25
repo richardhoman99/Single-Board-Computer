@@ -6,715 +6,529 @@ DEVICE | 9572XL | 9572XL44PC |
 
 NETWORK | AddressRouter | 0 | 0 | 16391
 
-INPUT_INSTANCE | 0 | 0 | NULL | i_as_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_INSTANCE | 0 | 0 | NULL | i_uds_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_as | 959 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | i_uds | 395 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_uds_IBUF | 356 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
 
 INPUT_INSTANCE | 0 | 0 | NULL | i_addr_1_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_addr<1> | 960 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | i_addr<1> | 396 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 
 INPUT_INSTANCE | 0 | 0 | NULL | i_addr_0_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_addr<0> | 961 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | i_addr<0> | 397 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 
-INPUT_INSTANCE | 0 | 0 | NULL | i_lds_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
-INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_lds | 962 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
-OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-
-INPUT_INSTANCE | 0 | 0 | NULL | i_uds_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
-INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_uds | 963 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
-OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-
-INPUT_INSTANCE | 0 | 0 | NULL | i_rw_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
-INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_rw | 964 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
-OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
-
-MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_romh_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 6 | 1
+MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_romh_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_uds_IBUF | 356 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_cs_romh_OBUF | 920 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_romh_OBUF.Q | o_cs_romh_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_romh_OBUF | 359 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_romh_OBUF.Q | o_cs_romh_OBUF | 0 | 0 | MC_Q
 
-SIGNAL_INSTANCE | o_cs_romh_OBUF.SI | o_cs_romh_OBUF | 0 | 6 | 2
+SIGNAL_INSTANCE | o_cs_romh_OBUF.SI | o_cs_romh_OBUF | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_uds_IBUF | 356 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_cs_romh_OBUF.D1 | 967 | ? | 0 | 4096 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_cs_romh_OBUF.D1 | 403 | ? | 0 | 4096 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_cs_romh_OBUF.D2 | 968 | ? | 0 | 4096 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 6 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF | IV_FALSE | i_lds_IBUF | IV_TRUE | i_uds_IBUF | IV_TRUE | i_rw_IBUF
+SIGNAL | NODE | o_cs_romh_OBUF.D2 | 404 | ? | 0 | 4096 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | i_uds_IBUF | IV_FALSE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF
 
 SRFF_INSTANCE | o_cs_romh_OBUF.REG | o_cs_romh_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_cs_romh_OBUF.D | 966 | ? | 0 | 0 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.XOR | 0 | 7 | ALU_F
+NODE | o_cs_romh_OBUF.D | 402 | ? | 0 | 0 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_cs_romh_OBUF.Q | 969 | ? | 0 | 0 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | o_cs_romh_OBUF.Q | 405 | ? | 0 | 0 | o_cs_romh_OBUF | NULL | NULL | o_cs_romh_OBUF.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_roml_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 6 | 1
+INPUT_INSTANCE | 0 | 0 | NULL | i_lds_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | i_lds | 398 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | i_lds_IBUF | 360 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
+
+MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_roml_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_lds_IBUF | 360 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_cs_roml_OBUF | 921 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_roml_OBUF.Q | o_cs_roml_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_roml_OBUF | 361 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_roml_OBUF.Q | o_cs_roml_OBUF | 0 | 0 | MC_Q
 
-SIGNAL_INSTANCE | o_cs_roml_OBUF.SI | o_cs_roml_OBUF | 0 | 6 | 2
+SIGNAL_INSTANCE | o_cs_roml_OBUF.SI | o_cs_roml_OBUF | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_lds_IBUF | 360 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_cs_roml_OBUF.D1 | 971 | ? | 0 | 4096 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_cs_roml_OBUF.D1 | 407 | ? | 0 | 4096 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_cs_roml_OBUF.D2 | 972 | ? | 0 | 4096 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 6 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF | IV_TRUE | i_lds_IBUF | IV_FALSE | i_uds_IBUF | IV_TRUE | i_rw_IBUF
+SIGNAL | NODE | o_cs_roml_OBUF.D2 | 408 | ? | 0 | 4096 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF | IV_FALSE | i_lds_IBUF
 
 SRFF_INSTANCE | o_cs_roml_OBUF.REG | o_cs_roml_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_cs_roml_OBUF.D | 970 | ? | 0 | 0 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.XOR | 0 | 7 | ALU_F
+NODE | o_cs_roml_OBUF.D | 406 | ? | 0 | 0 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_cs_roml_OBUF.Q | 973 | ? | 0 | 0 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | o_cs_roml_OBUF.Q | 409 | ? | 0 | 0 | o_cs_roml_OBUF | NULL | NULL | o_cs_roml_OBUF.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_duart_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 5 | 1
+MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_ramh_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_uds_IBUF | 356 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_cs_duart_OBUF | 925 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_duart_OBUF.Q | o_cs_duart_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_ramh_OBUF | 362 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_ramh_OBUF.Q | o_cs_ramh_OBUF | 0 | 0 | MC_Q
 
-SIGNAL_INSTANCE | o_cs_duart_OBUF.SI | o_cs_duart_OBUF | 0 | 5 | 2
+SIGNAL_INSTANCE | o_cs_ramh_OBUF.SI | o_cs_ramh_OBUF | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_uds_IBUF | 356 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_cs_duart_OBUF.D1 | 975 | ? | 0 | 4096 | o_cs_duart_OBUF | NULL | NULL | o_cs_duart_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_cs_ramh_OBUF.D1 | 411 | ? | 0 | 4096 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_cs_duart_OBUF.D2 | 976 | ? | 0 | 4096 | o_cs_duart_OBUF | NULL | NULL | o_cs_duart_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 5 | IV_FALSE | i_as_IBUF | IV_TRUE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF | IV_TRUE | i_lds_IBUF | IV_FALSE | i_uds_IBUF
-
-SRFF_INSTANCE | o_cs_duart_OBUF.REG | o_cs_duart_OBUF | 0 | 1 | 1
-INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_cs_duart_OBUF.D | 974 | ? | 0 | 0 | o_cs_duart_OBUF | NULL | NULL | o_cs_duart_OBUF.XOR | 0 | 7 | ALU_F
-OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_cs_duart_OBUF.Q | 977 | ? | 0 | 0 | o_cs_duart_OBUF | NULL | NULL | o_cs_duart_OBUF.REG | 0 | 8 | SRFF_Q
-
-MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_ramh_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 5 | 1
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_cs_ramh_OBUF | 926 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_ramh_OBUF.Q | o_cs_ramh_OBUF | 0 | 0 | MC_Q
-
-SIGNAL_INSTANCE | o_cs_ramh_OBUF.SI | o_cs_ramh_OBUF | 0 | 5 | 2
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_cs_ramh_OBUF.D1 | 979 | ? | 0 | 4096 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.SI | 1 | 9 | MC_SI_D1
-SPPTERM | 0 | IV_ZERO
-OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_cs_ramh_OBUF.D2 | 980 | ? | 0 | 4096 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 5 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_TRUE | i_addr_0_IBUF | IV_FALSE | i_lds_IBUF | IV_TRUE | i_uds_IBUF
+SIGNAL | NODE | o_cs_ramh_OBUF.D2 | 412 | ? | 0 | 4096 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | i_uds_IBUF | IV_FALSE | i_addr_1_IBUF | IV_TRUE | i_addr_0_IBUF
 
 SRFF_INSTANCE | o_cs_ramh_OBUF.REG | o_cs_ramh_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_cs_ramh_OBUF.D | 978 | ? | 0 | 0 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.XOR | 0 | 7 | ALU_F
+NODE | o_cs_ramh_OBUF.D | 410 | ? | 0 | 0 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_cs_ramh_OBUF.Q | 981 | ? | 0 | 0 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | o_cs_ramh_OBUF.Q | 413 | ? | 0 | 0 | o_cs_ramh_OBUF | NULL | NULL | o_cs_ramh_OBUF.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_raml_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 5 | 1
+MACROCELL_INSTANCE | Inv+OptxMapped | o_cs_raml_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 3 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
+NODE | i_lds_IBUF | 360 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_cs_raml_OBUF | 927 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_raml_OBUF.Q | o_cs_raml_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_raml_OBUF | 363 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_raml_OBUF.Q | o_cs_raml_OBUF | 0 | 0 | MC_Q
 
-SIGNAL_INSTANCE | o_cs_raml_OBUF.SI | o_cs_raml_OBUF | 0 | 5 | 2
+SIGNAL_INSTANCE | o_cs_raml_OBUF.SI | o_cs_raml_OBUF | 0 | 3 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
+NODE | i_lds_IBUF | 360 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_cs_raml_OBUF.D1 | 983 | ? | 0 | 4096 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_cs_raml_OBUF.D1 | 415 | ? | 0 | 4096 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_cs_raml_OBUF.D2 | 984 | ? | 0 | 4096 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 5 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_TRUE | i_addr_0_IBUF | IV_TRUE | i_lds_IBUF | IV_FALSE | i_uds_IBUF
+SIGNAL | NODE | o_cs_raml_OBUF.D2 | 416 | ? | 0 | 4096 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | i_addr_1_IBUF | IV_TRUE | i_addr_0_IBUF | IV_FALSE | i_lds_IBUF
 
 SRFF_INSTANCE | o_cs_raml_OBUF.REG | o_cs_raml_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_cs_raml_OBUF.D | 982 | ? | 0 | 0 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.XOR | 0 | 7 | ALU_F
+NODE | o_cs_raml_OBUF.D | 414 | ? | 0 | 0 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_cs_raml_OBUF.Q | 985 | ? | 0 | 0 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | o_cs_raml_OBUF.Q | 417 | ? | 0 | 0 | o_cs_raml_OBUF | NULL | NULL | o_cs_raml_OBUF.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | Inv+OptxMapped | o_duart_rw_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 2 | 1
+MACROCELL_INSTANCE | FbkInv+PinTrst+Merge+OptxMapped+Placed | N0 | AddressRouter_COPY_0_COPY_0 | 2692794368 | 2 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_duart_rw_OBUF$Q | 928 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_duart_rw_OBUF.Q | o_duart_rw_OBUF | 0 | 0 | MC_Q
-
-SIGNAL_INSTANCE | o_duart_rw_OBUF.SI | o_duart_rw_OBUF | 0 | 2 | 2
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_duart_rw_OBUF.D1 | 987 | ? | 0 | 4096 | o_duart_rw_OBUF | NULL | NULL | o_duart_rw_OBUF.SI | 1 | 9 | MC_SI_D1
-SPPTERM | 0 | IV_ZERO
-OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_duart_rw_OBUF.D2 | 988 | ? | 0 | 4096 | o_duart_rw_OBUF | NULL | NULL | o_duart_rw_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_FALSE | i_as_IBUF | IV_FALSE | i_rw_IBUF
-
-SRFF_INSTANCE | o_duart_rw_OBUF.REG | o_duart_rw_OBUF | 0 | 1 | 1
-INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_duart_rw_OBUF.D | 986 | ? | 0 | 0 | o_duart_rw_OBUF | NULL | NULL | o_duart_rw_OBUF.XOR | 0 | 7 | ALU_F
-OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_duart_rw_OBUF.Q | 989 | ? | 0 | 0 | o_duart_rw_OBUF | NULL | NULL | o_duart_rw_OBUF.REG | 0 | 8 | SRFF_Q
-
-MACROCELL_INSTANCE | Inv+OptxMapped | o_berr_OBUF | AddressRouter_COPY_0_COPY_0 | 2155872512 | 6 | 1
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_berr_OBUF | 929 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_berr_OBUF.Q | o_berr_OBUF | 0 | 0 | MC_Q
-
-SIGNAL_INSTANCE | o_berr_OBUF.SI | o_berr_OBUF | 0 | 6 | 2
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_berr_OBUF.D1 | 991 | ? | 0 | 4096 | o_berr_OBUF | NULL | NULL | o_berr_OBUF.SI | 1 | 9 | MC_SI_D1
-SPPTERM | 0 | IV_ZERO
-OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_berr_OBUF.D2 | 992 | ? | 0 | 4096 | o_berr_OBUF | NULL | NULL | o_berr_OBUF.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 3 | IV_FALSE | i_as_IBUF | IV_TRUE | i_addr_1_IBUF | IV_TRUE | i_addr_0_IBUF
-SPPTERM | 3 | IV_FALSE | i_as_IBUF | IV_TRUE | i_addr_1_IBUF | IV_FALSE | i_lds_IBUF
-SPPTERM | 3 | IV_FALSE | i_as_IBUF | IV_TRUE | i_lds_IBUF | IV_TRUE | i_uds_IBUF
-SPPTERM | 3 | IV_FALSE | i_as_IBUF | IV_FALSE | i_lds_IBUF | IV_FALSE | i_uds_IBUF
-SPPTERM | 4 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF | IV_FALSE | i_rw_IBUF
-
-SRFF_INSTANCE | o_berr_OBUF.REG | o_berr_OBUF | 0 | 1 | 1
-INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_berr_OBUF.D | 990 | ? | 0 | 0 | o_berr_OBUF | NULL | NULL | o_berr_OBUF.XOR | 0 | 7 | ALU_F
-OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_berr_OBUF.Q | 993 | ? | 0 | 0 | o_berr_OBUF | NULL | NULL | o_berr_OBUF.REG | 0 | 8 | SRFF_Q
-
-MACROCELL_INSTANCE | FbkInv+PinTrst+Merge+OptxMapped | N0 | AddressRouter_COPY_0_COPY_0 | 2155923456 | 4 | 2
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | $OpTx$$OpTx$FX_DC$13_INV$23.UIM | 957 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.Q | $OpTx$$OpTx$FX_DC$13_INV$23 | 1 | 0 | MC_UIM
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | $OpTx$FX_DC$14.UIM | 958 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | $OpTx$FX_DC$14.Q | $OpTx$FX_DC$14 | 1 | 0 | MC_UIM
-OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | N0$Q | 930 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.Q | N0 | 0 | 0 | MC_Q
+NODE | N0$Q | 364 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.Q | N0 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 2 | 0 | MC_OE
-NODE | N0$OE | 931 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.BUFOE.OUT | N0 | 2 | 0 | MC_OE
+NODE | N0$OE | 365 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.BUFOE.OUT | N0 | 2 | 0 | MC_OE
 
-SIGNAL_INSTANCE | N0.SI | N0 | 0 | 4 | 3
+SIGNAL_INSTANCE | N0.SI | N0 | 0 | 2 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_addr_1_IBUF | 357 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_1_IBUF | 918 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_1_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | $OpTx$$OpTx$FX_DC$13_INV$23.UIM | 957 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.Q | $OpTx$$OpTx$FX_DC$13_INV$23 | 1 | 0 | MC_UIM
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | $OpTx$FX_DC$14.UIM | 958 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | $OpTx$FX_DC$14.Q | $OpTx$FX_DC$14 | 1 | 0 | MC_UIM
+NODE | i_addr_0_IBUF | 358 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | N0.D1 | 995 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | N0.D1 | 419 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | N0.D2 | 996 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | N0.D2 | 420 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 4 | 9 | MC_SI_TRST
-SIGNAL | NODE | N0.TRST | 998 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 4 | 9 | MC_SI_TRST
-SPPTERM | 4 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_FALSE | $OpTx$$OpTx$FX_DC$13_INV$23.UIM | IV_TRUE | $OpTx$FX_DC$14.UIM
+SIGNAL | NODE | N0.TRST | 422 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 4 | 9 | MC_SI_TRST
+SPPTERM | 2 | IV_TRUE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF
 
 SRFF_INSTANCE | N0.REG | N0 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | N0.D | 994 | ? | 0 | 0 | N0 | NULL | NULL | N0.XOR | 0 | 7 | ALU_F
+NODE | N0.D | 418 | ? | 0 | 0 | N0 | NULL | NULL | N0.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | N0.Q | 999 | ? | 0 | 0 | N0 | NULL | NULL | N0.REG | 0 | 8 | SRFF_Q
+NODE | N0.Q | 423 | ? | 0 | 0 | N0 | NULL | NULL | N0.REG | 0 | 8 | SRFF_Q
 
 BUF_INSTANCE | N0.BUFOE | N0 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 10 | CTOR_UNKNOWN
-SIGNAL | NODE | N0.TRST | 998 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 4 | 9 | MC_SI_TRST
-SPPTERM | 4 | IV_FALSE | i_as_IBUF | IV_FALSE | i_addr_1_IBUF | IV_FALSE | $OpTx$$OpTx$FX_DC$13_INV$23.UIM | IV_TRUE | $OpTx$FX_DC$14.UIM
+SIGNAL | NODE | N0.TRST | 422 | ? | 0 | 4096 | N0 | NULL | NULL | N0.SI | 4 | 9 | MC_SI_TRST
+SPPTERM | 2 | IV_TRUE | i_addr_1_IBUF | IV_FALSE | i_addr_0_IBUF
 OUTPUT_NODE_TYPE | 0 | 10 | BUF_OUT
-NODE | N0.BUFOE.OUT | 997 | ? | 0 | 0 | N0 | NULL | NULL | N0.BUFOE | 0 | 10 | BUF_OUT
+NODE | N0.BUFOE.OUT | 421 | ? | 0 | 0 | N0 | NULL | NULL | N0.BUFOE | 0 | 10 | BUF_OUT
+
+INPUT_INSTANCE | 0 | 0 | NULL | i_rst_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | i_rst | 399 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | i_rst_IBUF | 366 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rst_IBUF | 0 | 5 | II_IMUX
 
 MACROCELL_INSTANCE | PinTrst+OptxMapped | N0$BUF0 | AddressRouter_COPY_0_COPY_0 | 2155888640 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | s_latch_hlt | 935 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | s_latch_hlt.Q | s_latch_hlt | 1 | 0 | MC_UIM
+NODE | i_rst_IBUF | 366 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rst_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | N0$BUF0 | 932 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.Q | N0$BUF0 | 0 | 0 | MC_Q
+NODE | N0$BUF0 | 367 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.Q | N0$BUF0 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 2 | 0 | MC_OE
-NODE | N0$BUF0$OE | 933 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.BUFOE.OUT | N0$BUF0 | 2 | 0 | MC_OE
+NODE | N0$BUF0$OE | 368 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.BUFOE.OUT | N0$BUF0 | 2 | 0 | MC_OE
 
 SIGNAL_INSTANCE | N0$BUF0.SI | N0$BUF0 | 0 | 1 | 3
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | s_latch_hlt | 935 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | s_latch_hlt.Q | s_latch_hlt | 1 | 0 | MC_UIM
+NODE | i_rst_IBUF | 366 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rst_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | N0$BUF0.D1 | 1001 | ? | 0 | 4096 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | N0$BUF0.D1 | 425 | ? | 0 | 4096 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | N0$BUF0.D2 | 1002 | ? | 0 | 6144 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | N0$BUF0.D2 | 426 | ? | 0 | 6144 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 4 | 9 | MC_SI_TRST
-SIGNAL | NODE | N0$BUF0.TRST | 1004 | ? | 0 | 4096 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 4 | 9 | MC_SI_TRST
-SPPTERM | 1 | IV_FALSE | s_latch_hlt
+SIGNAL | NODE | N0$BUF0.TRST | 428 | ? | 0 | 4096 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 4 | 9 | MC_SI_TRST
+SPPTERM | 1 | IV_FALSE | i_rst_IBUF
 
 SRFF_INSTANCE | N0$BUF0.REG | N0$BUF0 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | N0$BUF0.D | 1000 | ? | 0 | 0 | N0$BUF0 | NULL | NULL | N0$BUF0.XOR | 0 | 7 | ALU_F
+NODE | N0$BUF0.D | 424 | ? | 0 | 0 | N0$BUF0 | NULL | NULL | N0$BUF0.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | N0$BUF0.Q | 1005 | ? | 0 | 0 | N0$BUF0 | NULL | NULL | N0$BUF0.REG | 0 | 8 | SRFF_Q
+NODE | N0$BUF0.Q | 429 | ? | 0 | 0 | N0$BUF0 | NULL | NULL | N0$BUF0.REG | 0 | 8 | SRFF_Q
 
 BUF_INSTANCE | N0$BUF0.BUFOE | N0$BUF0 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 10 | CTOR_UNKNOWN
-SIGNAL | NODE | N0$BUF0.TRST | 1004 | ? | 0 | 4096 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 4 | 9 | MC_SI_TRST
-SPPTERM | 1 | IV_FALSE | s_latch_hlt
+SIGNAL | NODE | N0$BUF0.TRST | 428 | ? | 0 | 4096 | N0$BUF0 | NULL | NULL | N0$BUF0.SI | 4 | 9 | MC_SI_TRST
+SPPTERM | 1 | IV_FALSE | i_rst_IBUF
 OUTPUT_NODE_TYPE | 0 | 10 | BUF_OUT
-NODE | N0$BUF0.BUFOE.OUT | 1003 | ? | 0 | 0 | N0$BUF0 | NULL | NULL | N0$BUF0.BUFOE | 0 | 10 | BUF_OUT
+NODE | N0$BUF0.BUFOE.OUT | 427 | ? | 0 | 0 | N0$BUF0 | NULL | NULL | N0$BUF0.BUFOE | 0 | 10 | BUF_OUT
 
-INPUT_INSTANCE | 0 | 0 | NULL | i_addr_7_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_INSTANCE | 0 | 0 | NULL | i_rw_IBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
 INPUT_NODE_TYPE | 0 | 5 | II_IN
-NODE | i_addr<7> | 965 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+NODE | i_rw | 400 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
 OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
-NODE | i_addr_7_IBUF | 934 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_7_IBUF | 0 | 5 | II_IMUX
+NODE | i_rw_IBUF | 369 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
 
-MACROCELL_INSTANCE | PrldHigh+OptxMapped | s_latch_hlt | AddressRouter_COPY_0_COPY_0 | 2155872768 | 1 | 1
+MACROCELL_INSTANCE | OptxMapped | i_rw_IBUF$BUF0 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 1 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_7_IBUF | 934 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_7_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | s_latch_hlt | 935 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | s_latch_hlt.Q | s_latch_hlt | 1 | 0 | MC_UIM
-
-SIGNAL_INSTANCE | s_latch_hlt.SI | s_latch_hlt | 0 | 1 | 3
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_7_IBUF | 934 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_7_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | s_latch_hlt.D1 | 1007 | ? | 0 | 4096 | s_latch_hlt | NULL | NULL | s_latch_hlt.SI | 1 | 9 | MC_SI_D1
-SPPTERM | 0 | IV_ZERO
-OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | s_latch_hlt.D2 | 1008 | ? | 0 | 6144 | s_latch_hlt | NULL | NULL | s_latch_hlt.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 0 | IV_ZERO
-OUTPUT_NODE_TYPE | 3 | 9 | MC_SI_CLKF
-SIGNAL | NODE | s_latch_hlt.CLKF | 1009 | ? | 0 | 4096 | s_latch_hlt | NULL | NULL | s_latch_hlt.SI | 3 | 9 | MC_SI_CLKF
-SPPTERM | 1 | IV_TRUE | i_addr_7_IBUF
-
-SRFF_INSTANCE | s_latch_hlt.REG | s_latch_hlt | 0 | 2 | 1
-INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | s_latch_hlt.D | 1006 | ? | 0 | 0 | s_latch_hlt | NULL | NULL | s_latch_hlt.XOR | 0 | 7 | ALU_F
-INPUT_NODE_TYPE | 1 | 8 | SRFF_C
-SIGNAL | NODE | s_latch_hlt.CLKF | 1009 | ? | 0 | 4096 | s_latch_hlt | NULL | NULL | s_latch_hlt.SI | 3 | 9 | MC_SI_CLKF
-SPPTERM | 1 | IV_TRUE | i_addr_7_IBUF
-OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | s_latch_hlt.Q | 1010 | ? | 0 | 0 | s_latch_hlt | NULL | NULL | s_latch_hlt.REG | 0 | 8 | SRFF_Q
-
-MACROCELL_INSTANCE | OptxMapped | i_as_IBUF$BUF0 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 1 | 1
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_rw_IBUF | 369 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | i_as_IBUF$BUF0 | 936 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | i_as_IBUF$BUF0.Q | i_as_IBUF$BUF0 | 0 | 0 | MC_Q
+NODE | i_rw_IBUF$BUF0 | 370 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | i_rw_IBUF$BUF0.Q | i_rw_IBUF$BUF0 | 0 | 0 | MC_Q
 
-SIGNAL_INSTANCE | i_as_IBUF$BUF0.SI | i_as_IBUF$BUF0 | 0 | 1 | 2
+SIGNAL_INSTANCE | i_rw_IBUF$BUF0.SI | i_rw_IBUF$BUF0 | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
+NODE | i_rw_IBUF | 369 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | i_as_IBUF$BUF0.D1 | 1012 | ? | 0 | 4096 | i_as_IBUF$BUF0 | NULL | NULL | i_as_IBUF$BUF0.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | i_rw_IBUF$BUF0.D1 | 431 | ? | 0 | 4096 | i_rw_IBUF$BUF0 | NULL | NULL | i_rw_IBUF$BUF0.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | i_as_IBUF$BUF0.D2 | 1013 | ? | 0 | 4096 | i_as_IBUF$BUF0 | NULL | NULL | i_as_IBUF$BUF0.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 1 | IV_TRUE | i_as_IBUF
+SIGNAL | NODE | i_rw_IBUF$BUF0.D2 | 432 | ? | 0 | 4096 | i_rw_IBUF$BUF0 | NULL | NULL | i_rw_IBUF$BUF0.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 1 | IV_TRUE | i_rw_IBUF
 
-SRFF_INSTANCE | i_as_IBUF$BUF0.REG | i_as_IBUF$BUF0 | 0 | 1 | 1
+SRFF_INSTANCE | i_rw_IBUF$BUF0.REG | i_rw_IBUF$BUF0 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | i_as_IBUF$BUF0.D | 1011 | ? | 0 | 0 | i_as_IBUF$BUF0 | NULL | NULL | i_as_IBUF$BUF0.XOR | 0 | 7 | ALU_F
+NODE | i_rw_IBUF$BUF0.D | 430 | ? | 0 | 0 | i_rw_IBUF$BUF0 | NULL | NULL | i_rw_IBUF$BUF0.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | i_as_IBUF$BUF0.Q | 1014 | ? | 0 | 0 | i_as_IBUF$BUF0 | NULL | NULL | i_as_IBUF$BUF0.REG | 0 | 8 | SRFF_Q
+NODE | i_rw_IBUF$BUF0.Q | 433 | ? | 0 | 0 | i_rw_IBUF$BUF0 | NULL | NULL | i_rw_IBUF$BUF0.REG | 0 | 8 | SRFF_Q
 
-MACROCELL_INSTANCE | Inv+OptxMapped | o_duart_rw_OBUF$BUF0 | AddressRouter_COPY_0_COPY_0 | 2155872512 | 2 | 1
+MACROCELL_INSTANCE | OptxMapped | i_rw_IBUF$BUF1 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 1 | 1
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_rw_IBUF | 369 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_duart_rw_OBUF$BUF0 | 937 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_duart_rw_OBUF$BUF0.Q | o_duart_rw_OBUF$BUF0 | 0 | 0 | MC_Q
+NODE | i_rw_IBUF$BUF1 | 371 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | i_rw_IBUF$BUF1.Q | i_rw_IBUF$BUF1 | 0 | 0 | MC_Q
 
-SIGNAL_INSTANCE | o_duart_rw_OBUF$BUF0.SI | o_duart_rw_OBUF$BUF0 | 0 | 2 | 2
+SIGNAL_INSTANCE | i_rw_IBUF$BUF1.SI | i_rw_IBUF$BUF1 | 0 | 1 | 2
 INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_as_IBUF | 917 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_as_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
+NODE | i_rw_IBUF | 369 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_duart_rw_OBUF$BUF0.D1 | 1016 | ? | 0 | 4096 | o_duart_rw_OBUF$BUF0 | NULL | NULL | o_duart_rw_OBUF$BUF0.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | i_rw_IBUF$BUF1.D1 | 435 | ? | 0 | 4096 | i_rw_IBUF$BUF1 | NULL | NULL | i_rw_IBUF$BUF1.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_duart_rw_OBUF$BUF0.D2 | 1017 | ? | 0 | 4096 | o_duart_rw_OBUF$BUF0 | NULL | NULL | o_duart_rw_OBUF$BUF0.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_FALSE | i_as_IBUF | IV_FALSE | i_rw_IBUF
+SIGNAL | NODE | i_rw_IBUF$BUF1.D2 | 436 | ? | 0 | 4096 | i_rw_IBUF$BUF1 | NULL | NULL | i_rw_IBUF$BUF1.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 1 | IV_TRUE | i_rw_IBUF
 
-SRFF_INSTANCE | o_duart_rw_OBUF$BUF0.REG | o_duart_rw_OBUF$BUF0 | 0 | 1 | 1
+SRFF_INSTANCE | i_rw_IBUF$BUF1.REG | i_rw_IBUF$BUF1 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_duart_rw_OBUF$BUF0.D | 1015 | ? | 0 | 0 | o_duart_rw_OBUF$BUF0 | NULL | NULL | o_duart_rw_OBUF$BUF0.XOR | 0 | 7 | ALU_F
+NODE | i_rw_IBUF$BUF1.D | 434 | ? | 0 | 0 | i_rw_IBUF$BUF1 | NULL | NULL | i_rw_IBUF$BUF1.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_duart_rw_OBUF$BUF0.Q | 1018 | ? | 0 | 0 | o_duart_rw_OBUF$BUF0 | NULL | NULL | o_duart_rw_OBUF$BUF0.REG | 0 | 8 | SRFF_Q
+NODE | i_rw_IBUF$BUF1.Q | 437 | ? | 0 | 0 | i_rw_IBUF$BUF1 | NULL | NULL | i_rw_IBUF$BUF1.REG | 0 | 8 | SRFF_Q
+
+INPUT_INSTANCE | 0 | 0 | NULL | o_cs_duart_OBUF | AddressRouter_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | i_addr<7> | 401 | PI | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | o_cs_duart_OBUF | 372 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_duart_OBUF | 0 | 5 | II_IMUX
+
+MACROCELL_INSTANCE | OptxMapped | o_cs_duart_OBUF$BUF0 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 1 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | o_cs_duart_OBUF | 372 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_duart_OBUF | 0 | 5 | II_IMUX
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | o_cs_duart_OBUF$BUF0 | 373 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_duart_OBUF$BUF0.Q | o_cs_duart_OBUF$BUF0 | 0 | 0 | MC_Q
+
+SIGNAL_INSTANCE | o_cs_duart_OBUF$BUF0.SI | o_cs_duart_OBUF$BUF0 | 0 | 1 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | o_cs_duart_OBUF | 372 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_duart_OBUF | 0 | 5 | II_IMUX
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_cs_duart_OBUF$BUF0.D1 | 439 | ? | 0 | 4096 | o_cs_duart_OBUF$BUF0 | NULL | NULL | o_cs_duart_OBUF$BUF0.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_cs_duart_OBUF$BUF0.D2 | 440 | ? | 0 | 4096 | o_cs_duart_OBUF$BUF0 | NULL | NULL | o_cs_duart_OBUF$BUF0.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 1 | IV_TRUE | o_cs_duart_OBUF
+
+SRFF_INSTANCE | o_cs_duart_OBUF$BUF0.REG | o_cs_duart_OBUF$BUF0 | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | o_cs_duart_OBUF$BUF0.D | 438 | ? | 0 | 0 | o_cs_duart_OBUF$BUF0 | NULL | NULL | o_cs_duart_OBUF$BUF0.XOR | 0 | 7 | ALU_F
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | o_cs_duart_OBUF$BUF0.Q | 441 | ? | 0 | 0 | o_cs_duart_OBUF$BUF0 | NULL | NULL | o_cs_duart_OBUF$BUF0.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | FbkInv+Merge+OptxMapped | o_ipl_0_OBUF | AddressRouter_COPY_0_COPY_0 | 2155907072 | 0 | 1
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_ipl_0_OBUF$Q | 938 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF.Q | o_ipl_0_OBUF | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$Q | 374 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF.Q | o_ipl_0_OBUF | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | o_ipl_0_OBUF.SI | o_ipl_0_OBUF | 0 | 0 | 2
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_ipl_0_OBUF.D1 | 1020 | ? | 0 | 4096 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_ipl_0_OBUF.D1 | 443 | ? | 0 | 4096 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_ipl_0_OBUF.D2 | 1021 | ? | 0 | 4096 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_ipl_0_OBUF.D2 | 444 | ? | 0 | 4096 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_DC
 
 SRFF_INSTANCE | o_ipl_0_OBUF.REG | o_ipl_0_OBUF | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_ipl_0_OBUF.D | 1019 | ? | 0 | 0 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.XOR | 0 | 7 | ALU_F
+NODE | o_ipl_0_OBUF.D | 442 | ? | 0 | 0 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_ipl_0_OBUF.Q | 1022 | ? | 0 | 0 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.REG | 0 | 8 | SRFF_Q
+NODE | o_ipl_0_OBUF.Q | 445 | ? | 0 | 0 | o_ipl_0_OBUF | NULL | NULL | o_ipl_0_OBUF.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | OptxMapped | o_ipl_0_OBUF$BUF0 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 0 | 1
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_ipl_0_OBUF$BUF0 | 939 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF0.Q | o_ipl_0_OBUF$BUF0 | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF0 | 375 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF0.Q | o_ipl_0_OBUF$BUF0 | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | o_ipl_0_OBUF$BUF0.SI | o_ipl_0_OBUF$BUF0 | 0 | 0 | 2
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_ipl_0_OBUF$BUF0.D1 | 1024 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_ipl_0_OBUF$BUF0.D1 | 447 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_ipl_0_OBUF$BUF0.D2 | 1025 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_ipl_0_OBUF$BUF0.D2 | 448 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_DC
 
 SRFF_INSTANCE | o_ipl_0_OBUF$BUF0.REG | o_ipl_0_OBUF$BUF0 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_ipl_0_OBUF$BUF0.D | 1023 | ? | 0 | 0 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.XOR | 0 | 7 | ALU_F
+NODE | o_ipl_0_OBUF$BUF0.D | 446 | ? | 0 | 0 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_ipl_0_OBUF$BUF0.Q | 1026 | ? | 0 | 0 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.REG | 0 | 8 | SRFF_Q
+NODE | o_ipl_0_OBUF$BUF0.Q | 449 | ? | 0 | 0 | o_ipl_0_OBUF$BUF0 | NULL | NULL | o_ipl_0_OBUF$BUF0.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | OptxMapped | o_ipl_0_OBUF$BUF1 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 0 | 1
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_ipl_0_OBUF$BUF1 | 940 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF1.Q | o_ipl_0_OBUF$BUF1 | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF1 | 376 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF1.Q | o_ipl_0_OBUF$BUF1 | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | o_ipl_0_OBUF$BUF1.SI | o_ipl_0_OBUF$BUF1 | 0 | 0 | 2
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_ipl_0_OBUF$BUF1.D1 | 1028 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_ipl_0_OBUF$BUF1.D1 | 451 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_ipl_0_OBUF$BUF1.D2 | 1029 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_ipl_0_OBUF$BUF1.D2 | 452 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_DC
 
 SRFF_INSTANCE | o_ipl_0_OBUF$BUF1.REG | o_ipl_0_OBUF$BUF1 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_ipl_0_OBUF$BUF1.D | 1027 | ? | 0 | 0 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.XOR | 0 | 7 | ALU_F
+NODE | o_ipl_0_OBUF$BUF1.D | 450 | ? | 0 | 0 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_ipl_0_OBUF$BUF1.Q | 1030 | ? | 0 | 0 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.REG | 0 | 8 | SRFF_Q
+NODE | o_ipl_0_OBUF$BUF1.Q | 453 | ? | 0 | 0 | o_ipl_0_OBUF$BUF1 | NULL | NULL | o_ipl_0_OBUF$BUF1.REG | 0 | 8 | SRFF_Q
 
 MACROCELL_INSTANCE | OptxMapped | o_ipl_0_OBUF$BUF2 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 0 | 1
 OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
-NODE | o_ipl_0_OBUF$BUF2 | 941 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF2.Q | o_ipl_0_OBUF$BUF2 | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF2 | 377 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF2.Q | o_ipl_0_OBUF$BUF2 | 0 | 0 | MC_Q
 
 SIGNAL_INSTANCE | o_ipl_0_OBUF$BUF2.SI | o_ipl_0_OBUF$BUF2 | 0 | 0 | 2
 OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | o_ipl_0_OBUF$BUF2.D1 | 1032 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.SI | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_ipl_0_OBUF$BUF2.D1 | 455 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.SI | 1 | 9 | MC_SI_D1
 SPPTERM | 0 | IV_ZERO
 OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | o_ipl_0_OBUF$BUF2.D2 | 1033 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.SI | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_ipl_0_OBUF$BUF2.D2 | 456 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.SI | 2 | 9 | MC_SI_D2
 SPPTERM | 0 | IV_DC
 
 SRFF_INSTANCE | o_ipl_0_OBUF$BUF2.REG | o_ipl_0_OBUF$BUF2 | 0 | 1 | 1
 INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | o_ipl_0_OBUF$BUF2.D | 1031 | ? | 0 | 0 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.XOR | 0 | 7 | ALU_F
+NODE | o_ipl_0_OBUF$BUF2.D | 454 | ? | 0 | 0 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.XOR | 0 | 7 | ALU_F
 OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | o_ipl_0_OBUF$BUF2.Q | 1034 | ? | 0 | 0 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.REG | 0 | 8 | SRFF_Q
+NODE | o_ipl_0_OBUF$BUF2.Q | 457 | ? | 0 | 0 | o_ipl_0_OBUF$BUF2 | NULL | NULL | o_ipl_0_OBUF$BUF2.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | OptxMapped | o_ipl_0_OBUF$BUF3 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 0 | 1
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF3 | 378 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF3.Q | o_ipl_0_OBUF$BUF3 | 0 | 0 | MC_Q
+
+SIGNAL_INSTANCE | o_ipl_0_OBUF$BUF3.SI | o_ipl_0_OBUF$BUF3 | 0 | 0 | 2
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_ipl_0_OBUF$BUF3.D1 | 459 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF3 | NULL | NULL | o_ipl_0_OBUF$BUF3.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_ipl_0_OBUF$BUF3.D2 | 460 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF3 | NULL | NULL | o_ipl_0_OBUF$BUF3.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 0 | IV_DC
+
+SRFF_INSTANCE | o_ipl_0_OBUF$BUF3.REG | o_ipl_0_OBUF$BUF3 | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | o_ipl_0_OBUF$BUF3.D | 458 | ? | 0 | 0 | o_ipl_0_OBUF$BUF3 | NULL | NULL | o_ipl_0_OBUF$BUF3.XOR | 0 | 7 | ALU_F
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | o_ipl_0_OBUF$BUF3.Q | 461 | ? | 0 | 0 | o_ipl_0_OBUF$BUF3 | NULL | NULL | o_ipl_0_OBUF$BUF3.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | OptxMapped | o_ipl_0_OBUF$BUF4 | AddressRouter_COPY_0_COPY_0 | 2155872256 | 0 | 1
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF4 | 379 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF4.Q | o_ipl_0_OBUF$BUF4 | 0 | 0 | MC_Q
+
+SIGNAL_INSTANCE | o_ipl_0_OBUF$BUF4.SI | o_ipl_0_OBUF$BUF4 | 0 | 0 | 2
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | o_ipl_0_OBUF$BUF4.D1 | 463 | ? | 0 | 4096 | o_ipl_0_OBUF$BUF4 | NULL | NULL | o_ipl_0_OBUF$BUF4.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | o_ipl_0_OBUF$BUF4.D2 | 464 | ? | 0 | 6144 | o_ipl_0_OBUF$BUF4 | NULL | NULL | o_ipl_0_OBUF$BUF4.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 0 | IV_DC
+
+SRFF_INSTANCE | o_ipl_0_OBUF$BUF4.REG | o_ipl_0_OBUF$BUF4 | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | o_ipl_0_OBUF$BUF4.D | 462 | ? | 0 | 0 | o_ipl_0_OBUF$BUF4 | NULL | NULL | o_ipl_0_OBUF$BUF4.XOR | 0 | 7 | ALU_F
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | o_ipl_0_OBUF$BUF4.Q | 465 | ? | 0 | 0 | o_ipl_0_OBUF$BUF4 | NULL | NULL | o_ipl_0_OBUF$BUF4.REG | 0 | 8 | SRFF_Q
 
 OUTPUT_INSTANCE | 0 | o_cs_romh | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_cs_romh_OBUF | 920 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_romh_OBUF.Q | o_cs_romh_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_romh_OBUF | 359 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_romh_OBUF.Q | o_cs_romh_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_cs_romh | 942 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_romh | 0 | 6 | OI_OUT
+NODE | o_cs_romh | 380 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_romh | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_cs_roml | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_cs_roml_OBUF | 921 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_roml_OBUF.Q | o_cs_roml_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_roml_OBUF | 361 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_roml_OBUF.Q | o_cs_roml_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_cs_roml | 943 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_roml | 0 | 6 | OI_OUT
-
-OUTPUT_INSTANCE | 0 | o_cs_duart | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
-INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_cs_duart_OBUF | 925 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_duart_OBUF.Q | o_cs_duart_OBUF | 0 | 0 | MC_Q
-OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_cs_duart | 944 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_duart | 0 | 6 | OI_OUT
+NODE | o_cs_roml | 381 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_roml | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_cs_ramh | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_cs_ramh_OBUF | 926 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_ramh_OBUF.Q | o_cs_ramh_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_ramh_OBUF | 362 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_ramh_OBUF.Q | o_cs_ramh_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_cs_ramh | 945 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_ramh | 0 | 6 | OI_OUT
+NODE | o_cs_ramh | 382 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_ramh | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_cs_raml | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_cs_raml_OBUF | 927 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_raml_OBUF.Q | o_cs_raml_OBUF | 0 | 0 | MC_Q
+NODE | o_cs_raml_OBUF | 363 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_raml_OBUF.Q | o_cs_raml_OBUF | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_cs_raml | 946 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_raml | 0 | 6 | OI_OUT
-
-OUTPUT_INSTANCE | 0 | o_we | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
-INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_duart_rw_OBUF$Q | 928 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_duart_rw_OBUF.Q | o_duart_rw_OBUF | 0 | 0 | MC_Q
-OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_we | 947 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_we | 0 | 6 | OI_OUT
-
-OUTPUT_INSTANCE | 0 | o_berr | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
-INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_berr_OBUF | 929 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_berr_OBUF.Q | o_berr_OBUF | 0 | 0 | MC_Q
-OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_berr | 948 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_berr | 0 | 6 | OI_OUT
+NODE | o_cs_raml | 383 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_raml | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_dtack | AddressRouter_COPY_0_COPY_0 | 7 | 2 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | N0$Q | 930 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.Q | N0 | 0 | 0 | MC_Q
+NODE | N0$Q | 364 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.Q | N0 | 0 | 0 | MC_Q
 INPUT_NODE_TYPE | 2 | 6 | OI_OE
-NODE | N0$OE | 931 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.BUFOE.OUT | N0 | 2 | 0 | MC_OE
+NODE | N0$OE | 365 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0.BUFOE.OUT | N0 | 2 | 0 | MC_OE
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_dtack | 949 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_dtack | 0 | 6 | OI_OUT
+NODE | o_dtack | 384 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_dtack | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | io_hlt | AddressRouter_COPY_0_COPY_0 | 7 | 2 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | N0$BUF0 | 932 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.Q | N0$BUF0 | 0 | 0 | MC_Q
+NODE | N0$BUF0 | 367 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.Q | N0$BUF0 | 0 | 0 | MC_Q
 INPUT_NODE_TYPE | 2 | 6 | OI_OE
-NODE | N0$BUF0$OE | 933 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.BUFOE.OUT | N0$BUF0 | 2 | 0 | MC_OE
+NODE | N0$BUF0$OE | 368 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | N0$BUF0.BUFOE.OUT | N0$BUF0 | 2 | 0 | MC_OE
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | io_hlt | 950 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | io_hlt | 0 | 6 | OI_OUT
+NODE | io_hlt | 385 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | io_hlt | 0 | 6 | OI_OUT
 
-OUTPUT_INSTANCE | 0 | o_oe | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
+OUTPUT_INSTANCE | 0 | o_we | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | i_as_IBUF$BUF0 | 936 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | i_as_IBUF$BUF0.Q | i_as_IBUF$BUF0 | 0 | 0 | MC_Q
+NODE | i_rw_IBUF$BUF0 | 370 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | i_rw_IBUF$BUF0.Q | i_rw_IBUF$BUF0 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_oe | 951 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_oe | 0 | 6 | OI_OUT
+NODE | o_we | 386 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_we | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_duart_rw | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_duart_rw_OBUF$BUF0 | 937 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_duart_rw_OBUF$BUF0.Q | o_duart_rw_OBUF$BUF0 | 0 | 0 | MC_Q
+NODE | i_rw_IBUF$BUF1 | 371 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | i_rw_IBUF$BUF1.Q | i_rw_IBUF$BUF1 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_duart_rw | 952 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_duart_rw | 0 | 6 | OI_OUT
+NODE | o_duart_rw | 387 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_duart_rw | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | o_cs_duart | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | o_cs_duart_OBUF$BUF0 | 373 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_cs_duart_OBUF$BUF0.Q | o_cs_duart_OBUF$BUF0 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | o_cs_duart | 388 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_cs_duart | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | o_oe | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | o_ipl_0_OBUF$Q | 374 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF.Q | o_ipl_0_OBUF | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | o_oe | 389 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_oe | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_ipl<2> | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_ipl_0_OBUF$Q | 938 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF.Q | o_ipl_0_OBUF | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF0 | 375 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF0.Q | o_ipl_0_OBUF$BUF0 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_ipl<2> | 953 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_ipl<2> | 0 | 6 | OI_OUT
+NODE | o_ipl<2> | 390 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_ipl<2> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_ipl<1> | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_ipl_0_OBUF$BUF0 | 939 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF0.Q | o_ipl_0_OBUF$BUF0 | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF1 | 376 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF1.Q | o_ipl_0_OBUF$BUF1 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_ipl<1> | 954 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_ipl<1> | 0 | 6 | OI_OUT
+NODE | o_ipl<1> | 391 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_ipl<1> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_ipl<0> | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_ipl_0_OBUF$BUF1 | 940 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF1.Q | o_ipl_0_OBUF$BUF1 | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF2 | 377 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF2.Q | o_ipl_0_OBUF$BUF2 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_ipl<0> | 955 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_ipl<0> | 0 | 6 | OI_OUT
+NODE | o_ipl<0> | 392 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_ipl<0> | 0 | 6 | OI_OUT
 
 OUTPUT_INSTANCE | 0 | o_duart_iack | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
 INPUT_NODE_TYPE | 0 | 6 | OI_IN
-NODE | o_ipl_0_OBUF$BUF2 | 941 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF2.Q | o_ipl_0_OBUF$BUF2 | 0 | 0 | MC_Q
+NODE | o_ipl_0_OBUF$BUF3 | 378 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF3.Q | o_ipl_0_OBUF$BUF3 | 0 | 0 | MC_Q
 OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
-NODE | o_duart_iack | 956 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_duart_iack | 0 | 6 | OI_OUT
+NODE | o_duart_iack | 393 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_duart_iack | 0 | 6 | OI_OUT
 
-MACROCELL_INSTANCE | SoftPfbk | $OpTx$$OpTx$FX_DC$13_INV$23 | AddressRouter_COPY_0_COPY_0 | 2181038080 | 2 | 1
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | $OpTx$$OpTx$FX_DC$13_INV$23.UIM | 957 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.Q | $OpTx$$OpTx$FX_DC$13_INV$23 | 1 | 0 | MC_UIM
-
-SIGNAL_INSTANCE | $OpTx$$OpTx$FX_DC$13_INV$23.SI | $OpTx$$OpTx$FX_DC$13_INV$23 | 0 | 2 | 2
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_addr_0_IBUF | 919 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_addr_0_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_rw_IBUF | 924 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_rw_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | $OpTx$$OpTx$FX_DC$13_INV$23.D1 | 1036 | ? | 0 | 4096 | $OpTx$$OpTx$FX_DC$13_INV$23 | NULL | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.SI | 1 | 9 | MC_SI_D1
-SPPTERM | 0 | IV_ZERO
-OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | $OpTx$$OpTx$FX_DC$13_INV$23.D2 | 1037 | ? | 0 | 4096 | $OpTx$$OpTx$FX_DC$13_INV$23 | NULL | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 2 | IV_FALSE | i_addr_0_IBUF | IV_FALSE | i_rw_IBUF
-
-SRFF_INSTANCE | $OpTx$$OpTx$FX_DC$13_INV$23.REG | $OpTx$$OpTx$FX_DC$13_INV$23 | 0 | 1 | 1
-INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | $OpTx$$OpTx$FX_DC$13_INV$23.D | 1035 | ? | 0 | 0 | $OpTx$$OpTx$FX_DC$13_INV$23 | NULL | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.XOR | 0 | 7 | ALU_F
-OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | $OpTx$$OpTx$FX_DC$13_INV$23.Q | 1038 | ? | 0 | 0 | $OpTx$$OpTx$FX_DC$13_INV$23 | NULL | NULL | $OpTx$$OpTx$FX_DC$13_INV$23.REG | 0 | 8 | SRFF_Q
-
-MACROCELL_INSTANCE | SoftPfbk | $OpTx$FX_DC$14 | AddressRouter_COPY_0_COPY_0 | 2181038080 | 2 | 1
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
-NODE | $OpTx$FX_DC$14.UIM | 958 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | $OpTx$FX_DC$14.Q | $OpTx$FX_DC$14 | 1 | 0 | MC_UIM
-
-SIGNAL_INSTANCE | $OpTx$FX_DC$14.SI | $OpTx$FX_DC$14 | 0 | 2 | 2
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_lds_IBUF | 922 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_lds_IBUF | 0 | 5 | II_IMUX
-INPUT_NODE_TYPE | 1 | 100 | NOTYPE
-NODE | i_uds_IBUF | 923 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | i_uds_IBUF | 0 | 5 | II_IMUX
-OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
-SIGNAL | NODE | $OpTx$FX_DC$14.D1 | 1040 | ? | 0 | 4096 | $OpTx$FX_DC$14 | NULL | NULL | $OpTx$FX_DC$14.SI | 1 | 9 | MC_SI_D1
-SPPTERM | 1 | IV_TRUE | i_lds_IBUF
-OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
-SIGNAL | NODE | $OpTx$FX_DC$14.D2 | 1041 | ? | 0 | 4096 | $OpTx$FX_DC$14 | NULL | NULL | $OpTx$FX_DC$14.SI | 2 | 9 | MC_SI_D2
-SPPTERM | 1 | IV_TRUE | i_uds_IBUF
-
-SRFF_INSTANCE | $OpTx$FX_DC$14.REG | $OpTx$FX_DC$14 | 0 | 1 | 1
-INPUT_NODE_TYPE | 0 | 8 | SRFF_D
-NODE | $OpTx$FX_DC$14.D | 1039 | ? | 0 | 0 | $OpTx$FX_DC$14 | NULL | NULL | $OpTx$FX_DC$14.XOR | 0 | 7 | ALU_F
-OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
-NODE | $OpTx$FX_DC$14.Q | 1042 | ? | 0 | 0 | $OpTx$FX_DC$14 | NULL | NULL | $OpTx$FX_DC$14.REG | 0 | 8 | SRFF_Q
+OUTPUT_INSTANCE | 0 | o_berr | AddressRouter_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | o_ipl_0_OBUF$BUF4 | 379 | ? | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | o_ipl_0_OBUF$BUF4.Q | o_ipl_0_OBUF$BUF4 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | o_berr | 394 | PO | 0 | 0 | AddressRouter_COPY_0_COPY_0 | NULL | NULL | o_berr | 0 | 6 | OI_OUT
 
 FB_INSTANCE | FOOBAR1_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
-FBPIN | 2 | o_cs_duart_OBUF | 1 | NULL | 0 | o_cs_duart | 1 | 1 | 49152
-FBPIN | 6 | o_duart_rw_OBUF$BUF0 | 1 | NULL | 0 | o_duart_rw | 1 | 3 | 49152
-FBPIN | 11 | i_as_IBUF$BUF0 | 1 | NULL | 0 | o_oe | 1 | 6 | 57344
-FBPIN | 13 | s_latch_hlt | 1 | NULL | 0 | NULL | 0
-FBPIN | 14 | o_duart_rw_OBUF | 1 | NULL | 0 | o_we | 1 | 7 | 57344
+FBPIN | 2 | o_cs_duart_OBUF$BUF0 | 1 | NULL | 0 | o_cs_duart | 1 | 1 | 49152
+FBPIN | 6 | i_rw_IBUF$BUF1 | 1 | NULL | 0 | o_duart_rw | 1 | 3 | 49152
+FBPIN | 11 | o_ipl_0_OBUF | 1 | NULL | 0 | o_oe | 1 | 6 | 57344
+FBPIN | 14 | i_rw_IBUF$BUF0 | 1 | NULL | 0 | o_we | 1 | 7 | 57344
 FBPIN | 15 | o_cs_ramh_OBUF | 1 | NULL | 0 | o_cs_ramh | 1 | 8 | 49152
-FBPIN | 16 | $OpTx$$OpTx$FX_DC$13_INV$23 | 1 | NULL | 0 | NULL | 0
 FBPIN | 17 | o_cs_raml_OBUF | 1 | NULL | 0 | o_cs_raml | 1 | 9 | 49152
-FBPIN | 18 | $OpTx$FX_DC$14 | 1 | NULL | 0 | NULL | 0
 
 FB_INSTANCE | FOOBAR2_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 6 | NULL | 0 | i_addr_1_IBUF | 1 | NULL | 0 | 37 | 49152
 FBPIN | 9 | NULL | 0 | i_addr_0_IBUF | 1 | NULL | 0 | 39 | 51200
 FBPIN | 11 | o_cs_roml_OBUF | 1 | NULL | 0 | o_cs_roml | 1 | 40 | 53248
-FBPIN | 14 | o_ipl_0_OBUF$BUF2 | 1 | NULL | 0 | o_duart_iack | 1 | 42 | 53248
+FBPIN | 14 | o_ipl_0_OBUF$BUF3 | 1 | NULL | 0 | o_duart_iack | 1 | 42 | 53248
 FBPIN | 15 | o_cs_romh_OBUF | 1 | NULL | 0 | o_cs_romh | 1 | 43 | 49152
+FBPIN | 17 | NULL | 0 | i_rst_IBUF | 1 | NULL | 0 | 44 | 49152
 
 FB_INSTANCE | FOOBAR3_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
-FBPIN | 5 | o_ipl_0_OBUF$BUF1 | 1 | NULL | 0 | o_ipl<0> | 1 | 12 | 49152
-FBPIN | 9 | o_ipl_0_OBUF$BUF0 | 1 | NULL | 0 | o_ipl<1> | 1 | 14 | 49152
-FBPIN | 11 | o_berr_OBUF | 1 | NULL | 0 | o_berr | 1 | 18 | 49152
-FBPIN | 15 | o_ipl_0_OBUF | 1 | NULL | 0 | o_ipl<2> | 1 | 20 | 49152
+FBPIN | 5 | o_ipl_0_OBUF$BUF2 | 1 | NULL | 0 | o_ipl<0> | 1 | 12 | 49152
+FBPIN | 9 | o_ipl_0_OBUF$BUF1 | 1 | NULL | 0 | o_ipl<1> | 1 | 14 | 49152
+FBPIN | 11 | o_ipl_0_OBUF$BUF4 | 1 | NULL | 0 | o_berr | 1 | 18 | 49152
+FBPIN | 15 | o_ipl_0_OBUF$BUF0 | 1 | NULL | 0 | o_ipl<2> | 1 | 20 | 49152
 FBPIN | 16 | N0 | 1 | NULL | 0 | o_dtack | 1 | 24 | 49152
 FBPIN | 17 | N0$BUF0 | 1 | NULL | 0 | io_hlt | 1 | 22 | 49152
 
@@ -722,8 +536,7 @@ FB_INSTANCE | FOOBAR4_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
 FBPIN | 2 | NULL | 0 | i_rw_IBUF | 1 | NULL | 0 | 25 | 49152
 FBPIN | 5 | NULL | 0 | i_lds_IBUF | 1 | NULL | 0 | 26 | 49152
 FBPIN | 8 | NULL | 0 | i_uds_IBUF | 1 | NULL | 0 | 27 | 49152
-FBPIN | 11 | NULL | 0 | i_as_IBUF | 1 | NULL | 0 | 28 | 49152
-FBPIN | 17 | NULL | 0 | i_addr_7_IBUF | 1 | NULL | 0 | 34 | 49152
+FBPIN | 17 | NULL | 0 | o_cs_duart_OBUF | 1 | NULL | 0 | 34 | 49152
 
 FB_INSTANCE | INPUTPINS_FOOBAR5_ | AddressRouter_COPY_0_COPY_0 | 0 | 0 | 0
 
@@ -731,20 +544,18 @@ BUSINFO | I_ADDR<7:0> | 8 | 0 | 0 | i_addr<0> | 7 | i_addr<1> | 6 | i_addr<2> | 
 BUSINFO | I_FC<2:0> | 3 | 0 | 0 | i_fc<0> | 2 | i_fc<1> | 1 | i_fc<2> | 0
 BUSINFO | O_IPL<2:0> | 3 | 0 | 1 | o_ipl<0> | 2 | o_ipl<1> | 1 | o_ipl<2> | 0
 
-FB_ORDER_OF_INPUTS | FOOBAR1_ | 1 | i_addr<7> | 34 | 5 | i_as | 28 | 10 | i_addr<1> | 37 | 11 | i_uds | 27 | 13 | i_lds | 26
-FB_ORDER_OF_INPUTS | FOOBAR1_ | 14 | i_addr<0> | 39 | 34 | i_rw | 25
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 1 | i_addr<7> | 34 | 10 | i_addr<1> | 37 | 11 | i_uds | 27 | 13 | i_lds | 26 | 15 | i_rw | 25
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 52 | i_addr<0> | 39
 
-FB_IMUX_INDEX | FOOBAR1_ | -1 | 73 | -1 | -1 | -1 | 95 | -1 | -1 | -1 | -1 | 82 | 101 | -1 | 103 | 86 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 105 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
-
-
-FB_ORDER_OF_INPUTS | FOOBAR2_ | 5 | i_as | 28 | 10 | i_addr<1> | 37 | 11 | i_uds | 27 | 13 | i_lds | 26 | 14 | i_addr<0> | 39
-FB_ORDER_OF_INPUTS | FOOBAR2_ | 34 | i_rw | 25
-
-FB_IMUX_INDEX | FOOBAR2_ | -1 | -1 | -1 | -1 | -1 | 95 | -1 | -1 | -1 | -1 | 82 | 101 | -1 | 103 | 86 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 105 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
+FB_IMUX_INDEX | FOOBAR1_ | -1 | 73 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 82 | 101 | -1 | 103 | -1 | 105 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 86 | -1
 
 
-FB_ORDER_OF_INPUTS | FOOBAR3_ | 5 | i_as | 28 | 10 | i_addr<1> | 37 | 11 | i_uds | 27 | 13 | i_lds | 26 | 14 | i_addr<0> | 39
-FB_ORDER_OF_INPUTS | FOOBAR3_ | 15 | $OpTx$$OpTx$FX_DC$13_INV$23.UIM | NULL | 23 | $OpTx$FX_DC$14.UIM | NULL | 26 | s_latch_hlt | NULL | 34 | i_rw | 25
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 10 | i_addr<1> | 37 | 11 | i_uds | 27 | 13 | i_lds | 26 | 52 | i_addr<0> | 39
 
-FB_IMUX_INDEX | FOOBAR3_ | -1 | -1 | -1 | -1 | -1 | 95 | -1 | -1 | -1 | -1 | 82 | 101 | -1 | 103 | 86 | 15 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 17 | -1 | -1 | 12 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 105 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
+FB_IMUX_INDEX | FOOBAR2_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 82 | 101 | -1 | 103 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 86 | -1
+
+
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 10 | i_addr<1> | 37 | 14 | i_rst | 44 | 52 | i_addr<0> | 39
+
+FB_IMUX_INDEX | FOOBAR3_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 82 | -1 | -1 | -1 | 104 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 86 | -1
 

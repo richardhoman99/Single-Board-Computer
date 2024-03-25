@@ -3,43 +3,44 @@ Pin Freeze File:  version P.20131013
 9572XL44PC XC9572XL-10-PC44
 i_addr<0> S:PIN39
 i_addr<1> S:PIN37
-i_addr<7> S:PIN34
-i_as S:PIN28
 i_lds S:PIN26
+i_rst S:PIN44
 i_rw S:PIN25
 i_uds S:PIN27
+i_addr<7> S:PIN34
 o_dtack S:PIN24
 io_hlt S:PIN22
-o_oe S:PIN6
-o_berr S:PIN18
+o_we S:PIN7
+o_duart_rw S:PIN3
 o_cs_duart S:PIN1
 o_cs_ramh S:PIN8
 o_cs_raml S:PIN9
 o_cs_romh S:PIN43
 o_cs_roml S:PIN40
-o_we S:PIN7
-o_duart_rw S:PIN3
+o_oe S:PIN6
 o_ipl<2> S:PIN20
 o_ipl<1> S:PIN14
 o_ipl<0> S:PIN12
 o_duart_iack S:PIN42
+o_berr S:PIN18
 
 
 ;The remaining section of the .gyd file is for documentation purposes only.
 ;It shows where your internal equations were placed in the last successful fit.
 
-PARTITION FB1_2 o_cs_duart_OBUF
-PARTITION FB1_6 o_duart_rw_OBUF$BUF0
-PARTITION FB1_11 i_as_IBUF$BUF0
-PARTITION FB1_13 s_latch_hlt o_duart_rw_OBUF o_cs_ramh_OBUF $OpTx$$OpTx$FX_DC$13_INV$23
-		 o_cs_raml_OBUF $OpTx$FX_DC$14
-PARTITION FB2_11 o_cs_roml_OBUF
-PARTITION FB2_14 o_ipl_0_OBUF$BUF2 o_cs_romh_OBUF
+PARTITION FB1_2 o_cs_duart_OBUF$BUF0
+PARTITION FB1_6 i_rw_IBUF$BUF1
+PARTITION FB1_11 o_ipl_0_OBUF
+PARTITION FB1_14 i_rw_IBUF$BUF0 o_cs_ramh_OBUF
+PARTITION FB1_17 o_cs_raml_OBUF
 
-PARTITION FB3_5 o_ipl_0_OBUF$BUF1
-PARTITION FB3_9 o_ipl_0_OBUF$BUF0
-PARTITION FB3_11 o_berr_OBUF
-PARTITION FB3_15 o_ipl_0_OBUF N0 N0$BUF0
+PARTITION FB2_11 o_cs_roml_OBUF
+PARTITION FB2_14 o_ipl_0_OBUF$BUF3 o_cs_romh_OBUF
+
+PARTITION FB3_5 o_ipl_0_OBUF$BUF2
+PARTITION FB3_9 o_ipl_0_OBUF$BUF1
+PARTITION FB3_11 o_ipl_0_OBUF$BUF4
+PARTITION FB3_15 o_ipl_0_OBUF$BUF0 N0 N0$BUF0
 
 
 
