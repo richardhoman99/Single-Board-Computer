@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 3-22-2024  2:52PM
+ 3-25-2024  5:14PM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The pipe '|'
@@ -19,10 +19,10 @@ Pinout by Pin Number:
 -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 Pin Number|Signal Name|Pin Usage|Pin Name|Direction|IO Standard|IO Bank Number|{blank}|Slew Rate|Termination|{blank}|Voltage|Constraint|
 P1|o_cs_duart|O|I/O|OUTPUT|||||||||
-P2|TIE||I/O||||||||||
+P2|i_duart_dtack|I|I/O|INPUT|||||||||
 P3|o_duart_rw|O|I/O|OUTPUT|||||||||
 P4|TIE||I/O||||||||||
-P5|TIE||I/O/GCK1||||||||||
+P5|i_clk|GCK|I/O/GCK1||||||||||
 P6|o_oe|O|I/O/GCK2|OUTPUT|||||||||
 P7|o_we|O|I/O/GCK3|OUTPUT|||||||||
 P8|o_cs_ramh|O|I/O|OUTPUT|||||||||
@@ -45,7 +45,7 @@ P24|o_dtack|O|I/O|OUTPUT|||||||||
 P25|i_rw|I|I/O|INPUT|||||||||
 P26|i_lds|I|I/O|INPUT|||||||||
 P27|i_uds|I|I/O|INPUT|||||||||
-P28|i_as|I|I/O|INPUT|||||||||
+P28|TIE||I/O||||||||||
 P29|TIE||I/O||||||||||
 P30|TDO||TDO||||||||||
 P31|GND||GND||||||||||
@@ -61,7 +61,7 @@ P40|o_cs_roml|O|I/O/GTS2|OUTPUT|||||||||
 P41|VCC||VCCINT||||||||||
 P42|o_duart_iack|O|I/O/GTS1|OUTPUT|||||||||
 P43|o_cs_romh|O|I/O|OUTPUT|||||||||
-P44|TIE||I/O||||||||||
+P44|i_rst|I|I/O|INPUT|||||||||
 
 To preserve the pinout above for future design iterations in
 Project Navigator simply execute the (Lock Pins) process

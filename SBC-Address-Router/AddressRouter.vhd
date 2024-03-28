@@ -78,7 +78,14 @@ port(
 );
 end component;
 
-signal s_latch_hlt : std_logic := '1';
+--signal s_latch_hlt : std_logic := '1';
+signal info_sig      : std_logic;
+signal dummy0        : std_logic;
+signal dummy1        : std_logic;
+
+signal s_step        : std_logic := '1';
+signal s_dtack		 : std_logic;
+signal s_switched    : std_logic := '1';
 
 begin
 
@@ -93,9 +100,9 @@ port map(
 	o_cs_romh     => o_cs_romh,
 	o_cs_raml     => o_cs_raml,
 	o_cs_ramh     => o_cs_ramh,
-	o_cs_duart    => o_cs_duart,
+	o_cs_duart    => dummy0,
 	
-	o_dtack       => o_dtack,
+	o_dtack       => dummy1,
 	i_rw          => i_rw,
 	i_lds         => i_lds,
 	i_uds         => i_uds,
@@ -109,20 +116,49 @@ port map(
 );
 
 -- assert hlt when rst is 
---with i_rst select io_hlt <=
---	'0' when '0',
---	'Z' when others;
+with i_rst select io_hlt <=
+	'0' when '0',
+	'Z' when others;
 
 -- only  for debugging
 -- latch hlt when addr2..7 are asserted
-process (i_addr(7))
+--process (i_addr(7))
+--begin
+--	if rising_edge(i_addr(7)) then
+--		s_latch_hlt <= '0';
+--	end if;
+--end process;
+
+--o_dtack <= '0';
+o_cs_duart <= i_addr(7);
+
+process (i_clk, i_duart_dtack)
 begin
-	if rising_edge(i_addr(7)) then
-		s_latch_hlt <= '0';
+	if rising_edge(i_clk) then
+		if (i_duart_dtack = '0') then
+			if (s_step = '1' and s_switched = '1') then
+				s_step <= '0';
+				s_switched <= '0';
+			elsif (s_switched = '0') then
+				s_step <= '1';
+			end if;
+		else
+			s_step <= '1';
+			s_switched <= '1';
+		end if;
 	end if;
 end process;
 
-io_hlt <= '0' when s_latch_hlt = '0' else 'Z';
+process (i_clk)
+begin
+	if rising_edge(i_clk) then
+		if s_step = '1' then
+			o_dtack <= '1';
+		else
+			o_dtack <= '0';
+		end if;
+	end if;
+end process;
 
 -- don't assert iack for now
 o_duart_iack <= '1';

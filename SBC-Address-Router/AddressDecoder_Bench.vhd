@@ -123,6 +123,30 @@ begin
         assert (s_out = "111011") report "ram high read" severity error;
     elsif s_in = "11001" then -- duart read
         assert (s_out = "111110") report "duart read" severity error;
+    elsif s_in = "00011" then -- rom write no selection
+        assert (s_out = "111111")
+        report "rom write no selection" severity error;
+    elsif s_in = "00111" then -- ram write no selection
+        assert (s_out = "111111")
+        report "ram write no selection" severity error;
+    elsif s_in = "01011" then -- duart write no selection
+        assert (s_out = "111111")
+        report "duart write no selection" severity error;
+    elsif s_in = "01111" then -- addr out of range write no selection
+        assert (s_out = "111111")
+        report "inv addr read no selection" severity error;
+    elsif s_in = "10011" then -- rom read no selection
+        assert (s_out = "111111")
+        report "rom read no selection" severity error;
+    elsif s_in = "10111" then -- ram read no selection
+        assert (s_out = "111111")
+        report "ram read no selection" severity error;
+    elsif s_in = "11011" then -- duart read no selection
+        assert (s_out = "111111")
+        report "duart read no selection" severity error;
+    elsif s_in = "11111" then -- addr out of range read no selection
+         assert (s_out = "111111")
+        report "inv addr read no selection" severity error;   
     else 
         assert (o_berr = '0') report "did not reject" severity error;
     end if;
@@ -132,9 +156,15 @@ begin
         assert (o_dtack = 'Z') report "dtack not floating" severity error;
     else
         if o_berr = '1' then
-            assert (o_dtack = '0') report "dtack not asserted" severity error;
+            if (i_uds and i_lds) = '1' then -- if neither is asserted
+                assert (o_dtack = '1')
+                report "dtack is asserted" severity error;
+            else -- uds or lds is asserted
+                assert (o_dtack = '0')
+                report "dtack not asserted" severity error;
+            end if;
         else
-            assert (o_dtack = 'Z') report "dtack not floating" severity error;
+            assert (o_dtack = '1') report "dtack asserted" severity error;
         end if;
     end if;
 
@@ -163,7 +193,7 @@ begin
         report "duart read/write asserted" severity error;
     assert (s_out = "111111")
         report "berr & chip select signals not latched up" severity error;
-    assert (o_dtack = 'Z') report "dtack not floating" severity error;
+    assert (o_dtack = '1') report "dtack asserted" severity error;
     -- ==========  END !AS TESTS  ==========
     s_in <= s_in + 1;
     end loop;
