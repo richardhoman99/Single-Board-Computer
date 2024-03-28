@@ -16,7 +16,7 @@ MEMORY
 /* reset vector points to main */
 PROVIDE(__reset = main);
 /* stack begins at bottom of ram */
-PROVIDE(__stack = 0x8000 + 0x8000 - 1);
+PROVIDE(__stack = 0x8000 + 0x8000 - 8);
 
 /* 
  * text & data in ROM
@@ -27,6 +27,7 @@ SECTIONS
 	.text :
 	{
 		*(.isv);
+		FILL(0x00)
 		. = 0x400; /* incase isv is not defined, seek */
 		*(.text);
 	}> rom

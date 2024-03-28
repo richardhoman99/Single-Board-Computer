@@ -11,7 +11,7 @@ main:
 	jra .L2
 .L3:
 #APP
-| 14 "main.c" 1
+| 15 "main.c" 1
 	nop
 | 0 "" 2
 #NO_APP
@@ -19,14 +19,15 @@ main:
 .L2:
 	cmp.l #49999999,%d2
 	jle .L3
-	move.l #8388608,%a0
-	move.l (%a0),-4(%fp)
-	move.l -4(%fp),%d0
-	addq.l #1,%d0
-	move.l %d0,-8(%fp)
+	move.l #8388608,-4(%fp)
+	move.l -4(%fp),%a0
+	move.l (%a0),-8(%fp)
+	addq.l #1,-8(%fp)
+	move.l -4(%fp),%a0
+	move.l -8(%fp),(%a0)
 .L4:
 #APP
-| 21 "main.c" 1
+| 24 "main.c" 1
 	nop
 | 0 "" 2
 #NO_APP
