@@ -9,14 +9,14 @@ ENTRY(main)
 
 MEMORY
 {
-	rom	(rx)	:	ORIGIN = 0x0000, LENGTH = 0x8000
-	ram	(rwx)	:	ORIGIN = 0x8000, LENGTH = 0x8000
+	rom	(rx)	:	ORIGIN = 0x00000, LENGTH = 0x10000
+	ram	(rwx)	:	ORIGIN = 0x10000, LENGTH = 0x10000
 }
 
 /* reset vector points to main */
 PROVIDE(__reset = main);
 /* stack begins at bottom of ram */
-PROVIDE(__stack = 0x8000 + 0x8000 - 8);
+PROVIDE(__stack = 0x10000 + 0x10000);
 
 /* 
  * text & data in ROM

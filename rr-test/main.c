@@ -7,14 +7,12 @@
 
 int main(void)
 {
-	register int i;
-	int j;
-	int *k;
+	register int i, j, *k;
 
-	for (i = 0; i < 50000000; i++) // more than 5 seconds at 10Mhz
+	for (i = 0; i < 4000000; i++) // more than 5 seconds at 10Mhz
 		__asm__ __volatile__ ("nop");
 
-	k = (int *)(0x800000);
+	k = (int *)(0x30000);
 	j = *k;
 	j++;
 	*k = j;
@@ -23,4 +21,14 @@ int main(void)
 	while (1)
 		__asm__ __volatile__ ("nop");
 	return 0;
+}
+
+void __access_error(void)
+{
+	const int d = 0x55;
+	int *i;
+	i = (int *)0x10000;
+	*i = d;
+
+	return;
 }
