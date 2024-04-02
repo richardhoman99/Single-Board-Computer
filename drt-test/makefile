@@ -1,6 +1,6 @@
 PROG_NAME=drt-test
 
-PROG_CSRCS = main.c isr.c serial.c
+PROG_CSRCS = main.c isr.c serial.c convert.c
 PROG_SSRCS= isv.s
 PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))

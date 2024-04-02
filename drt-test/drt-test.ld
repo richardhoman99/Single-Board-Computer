@@ -18,8 +18,6 @@ PROVIDE(__reset = main);
 /* stack begins at bottom of ram */
 PROVIDE(__stack = 0x10000 + 0x10000);
 
-PROVIDE(DUART_PTR = 0x20000);
-
 /* 
  * text & data in ROM
  * stack in RAM

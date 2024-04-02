@@ -14,7 +14,7 @@
 #define SERIAL_H
 
 void serial_init();
-void serial_puts(const char *, ubyte);
+void serial_puts(const char *, int);
 void serial_putc(char);
 byte serial_isc();
 char serial_getc();

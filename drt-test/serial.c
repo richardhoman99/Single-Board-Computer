@@ -8,39 +8,11 @@
 #include "serial.h"
 
 #ifndef SIM
-
-extern ubyte *DUART_PTR;
-#define MR1A_PTR (ubyte *)(&DUART_PTR + 0x0)
-#define MR2A_PTR (ubyte *)MR1A_PTR
-#define SRA_PTR  (ubyte *)(&DUART_PTR + 0x1)
-#define CSRA_PTR (ubyte *)SRA_PTR
-#define CRA_PTR  (ubyte *)(&DUART_PTR + 0x2)
-#define RBA_PTR  (ubyte *)(&DUART_PTR + 0x3)
-#define TBA_PTR  (ubyte *)RBA_PTR
-#define IPCR_PTR (ubyte *)(&DUART_PTR + 0x4)
-#define ACR_PTR  (ubyte *)IPCR_PTR
-#define ISR_PTR  (ubyte *)(&DUART_PTR + 0x5)
-#define IMR_PTR  (ubyte *)ISR_PTR
-#define CUR_PTR  (ubyte *)(&DUART_PTR + 0x6)
-#define CTUR_PTR (ubyte *)CUR_PTR
-#define CLR_PTR  (ubyte *)(&DUART_PTR + 0x7)
-#define CTLR_PTR (ubyte *)CLR_PTR
-#define MR1B_PTR (ubyte *)(&DUART_PTR + 0x8)
-#define MR2B_PTR (ubyte *)MR1B_PTR;
-#define SRB_PTR  (ubyte *)(&DUART_PTR + 0x9)
-#define CSRB_PTR (ubyte *)SRB_PTR
-#define CRB_PTR  (ubyte *)(&DUART_PTR + 0xa)
-#define RBB_PTR  (ubyte *)(&DUART_PTR + 0xb)
-#define TBB_PTR  (ubyte *)RBB_PTR
-#define IVR_PTR  (ubyte *)(&DUART_PTR + 0xc)
-#define IPR_PTR  (ubyte *)(&DUART_PTR + 0xd)
-#define OPCR_PTR (ubyte *)IPR_PTR
-#define OPRS_PTR (ubyte *)(&DUART_PTR + 0xe)
-#define OPRC_PTR (ubyte *)(&DUART_PTR + 0xf)
+#include "def_68681.h"
 
 #define MR1A_VAL (ubyte)0x13
-// #define MR2A_VAL (ubyte)0x07
-#define MR2A_VAL (ubyte)0x47 // enable automatic echo
+#define MR2A_VAL (ubyte)0x07
+// #define MR2A_VAL (ubyte)0x47 // enable automatic echo
 #define CSRA_VAL (ubyte)0xbb
 
 #define CRA_VAL0 (ubyte)0x30 // reset transmitter
@@ -50,6 +22,7 @@ extern ubyte *DUART_PTR;
 
 #define ACR_VAL  (ubyte)0x00 // clock set select 1
 
+inline
 void serial_init()
 {
 	*CRA_PTR = CRA_VAL0;
@@ -63,26 +36,40 @@ void serial_init()
 	return;
 }
 
-void serial_puts(const char *in, ubyte len)
+void serial_puts(const char *in, int len)
 {
-	// TODO
+	register int i;
+	char c;
+
+	for (i = 0; i < len; i++)
+	{
+		c = in[i];
+		if (c == '\0') break;
+
+		serial_putc(c);
+	}
+
 	return;
 }
 
+inline
 void serial_putc(char c)
 {
-	// TODO
+	while ((*SRA_PTR & 0x4) == 0) ;
+	*TBA_PTR = (ubyte)c;
 	return;
 }
 
+inline
 byte serial_isc()
 {
-	return (*SRA_PTR & 0x01) == 0;
+	return (*SRA_PTR & 0x1);
 }
 
+inline
 char serial_getc()
 {
-	return *RBA_PTR;
+	return *(char *)RBA_PTR;
 }
 
 #else
@@ -92,7 +79,7 @@ void serial_init()
 }
 
 // trap 15, d0=1, a1=string, d1=string len
-void serial_puts(const char *in, ubyte len)
+void serial_puts(const char *in, int len)
 {
 	__asm__ __volatile__ ("move.l	%/a1,-(%/sp)\n" // save registers
 						  "move.l	%/d1,-(%/sp)\n"
