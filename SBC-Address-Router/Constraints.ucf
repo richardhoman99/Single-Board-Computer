@@ -10,7 +10,7 @@
 //		none
 
 net "i_clk"         loc = "P05";
-net "io_hlt"        loc = "P22";
+net "o_hlt"         loc = "P22";
 net "i_rst"         loc = "P44";
 
 net "o_oe"          loc = "P06";

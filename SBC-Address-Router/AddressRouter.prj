@@ -1,2 +1,3 @@
+vhdl work "Reset.vhd"
 vhdl work "AddressDecoder.vhd"
 vhdl work "AddressRouter.vhd"

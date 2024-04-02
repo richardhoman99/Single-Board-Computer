@@ -1,3 +1,0 @@
-vhdtdtfi -prj SBC-Address-Router -o /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhi -module AddressDecoder -template /opt/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work AddressDecoder.vhd 
-vhdtdtfi -lib work AddressDecoder.vhd -prj SBC-Address-Router -o AddressDecoder.spl -module AddressDecoder -template /opt/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
-spl2sym -intstyle ise -family xc9500xl AddressDecoder.spl /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.sym 

@@ -1,4 +1,7 @@
-AR addressrouter behavioral /home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd sub00/vhpl03 1711386845
-AR addressdecoder behavioral /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd sub00/vhpl02 1711386843
-EN addressrouter NULL /home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd sub00/vhpl00 1711386844
-EN addressdecoder NULL /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd sub00/vhpl01 1711386842
+AR addressrouter behavioral /home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd sub00/vhpl04 1711938407
+AR reset stock /home/ise/Single-Board-Computer/SBC-Address-Router/Reset.vhd sub00/vhpl06 1711938405
+EN addressrouter NULL /home/ise/Single-Board-Computer/SBC-Address-Router/AddressRouter.vhd sub00/vhpl03 1711938406
+EN reset NULL /home/ise/Single-Board-Computer/SBC-Address-Router/Reset.vhd sub00/vhpl05 1711938404
+EN addressdecoder NULL /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd sub00/vhpl00 1711938401
+AR addressdecoder basic /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd sub00/vhpl01 1711938402
+AR addressdecoder complete /home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder.vhd sub00/vhpl02 1711938403

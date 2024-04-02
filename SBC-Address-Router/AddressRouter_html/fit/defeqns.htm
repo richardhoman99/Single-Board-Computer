@@ -5,36 +5,45 @@
 </td></tr><tr><td>
 ********** Mapped Logic **********
 </td></tr><tr><td>
-</td></tr><tr><td>
-io_hlt_I <= '0';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io_hlt <= io_hlt_I when io_hlt_OE = '1' else 'Z';
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;io_hlt_OE <= NOT i_rst;
-</td></tr><tr><td>
-</td></tr><tr><td>
-o_berr <= '1';
+FDCPE_o_berr: FDCPE port map (o_berr,o_berr_D,NOT i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o_berr_D <= ((i_as)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND NOT i_addr(1) AND i_addr(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND NOT i_addr(1) AND i_rw)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND i_uds AND i_addr(1) AND NOT i_addr(0)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-o_cs_duart <= i_addr(7);
+o_cs_duart <= NOT ((NOT i_as AND i_uds AND i_addr(1) AND NOT i_addr(0) AND NOT i_lds));
 </td></tr><tr><td>
 </td></tr><tr><td>
-o_cs_ramh <= NOT ((NOT i_uds AND NOT i_addr(1) AND i_addr(0)));
+o_cs_ramh <= NOT ((NOT i_as AND NOT i_uds AND NOT i_addr(1) AND i_addr(0)));
 </td></tr><tr><td>
 </td></tr><tr><td>
-o_cs_raml <= NOT ((NOT i_addr(1) AND i_addr(0) AND NOT i_lds));
+o_cs_raml <= NOT ((NOT i_as AND NOT i_addr(1) AND i_addr(0) AND NOT i_lds));
 </td></tr><tr><td>
 </td></tr><tr><td>
-o_cs_romh <= NOT ((NOT i_uds AND NOT i_addr(1) AND NOT i_addr(0)));
+o_cs_romh <= NOT ((NOT i_as AND NOT i_uds AND NOT i_addr(1) AND NOT i_addr(0) AND i_rw));
 </td></tr><tr><td>
 </td></tr><tr><td>
-o_cs_roml <= NOT ((NOT i_addr(1) AND NOT i_addr(0) AND NOT i_lds));
+o_cs_roml <= NOT ((NOT i_as AND NOT i_addr(1) AND NOT i_addr(0) AND NOT i_lds AND i_rw));
 </td></tr><tr><td>
-FDCPE_o_dtack: FDCPE port map (o_dtack,s_step,i_clk,'0','0');
+</td></tr><tr><td>
+o_dtack <= ((NOT o_berr AND s_dtack)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (s_dtack AND NOT i_addr(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (s_dtack AND i_addr(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (s_dtack AND i_lds)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND i_addr(1) AND NOT i_addr(0) AND NOT i_lds AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	i_duart_dtack));
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_duart_iack <= '1';
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_duart_rw <= i_rw;
+</td></tr><tr><td>
+</td></tr><tr><td>
+o_hlt_I <= '0';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o_hlt <= o_hlt_I when o_hlt_OE = '1' else 'Z';
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o_hlt_OE <= NOT reset_chip/Mtrien_s_hlt;
 </td></tr><tr><td>
 </td></tr><tr><td>
 o_ipl(0) <= '1';
@@ -51,12 +60,91 @@ o_oe <= '0';
 </td></tr><tr><td>
 o_we <= i_rw;
 </td></tr><tr><td>
-FDCPE_s_step: FDCPE port map (s_step,s_step_D,i_clk,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s_step_D <= (NOT i_duart_dtack AND s_switched);
+FDCPE_reset_chip/Mtrien_s_hlt: FDCPE port map (reset_chip/Mtrien_s_hlt,reset_chip/Mtrien_s_hlt_D,NOT i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/Mtrien_s_hlt_D <= ((i_rst AND reset_chip/Mtrien_s_hlt)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (i_rst AND reset_chip/s_counter(11)));
 </td></tr><tr><td>
-FDCPE_s_switched: FDCPE port map (s_switched,s_switched_D,i_clk,'0','0');
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s_switched_D <= ((i_duart_dtack)
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT s_step AND s_switched));
+FDCPE_reset_chip/s_counter0: FDCPE port map (reset_chip/s_counter(0),reset_chip/s_counter_D(0),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_D(0) <= (NOT reset_chip/s_rst_l AND NOT reset_chip/s_counter(0));
+</td></tr><tr><td>
+FDCPE_reset_chip/s_counter1: FDCPE port map (reset_chip/s_counter(1),reset_chip/s_counter_D(1),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_D(1) <= ((NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT reset_chip/s_counter(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND NOT reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter2: FTCPE port map (reset_chip/s_counter(2),reset_chip/s_counter_T(2),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(2) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter3: FTCPE port map (reset_chip/s_counter(3),reset_chip/s_counter_T(3),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(3) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter4: FTCPE port map (reset_chip/s_counter(4),reset_chip/s_counter_T(4),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(4) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter5: FTCPE port map (reset_chip/s_counter(5),reset_chip/s_counter_T(5),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(5) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(4)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter6: FTCPE port map (reset_chip/s_counter(6),reset_chip/s_counter_T(6),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(6) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(6))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(4) AND reset_chip/s_counter(5)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter7: FTCPE port map (reset_chip/s_counter(7),reset_chip/s_counter_T(7),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(7) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter8: FTCPE port map (reset_chip/s_counter(8),reset_chip/s_counter_T(8),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(8) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(8))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(7)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter9: FTCPE port map (reset_chip/s_counter(9),reset_chip/s_counter_T(9),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(9) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(9))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(7) AND reset_chip/s_counter(8)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter10: FTCPE port map (reset_chip/s_counter(10),reset_chip/s_counter_T(10),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(10) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(10))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(7) AND reset_chip/s_counter(8) AND reset_chip/s_counter(9)));
+</td></tr><tr><td>
+FTCPE_reset_chip/s_counter11: FTCPE port map (reset_chip/s_counter(11),reset_chip/s_counter_T(11),i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_counter_T(11) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(11))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(10) AND reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(3) AND reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(6) AND reset_chip/s_counter(7) AND reset_chip/s_counter(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	reset_chip/s_counter(9)));
+</td></tr><tr><td>
+FDCPE_reset_chip/s_rst_l: FDCPE port map (reset_chip/s_rst_l,reset_chip/s_rst_l_D,NOT i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset_chip/s_rst_l_D <= ((i_rst AND reset_chip/s_rst_l)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (i_rst AND reset_chip/s_counter(11)));
+</td></tr><tr><td>
+FDCPE_s_dtack: FDCPE port map (s_dtack,s_dtack_D,NOT i_clk,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s_dtack_D <= ((i_as)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND s_dtack AND NOT i_uds AND i_addr(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND s_dtack AND i_addr(1) AND i_addr(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (o_berr AND s_dtack AND NOT i_addr(1) AND NOT i_addr(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT i_rw));
 </td></tr><tr><td>
 Register Legend:
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 

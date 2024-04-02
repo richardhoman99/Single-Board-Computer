@@ -3,46 +3,146 @@
 <script src="paths.js"></script><script src="eqns.js"></script><script>
       var design = "AddressRouter";
       var device = "XC9572XL";
-      signals = new Array("io_hlt","o_berr","o_cs_duart","o_cs_ramh","o_cs_raml","o_cs_romh","o_cs_roml","o_dtack","o_duart_iack","o_duart_rw","o_ipl0_SPECSIG","o_ipl1_SPECSIG","o_ipl2_SPECSIG","o_oe","o_we","s_step","s_switched");
-      sigNegs = new Array("OFF","OFF","OFF","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF");
-      sigTypes = new Array("","","","","","","","D","","","","","","","","D","D");
+      signals = new Array("o_berr","o_cs_duart","o_cs_ramh","o_cs_raml","o_cs_romh","o_cs_roml","o_dtack","o_duart_iack","o_duart_rw","o_hlt","o_ipl0_SPECSIG","o_ipl1_SPECSIG","o_ipl2_SPECSIG","o_oe","o_we","reset_chipMtrien_s_hlt_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter10_SPECSIG","reset_chips_counter11_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG","reset_chips_counter6_SPECSIG","reset_chips_counter7_SPECSIG","reset_chips_counter8_SPECSIG","reset_chips_counter9_SPECSIG","reset_chips_rst_l_SPECSIG","s_dtack");
+      sigNegs = new Array("OFF","ON","ON","ON","ON","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF");
+      sigTypes = new Array("D","","","","","","","","","","","","","","","D","D","T","T","D","T","T","T","T","T","T","T","T","D","D");
 
       
         specSig["i_addr1_SPECSIG"]=new Array("i_addr<1>");
       
         specSig["i_addr0_SPECSIG"]=new Array("i_addr<0>");
       
-        specSig["i_addr7_SPECSIG"]=new Array("i_addr<7>");
-      
         specSig["o_ipl0_SPECSIG"]=new Array("o_ipl<0>");
       
         specSig["o_ipl1_SPECSIG"]=new Array("o_ipl<1>");
       
+        specSig["b_SPECSIG"]=new Array("(b)");
+      
+        specSig["reset_chipMtrien_s_hlt_SPECSIG"]=new Array("reset_chip/Mtrien_s_hlt");
+      
         specSig["o_ipl2_SPECSIG"]=new Array("o_ipl<2>");
       
-            pterms["FB1_2_1"]=new Array("i_addr7_SPECSIG");
+        specSig["reset_chips_counter8_SPECSIG"]=new Array("reset_chip/s_counter<8>");
+      
+        specSig["reset_chips_counter7_SPECSIG"]=new Array("reset_chip/s_counter<7>");
+      
+        specSig["reset_chips_counter11_SPECSIG"]=new Array("reset_chip/s_counter<11>");
+      
+        specSig["reset_chips_counter0_SPECSIG"]=new Array("reset_chip/s_counter<0>");
+      
+        specSig["reset_chips_counter5_SPECSIG"]=new Array("reset_chip/s_counter<5>");
+      
+        specSig["reset_chips_counter4_SPECSIG"]=new Array("reset_chip/s_counter<4>");
+      
+        specSig["reset_chips_counter3_SPECSIG"]=new Array("reset_chip/s_counter<3>");
+      
+        specSig["reset_chips_counter2_SPECSIG"]=new Array("reset_chip/s_counter<2>");
+      
+        specSig["reset_chips_counter1_SPECSIG"]=new Array("reset_chip/s_counter<1>");
+      
+        specSig["reset_chips_rst_l_SPECSIG"]=new Array("reset_chip/s_rst_l");
+      
+        specSig["reset_chips_counter9_SPECSIG"]=new Array("reset_chip/s_counter<9>");
+      
+        specSig["reset_chips_counter6_SPECSIG"]=new Array("reset_chip/s_counter<6>");
+      
+        specSig["reset_chips_counter10_SPECSIG"]=new Array("reset_chip/s_counter<10>");
+      
+            pterms["FB1_2_1"]=new Array("/i_as","i_uds","i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_lds");
           
             pterms["FB1_6_1"]=new Array("i_rw");
           
+            pterms["FB1_9_1"]=new Array("/reset_chips_rst_l_SPECSIG","/reset_chips_counter0_SPECSIG");
+          
+            pterms["FB1_10_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter5_SPECSIG");
+          
+            pterms["FB1_10_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG");
+          
+            pterms["FB1_12_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter4_SPECSIG");
+          
+            pterms["FB1_12_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG");
+          
+            pterms["FB1_13_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter3_SPECSIG");
+          
+            pterms["FB1_13_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG");
+          
             pterms["FB1_14_1"]=new Array("i_rw");
           
-            pterms["FB1_15_1"]=new Array("/i_uds","/i_addr1_SPECSIG","i_addr0_SPECSIG");
+            pterms["FB1_15_1"]=new Array("/i_as","/i_uds","/i_addr1_SPECSIG","i_addr0_SPECSIG");
           
-            pterms["FB1_17_1"]=new Array("/i_addr1_SPECSIG","i_addr0_SPECSIG","/i_lds");
+            pterms["FB1_16_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter2_SPECSIG");
           
-            pterms["FB2_11_1"]=new Array("/i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_lds");
+            pterms["FB1_16_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG");
           
-            pterms["FB2_15_1"]=new Array("/i_uds","/i_addr1_SPECSIG","/i_addr0_SPECSIG");
+            pterms["FB1_17_1"]=new Array("/i_as","/i_addr1_SPECSIG","i_addr0_SPECSIG","/i_lds");
           
-            pterms["FB3_16_1"]=new Array("s_step");
+            pterms["FB1_18_1"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","/reset_chips_counter1_SPECSIG");
           
-            pterms["FB3_17_1"]=new Array("/i_rst");
+            pterms["FB1_18_2"]=new Array("/reset_chips_rst_l_SPECSIG","/reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG");
           
-            pterms["FB4_17_1"]=new Array("/i_duart_dtack","s_switched");
+            pterms["FB2_11_1"]=new Array("/i_as","/i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_lds","i_rw");
           
-            pterms["FB4_18_1"]=new Array("i_duart_dtack");
+            pterms["FB2_15_1"]=new Array("/i_as","/i_uds","/i_addr1_SPECSIG","/i_addr0_SPECSIG","i_rw");
           
-            pterms["FB4_18_2"]=new Array("/s_step","s_switched");
+            pterms["FB3_11_1"]=new Array("i_as");
+          
+            pterms["FB3_11_2"]=new Array("o_berr","/i_addr1_SPECSIG","i_addr0_SPECSIG");
+          
+            pterms["FB3_11_3"]=new Array("o_berr","/i_addr1_SPECSIG","i_rw");
+          
+            pterms["FB3_11_4"]=new Array("o_berr","i_uds","i_addr1_SPECSIG","/i_addr0_SPECSIG");
+          
+            pterms["FB3_13_1"]=new Array("i_rst","reset_chips_rst_l_SPECSIG");
+          
+            pterms["FB3_13_2"]=new Array("i_rst","reset_chips_counter11_SPECSIG");
+          
+            pterms["FB3_14_1"]=new Array("i_rst","reset_chipMtrien_s_hlt_SPECSIG");
+          
+            pterms["FB3_14_2"]=new Array("i_rst","reset_chips_counter11_SPECSIG");
+          
+            pterms["FB3_16_1"]=new Array("/o_berr","s_dtack");
+          
+            pterms["FB3_16_2"]=new Array("s_dtack","/i_addr1_SPECSIG");
+          
+            pterms["FB3_16_3"]=new Array("s_dtack","i_addr0_SPECSIG");
+          
+            pterms["FB3_16_4"]=new Array("s_dtack","i_lds");
+          
+            pterms["FB3_16_5"]=new Array("o_berr","i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_lds","i_duart_dtack");
+          
+            pterms["FB3_17_1"]=new Array("/reset_chipMtrien_s_hlt_SPECSIG");
+          
+            pterms["FB3_18_1"]=new Array("i_as");
+          
+            pterms["FB3_18_2"]=new Array("o_berr","s_dtack","/i_uds","i_addr1_SPECSIG");
+          
+            pterms["FB3_18_3"]=new Array("o_berr","s_dtack","i_addr1_SPECSIG","i_addr0_SPECSIG");
+          
+            pterms["FB3_18_4"]=new Array("o_berr","s_dtack","/i_addr1_SPECSIG","/i_addr0_SPECSIG","/i_rw");
+          
+            pterms["FB4_13_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter9_SPECSIG");
+          
+            pterms["FB4_13_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG","reset_chips_counter6_SPECSIG","reset_chips_counter7_SPECSIG","reset_chips_counter8_SPECSIG");
+          
+            pterms["FB4_14_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter8_SPECSIG");
+          
+            pterms["FB4_14_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG","reset_chips_counter6_SPECSIG","reset_chips_counter7_SPECSIG");
+          
+            pterms["FB4_15_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter7_SPECSIG");
+          
+            pterms["FB4_15_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG","reset_chips_counter6_SPECSIG");
+          
+            pterms["FB4_16_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter6_SPECSIG");
+          
+            pterms["FB4_16_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG");
+          
+            pterms["FB4_17_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter11_SPECSIG");
+          
+            pterms["FB4_17_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter10_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG","reset_chips_counter6_SPECSIG","reset_chips_counter7_SPECSIG","reset_chips_counter8_SPECSIG","reset_chips_counter9_SPECSIG");
+          
+            pterms["FB4_18_1"]=new Array("reset_chips_rst_l_SPECSIG","reset_chips_counter10_SPECSIG");
+          
+            pterms["FB4_18_2"]=new Array("/reset_chips_rst_l_SPECSIG","reset_chips_counter0_SPECSIG","reset_chips_counter1_SPECSIG","reset_chips_counter2_SPECSIG","reset_chips_counter3_SPECSIG","reset_chips_counter4_SPECSIG","reset_chips_counter5_SPECSIG","reset_chips_counter6_SPECSIG","reset_chips_counter7_SPECSIG","reset_chips_counter8_SPECSIG","reset_chips_counter9_SPECSIG");
           
           d2["o_cs_duart"]=new Array("FB1_2_1");
           
@@ -52,10 +152,34 @@
           
             d2imp["o_duart_rw"]=new Array("1");
           
+          d2["reset_chips_counter0_SPECSIG"]=new Array("FB1_9_1");
+          
+            d2imp["reset_chips_counter0_SPECSIG"]=new Array("1");
+          
+              gblclk["reset_chips_counter0_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter0_SPECSIG"]="GND";
+          d2["reset_chips_counter5_SPECSIG"]=new Array("FB1_10_1","FB1_10_2");
+          
+            d2imp["reset_chips_counter5_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter5_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter5_SPECSIG"]="GND";
           d2["o_oe"]=new Array("GND");
           
             d2imp["o_oe"]=new Array("1");
           
+          d2["reset_chips_counter4_SPECSIG"]=new Array("FB1_12_1","FB1_12_2");
+          
+            d2imp["reset_chips_counter4_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter4_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter4_SPECSIG"]="GND";
+          d2["reset_chips_counter3_SPECSIG"]=new Array("FB1_13_1","FB1_13_2");
+          
+            d2imp["reset_chips_counter3_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter3_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter3_SPECSIG"]="GND";
           d2["o_we"]=new Array("FB1_14_1");
           
             d2imp["o_we"]=new Array("1");
@@ -64,10 +188,22 @@
           
             d2imp["o_cs_ramh"]=new Array("1");
           
+          d2["reset_chips_counter2_SPECSIG"]=new Array("FB1_16_1","FB1_16_2");
+          
+            d2imp["reset_chips_counter2_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter2_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter2_SPECSIG"]="GND";
           d2["o_cs_raml"]=new Array("FB1_17_1");
           
             d2imp["o_cs_raml"]=new Array("1");
           
+          d2["reset_chips_counter1_SPECSIG"]=new Array("FB1_18_1","FB1_18_2");
+          
+            d2imp["reset_chips_counter1_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter1_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter1_SPECSIG"]="GND";
           d2["o_cs_roml"]=new Array("FB2_11_1");
           
             d2imp["o_cs_roml"]=new Array("1");
@@ -88,40 +224,82 @@
           
             d2imp["o_ipl1_SPECSIG"]=new Array("1");
           
-          d2["o_berr"]=new Array("VCC");
+          d2["o_berr"]=new Array("FB3_11_1","FB3_11_2","FB3_11_3","FB3_11_4");
           
-            d2imp["o_berr"]=new Array("1");
+            d2imp["o_berr"]=new Array("1","1","1","1");
+          clkNegs["o_berr"]=1;
+              gblclk["o_berr"]=new Array("i_clk");
+            prld["o_berr"]="VCC";
+          d2["reset_chips_rst_l_SPECSIG"]=new Array("FB3_13_1","FB3_13_2");
           
+            d2imp["reset_chips_rst_l_SPECSIG"]=new Array("1","1");
+          clkNegs["reset_chips_rst_l_SPECSIG"]=1;
+              gblclk["reset_chips_rst_l_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_rst_l_SPECSIG"]="VCC";
+          d2["reset_chipMtrien_s_hlt_SPECSIG"]=new Array("FB3_14_1","FB3_14_2");
+          
+            d2imp["reset_chipMtrien_s_hlt_SPECSIG"]=new Array("1","1");
+          clkNegs["reset_chipMtrien_s_hlt_SPECSIG"]=1;
+              gblclk["reset_chipMtrien_s_hlt_SPECSIG"]=new Array("i_clk");
+            prld["reset_chipMtrien_s_hlt_SPECSIG"]="GND";
           d2["o_ipl2_SPECSIG"]=new Array("VCC");
           
             d2imp["o_ipl2_SPECSIG"]=new Array("1");
           
-          d2["o_dtack"]=new Array("FB3_16_1");
+          d2["o_dtack"]=new Array("FB3_16_1","FB3_16_2","FB3_16_3","FB3_16_4","FB3_16_5");
           
-            d2imp["o_dtack"]=new Array("1");
+            d2imp["o_dtack"]=new Array("1","1","1","1","1");
           
-              gblclk["o_dtack"]=new Array("i_clk");
-            prld["o_dtack"]="GND";
-          d2["io_hlt"]=new Array("GND");
+          d2["o_hlt"]=new Array("GND");
           
-            d2imp["io_hlt"]=new Array("1");
+            d2imp["o_hlt"]=new Array("1");
           
-              trst["io_hlt"]=new Array("FB3_17_1");
+              trst["o_hlt"]=new Array("FB3_17_1");
               
-                trstimp["io_hlt"]=new Array("1");
+                trstimp["o_hlt"]=new Array("1");
               
-          d2["s_step"]=new Array("FB4_17_1");
+          d2["s_dtack"]=new Array("FB3_18_1","FB3_18_2","FB3_18_3","FB3_18_4");
           
-            d2imp["s_step"]=new Array("1");
+            d2imp["s_dtack"]=new Array("1","1","1","1");
+          clkNegs["s_dtack"]=1;
+              gblclk["s_dtack"]=new Array("i_clk");
+            prld["s_dtack"]="VCC";
+          d2["reset_chips_counter9_SPECSIG"]=new Array("FB4_13_1","FB4_13_2");
           
-              gblclk["s_step"]=new Array("i_clk");
-            prld["s_step"]="VCC";
-          d2["s_switched"]=new Array("FB4_18_1","FB4_18_2");
+            d2imp["reset_chips_counter9_SPECSIG"]=new Array("1","1");
           
-            d2imp["s_switched"]=new Array("1","1");
+              gblclk["reset_chips_counter9_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter9_SPECSIG"]="GND";
+          d2["reset_chips_counter8_SPECSIG"]=new Array("FB4_14_1","FB4_14_2");
           
-              gblclk["s_switched"]=new Array("i_clk");
-            prld["s_switched"]="VCC";
+            d2imp["reset_chips_counter8_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter8_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter8_SPECSIG"]="GND";
+          d2["reset_chips_counter7_SPECSIG"]=new Array("FB4_15_1","FB4_15_2");
+          
+            d2imp["reset_chips_counter7_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter7_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter7_SPECSIG"]="GND";
+          d2["reset_chips_counter6_SPECSIG"]=new Array("FB4_16_1","FB4_16_2");
+          
+            d2imp["reset_chips_counter6_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter6_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter6_SPECSIG"]="GND";
+          d2["reset_chips_counter11_SPECSIG"]=new Array("FB4_17_1","FB4_17_2");
+          
+            d2imp["reset_chips_counter11_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter11_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter11_SPECSIG"]="GND";
+          d2["reset_chips_counter10_SPECSIG"]=new Array("FB4_18_1","FB4_18_2");
+          
+            d2imp["reset_chips_counter10_SPECSIG"]=new Array("1","1");
+          
+              gblclk["reset_chips_counter10_SPECSIG"]=new Array("i_clk");
+            prld["reset_chips_counter10_SPECSIG"]="GND";
 
       uimSignals = new Array();
 

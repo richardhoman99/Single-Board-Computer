@@ -23,8 +23,8 @@ architecture behavior of AddressRounter_Bench is
  
     component AddressRouter
     port(
-         i_clk         :    IN  std_logic;
-         io_hlt        : inout  std_logic;
+         i_clk         :    in  std_logic;
+         o_hlt         :   out  std_logic;
          i_rst         :    in  std_logic;
          o_oe          :   out  std_logic;
          o_we          :   out  std_logic;
@@ -62,10 +62,8 @@ architecture behavior of AddressRounter_Bench is
    signal i_fc : std_logic_vector(2 downto 0) := (others => '0');
    signal i_addr : std_logic_vector(7 downto 0) := (others => '0');
 
-	--BiDirs
-   signal io_hlt : std_logic;
-
  	--Outputs
+   signal o_hlt : std_logic;
    signal o_oe : std_logic;
    signal o_we : std_logic;
    signal o_duart_rw : std_logic;
@@ -87,7 +85,7 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: AddressRouter PORT MAP (
           i_clk => i_clk,
-          io_hlt => io_hlt,
+          o_hlt => o_hlt,
           i_rst => i_rst,
           o_oe => o_oe,
           o_we => o_we,
@@ -125,14 +123,17 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      i_duart_dtack <= '1';
       wait for 100 ns;
-      i_duart_dtack <= '0';
+      i_as <= '1';
+      i_addr(1 downto 0) <= "00";
+      i_rw <= '1';
       wait for i_clk_period*10;
-      i_duart_dtack <= '1';
+      i_as <= '0';
       wait for i_clk_period*10;
-      i_duart_dtack <= '0';
+      i_as <= '1';
+      i_rw <= '0';
       wait for i_clk_period*10;
+      i_as <= '0';
       -- insert stimulus here
 
       wait;

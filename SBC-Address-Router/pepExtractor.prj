@@ -1,2 +1,1 @@
-work	"AddressDecoder.vhd"
-work	"AddressRouter.vhd"
+work	"Reset.vhd"

@@ -1,0 +1,2 @@
+vhdl isim_temp "Reset.vhd"
+vhdl isim_temp "Reset_Bench.vhd"

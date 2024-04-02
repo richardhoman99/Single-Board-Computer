@@ -1,0 +1,19 @@
+-- ALL OUTPUTS ACTIVE LOW
+
+-- read write error logic
+-- r~w a16 a15 | err
+--  0   0   0  |  0
+--  0   0   1  |  1
+--  0   1   0  |  1
+--  0   1   1  |  1
+--  1   0   0  |  1
+--  1   0   1  |  1
+--  1   1   0  |  1
+--  1   1   1  |  1
+
+-- module select (ROM/RAM/DUART) multiplex
+-- a16 a15 | err drt ram rom
+--  0   0  |  1   1   1   0
+--  0   1  |  1   1   0   1
+--  1   0  |  1   0   1   1
+--  1   1  |  0   1   1   1

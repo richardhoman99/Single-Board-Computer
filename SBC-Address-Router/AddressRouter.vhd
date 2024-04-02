@@ -19,7 +19,7 @@ use ieee.std_logic_1164.all;
 entity AddressRouter is
 port(
 	i_clk         :    in std_logic;
-	io_hlt        : inout std_logic;
+	o_hlt         :   out std_logic;
 	i_rst         :    in std_logic;
 	
 	o_oe          :   out std_logic;
@@ -52,113 +52,130 @@ end AddressRouter;
 
 architecture behavioral of AddressRouter is
 
-component AddressDecoder is 
-port(
-	o_oe          :   out std_logic;
-	o_we          :   out std_logic;
-	o_duart_rw    :   out std_logic;
-	
-	o_cs_roml     :   out std_logic;
-	o_cs_romh     :   out std_logic;
-	o_cs_raml     :   out std_logic;
-	o_cs_ramh     :   out std_logic;
-	o_cs_duart    :   out std_logic;
-	
-	o_dtack       :   out std_logic;	
+component AddressDecoder is port(
 	i_rw          :    in std_logic;
 	i_lds         :    in std_logic;
 	i_uds         :    in std_logic;
-	i_as          :    in std_logic;
+	i_addr        :    in std_logic_vector(1 downto 0);
 
-	i_duart_dtack :    in std_logic;
+	o_cs_duart    :   out std_logic;
+	o_cs_ramh     :   out std_logic;
+	o_cs_raml     :   out std_logic;
+	o_cs_romh     :   out std_logic;
+	o_cs_roml     :   out std_logic;
 	
-	i_addr        :    in std_logic_vector(7 downto 0);
-	
-	o_berr        :   out std_logic
+	o_err         :   out std_logic
 );
 end component;
 
---signal s_latch_hlt : std_logic := '1';
-signal info_sig      : std_logic;
-signal dummy0        : std_logic;
-signal dummy1        : std_logic;
+component Reset is
+port(
+	i_clk :  in std_logic;
+	i_rst :  in std_logic;
 
-signal s_step        : std_logic := '1';
-signal s_dtack		 : std_logic;
-signal s_switched    : std_logic := '1';
+	o_hlt : out std_logic
+);
+end component;
+
+--signal s_step     : std_logic := '1';
+--signal s_switched : std_logic := '1';
+
+signal s_cs_duart : std_logic;
+signal s_cs_ramh  : std_logic;
+signal s_cs_raml  : std_logic;
+signal s_cs_romh  : std_logic;
+signal s_cs_roml  : std_logic;
+signal s_dec_err  : std_logic;
+
+signal s_cs_en    : std_logic;
+
+signal s_dtack    : std_logic := '1';
+signal s_berr	  : std_logic := '1';
 
 begin
 
 -- address decoder module
-addr_decode : AddressDecoder
+addr_decode : entity work.AddressDecoder(complete)
 port map(
-	o_oe          => o_oe,
-	o_we          => o_we,
-	o_duart_rw    => o_duart_rw,
-	
-	o_cs_roml     => o_cs_roml,
-	o_cs_romh     => o_cs_romh,
-	o_cs_raml     => o_cs_raml,
-	o_cs_ramh     => o_cs_ramh,
-	o_cs_duart    => dummy0,
-	
-	o_dtack       => dummy1,
 	i_rw          => i_rw,
 	i_lds         => i_lds,
-	i_uds         => i_uds,
-	i_as          => i_as,
-	
-	i_duart_dtack => i_duart_dtack,
-	
-	i_addr        => i_addr,
-	
-	o_berr        => o_berr
+	i_uds         => i_uds,	
+	i_addr        => i_addr(1 downto 0),
+
+	o_cs_duart    => s_cs_duart,
+	o_cs_ramh     => s_cs_ramh,
+	o_cs_raml     => s_cs_raml,
+	o_cs_romh     => s_cs_romh,
+	o_cs_roml     => s_cs_roml,
+		
+	o_err         => s_dec_err
 );
 
--- assert hlt when rst is 
-with i_rst select io_hlt <=
-	'0' when '0',
-	'Z' when others;
+reset_chip : entity work.Reset(stock)
+port map(
+	i_clk => i_clk,
+	i_rst => i_rst,
+	o_hlt => o_hlt
+);
 
--- only  for debugging
--- latch hlt when addr2..7 are asserted
---process (i_addr(7))
+o_dtack    <= i_duart_dtack when s_cs_duart = '0' and s_berr = '1' else s_dtack;
+o_berr     <= s_berr;
+o_we       <= i_rw;
+o_oe       <= '0';
+o_duart_rw <= i_rw;
+
+s_cs_en <= i_as or not s_dec_err;
+
+o_cs_duart <= s_cs_duart when s_cs_en = '0' else '1';
+o_cs_ramh  <=  s_cs_ramh when s_cs_en = '0' else '1';
+o_cs_raml  <=  s_cs_raml when s_cs_en = '0' else '1';
+o_cs_romh  <=  s_cs_romh when s_cs_en = '0' else '1';
+o_cs_roml  <=  s_cs_roml when s_cs_en = '0' else '1';
+
+process (i_clk, s_cs_en)
+begin
+	if falling_edge(i_clk) then
+		if i_as = '0' then
+			if s_berr = '0' or s_dec_err = '1' then
+				s_dtack <= '0';
+			else
+				s_berr  <= '0';
+			end if;
+		else
+			s_dtack <= '1';
+			s_berr  <= '1';
+		end if;
+	end if;
+end process;
+
+-- single step code (tie button into duart dtack pin)
+--process (i_clk, i_duart_dtack)
 --begin
---	if rising_edge(i_addr(7)) then
---		s_latch_hlt <= '0';
+--	if rising_edge(i_clk) then
+--		if (i_duart_dtack = '0') then
+--			if (s_step = '1' and s_switched = '1') then
+--				s_step <= '0';
+--				s_switched <= '0';
+--			elsif (s_switched = '0') then
+--				s_step <= '1';
+--			end if;
+--		else
+--			s_step <= '1';
+--			s_switched <= '1';
+--		end if;
 --	end if;
 --end process;
 
---o_dtack <= '0';
-o_cs_duart <= i_addr(7);
-
-process (i_clk, i_duart_dtack)
-begin
-	if rising_edge(i_clk) then
-		if (i_duart_dtack = '0') then
-			if (s_step = '1' and s_switched = '1') then
-				s_step <= '0';
-				s_switched <= '0';
-			elsif (s_switched = '0') then
-				s_step <= '1';
-			end if;
-		else
-			s_step <= '1';
-			s_switched <= '1';
-		end if;
-	end if;
-end process;
-
-process (i_clk)
-begin
-	if rising_edge(i_clk) then
-		if s_step = '1' then
-			o_dtack <= '1';
-		else
-			o_dtack <= '0';
-		end if;
-	end if;
-end process;
+--process (i_clk)
+--begin
+--	if rising_edge(i_clk) then
+--		if s_step = '1' then
+--			s_dtack <= '1';
+--		else
+--			s_dtack <= '0';
+--		end if;
+--	end if;
+--end process;
 
 -- don't assert iack for now
 o_duart_iack <= '1';

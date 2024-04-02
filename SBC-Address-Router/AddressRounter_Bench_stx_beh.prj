@@ -1,3 +1,0 @@
-vhdl isim_temp "AddressDecoder.vhd"
-vhdl isim_temp "AddressRouter.vhd"
-vhdl isim_temp "AddressRounter_Bench.vhd"

@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -o "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder_Bench_isim_beh.exe" -prj "/home/ise/Single-Board-Computer/SBC-Address-Router/AddressDecoder_Bench_beh.prj" "work.AddressDecoder_Bench" 
+-intstyle "ise" -incremental -o "/home/ise/Single-Board-Computer/SBC-Address-Router/Reset_Bench_isim_beh.exe" -prj "/home/ise/Single-Board-Computer/SBC-Address-Router/Reset_Bench_beh.prj" "work.Reset_Bench" 

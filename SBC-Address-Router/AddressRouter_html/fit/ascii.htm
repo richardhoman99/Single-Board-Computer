@@ -3,7 +3,7 @@
  
 cpldfit:  version P.20131013                        Xilinx Inc.
                                   Fitter Report
-Design Name: AddressRouter                       Date:  3-25-2024,  5:14PM
+Design Name: AddressRouter                       Date:  4- 1-2024,  2:27AM
 Device Used: XC9572XL-10-PC44
 Fitting Status: Successful
 
@@ -11,18 +11,18 @@ Fitting Status: Successful
 
 Macrocells     Product Terms    Function Block   Registers      Pins           
 Used/Tot       Used/Tot         Inps Used/Tot    Used/Tot       Used/Tot       
-17 /72  ( 24%) 12  /360  (  3%) 15 /216 (  7%)   3  /72  (  4%) 24 /34  ( 71%)
+30 /72  ( 42%) 48  /360  ( 13%) 45 /216 ( 21%)   16 /72  ( 22%) 24 /34  ( 71%)
 
 ** Function Block Resources **
 
 Function    Mcells      FB Inps     Pterms      IO          
 Block       Used/Tot    Used/Tot    Used/Tot    Used/Tot    
-FB1           6/18        6/54        5/90       8/ 9
-FB2           3/18        4/54        2/90       6/ 9
-FB3           6/18        2/54        2/90       6/ 9
-FB4           2/18        3/54        3/90       4/ 7
+FB1          12/18       13/54       16/90       8/ 9
+FB2           3/18        6/54        2/90       6/ 9
+FB3           9/18       13/54       18/90       6/ 9
+FB4           6/18       13/54       12/90       4/ 7
              -----       -----       -----      -----    
-             17/72       15/216      12/360     24/34 
+             30/72       45/216      48/360     24/34 
 
 * - Resource is exhausted
 
@@ -47,7 +47,7 @@ GSR           :    0           0    |
 
 ** Power Data **
 
-There are 17 macrocells in high performance mode (MCHP).
+There are 30 macrocells in high performance mode (MCHP).
 There are 0 macrocells in low power mode (MCLP).
 End of Mapped Resource Summary
 **************************  Errors and Warnings  ***************************
@@ -64,8 +64,8 @@ WARNING:Cpld:1007 - Removing unused input(s) 'i_addr<5>'.  The input(s) are
    unused after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'i_addr<6>'.  The input(s) are
    unused after optimization. Please verify functionality via simulation.
-WARNING:Cpld:1007 - Removing unused input(s) 'i_as'.  The input(s) are unused
-   after optimization. Please verify functionality via simulation.
+WARNING:Cpld:1007 - Removing unused input(s) 'i_addr<7>'.  The input(s) are
+   unused after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'i_duart_irq'.  The input(s) are
    unused after optimization. Please verify functionality via simulation.
 WARNING:Cpld:1007 - Removing unused input(s) 'i_fc<0>'.  The input(s) are unused
@@ -78,44 +78,57 @@ WARNING:Cpld:1007 - Removing unused input(s) 'i_fc<2>'.  The input(s) are unused
 
 ** 15 Outputs **
 
-Signal              Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
-Name                Pts   Inps          No.  Type    Use     Mode Rate State
-o_cs_duart          1     1     FB1_2   1    I/O     O       STD  FAST 
-o_duart_rw          1     1     FB1_6   3    I/O     O       STD  FAST 
-o_oe                0     0     FB1_11  6    GCK/I/O O       STD  FAST 
-o_we                1     1     FB1_14  7    GCK/I/O O       STD  FAST 
-o_cs_ramh           1     3     FB1_15  8    I/O     O       STD  FAST 
-o_cs_raml           1     3     FB1_17  9    I/O     O       STD  FAST 
-o_cs_roml           1     3     FB2_11  40   GTS/I/O O       STD  FAST 
-o_duart_iack        0     0     FB2_14  42   GTS/I/O O       STD  FAST 
-o_cs_romh           1     3     FB2_15  43   I/O     O       STD  FAST 
-o_ipl<0>            0     0     FB3_5   12   I/O     O       STD  FAST 
-o_ipl<1>            0     0     FB3_9   14   I/O     O       STD  FAST 
-o_berr              0     0     FB3_11  18   I/O     O       STD  FAST 
-o_ipl<2>            0     0     FB3_15  20   I/O     O       STD  FAST 
-o_dtack             1     1     FB3_16  24   I/O     O       STD  FAST RESET
-io_hlt              1     1     FB3_17  22   I/O     O       STD  FAST 
+Signal                    Total Total Loc     Pin  Pin     Pin     Pwr  Slew Reg Init
+Name                      Pts   Inps          No.  Type    Use     Mode Rate State
+o_cs_duart                1     5     FB1_2   1    I/O     O       STD  FAST 
+o_duart_rw                1     1     FB1_6   3    I/O     O       STD  FAST 
+o_oe                      0     0     FB1_11  6    GCK/I/O O       STD  FAST 
+o_we                      1     1     FB1_14  7    GCK/I/O O       STD  FAST 
+o_cs_ramh                 1     4     FB1_15  8    I/O     O       STD  FAST 
+o_cs_raml                 1     4     FB1_17  9    I/O     O       STD  FAST 
+o_cs_roml                 1     5     FB2_11  40   GTS/I/O O       STD  FAST 
+o_duart_iack              0     0     FB2_14  42   GTS/I/O O       STD  FAST 
+o_cs_romh                 1     5     FB2_15  43   I/O     O       STD  FAST 
+o_ipl<0>                  0     0     FB3_5   12   I/O     O       STD  FAST 
+o_ipl<1>                  0     0     FB3_9   14   I/O     O       STD  FAST 
+o_berr                    4     6     FB3_11  18   I/O     O       STD  FAST SET
+o_ipl<2>                  0     0     FB3_15  20   I/O     O       STD  FAST 
+o_dtack                   5     6     FB3_16  24   I/O     O       STD  FAST 
+o_hlt                     1     1     FB3_17  22   I/O     O       STD  FAST 
 
-** 2 Buried Nodes **
+** 15 Buried Nodes **
 
-Signal              Total Total Loc     Pwr  Reg Init
-Name                Pts   Inps          Mode State
-s_step              1     2     FB4_17  STD  SET
-s_switched          2     3     FB4_18  STD  SET
+Signal                    Total Total Loc     Pwr  Reg Init
+Name                      Pts   Inps          Mode State
+reset_chip/s_counter<0>   1     2     FB1_9   STD  RESET
+reset_chip/s_counter<5>   2     7     FB1_10  STD  RESET
+reset_chip/s_counter<4>   2     6     FB1_12  STD  RESET
+reset_chip/s_counter<3>   2     5     FB1_13  STD  RESET
+reset_chip/s_counter<2>   2     4     FB1_16  STD  RESET
+reset_chip/s_counter<1>   2     3     FB1_18  STD  RESET
+reset_chip/s_rst_l        2     3     FB3_13  STD  SET
+reset_chip/Mtrien_s_hlt   2     3     FB3_14  STD  RESET
+s_dtack                   4     7     FB3_18  STD  SET
+reset_chip/s_counter<9>   2     11    FB4_13  STD  RESET
+reset_chip/s_counter<8>   2     10    FB4_14  STD  RESET
+reset_chip/s_counter<7>   2     9     FB4_15  STD  RESET
+reset_chip/s_counter<6>   2     8     FB4_16  STD  RESET
+reset_chip/s_counter<11>  2     13    FB4_17  STD  RESET
+reset_chip/s_counter<10>  2     12    FB4_18  STD  RESET
 
 ** 9 Inputs **
 
-Signal              Loc     Pin  Pin     Pin     
-Name                        No.  Type    Use     
-i_duart_dtack       FB1_5   2    I/O     I
-i_clk               FB1_9   5    GCK/I/O GCK
-i_addr<1>           FB2_6   37   I/O     I
-i_addr<0>           FB2_9   39   GSR/I/O I
-i_rst               FB2_17  44   I/O     I
-i_rw                FB4_2   25   I/O     I
-i_lds               FB4_5   26   I/O     I
-i_uds               FB4_8   27   I/O     I
-i_addr<7>           FB4_17  34   I/O     I
+Signal                    Loc     Pin  Pin     Pin     
+Name                              No.  Type    Use     
+i_duart_dtack             FB1_5   2    I/O     I
+i_clk                     FB1_9   5    GCK/I/O GCK
+i_addr<1>                 FB2_6   37   I/O     I
+i_addr<0>                 FB2_9   39   GSR/I/O I
+i_rst                     FB2_17  44   I/O     I
+i_rw                      FB4_2   25   I/O     I
+i_lds                     FB4_5   26   I/O     I
+i_uds                     FB4_8   27   I/O     I
+i_as                      FB4_11  28   I/O     I
 
 Legend:
 Pin No. - ~ - User Assigned
@@ -133,8 +146,8 @@ Pin Type/Use - I  - Input             GCK - Global Clock
 X            - Signal used as input to the macrocell logic.
 Pin No.      - ~  - User Assigned
 *********************************** FB1  ***********************************
-Number of function block inputs used/remaining:               6/48
-Number of signals used by logic mapping into function block:  6
+Number of function block inputs used/remaining:               13/41
+Number of signals used by logic mapping into function block:  13
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB1_1         (b)     
@@ -145,34 +158,55 @@ o_cs_duart            1       0     0   4     FB1_2   1     I/O     O
 o_duart_rw            1       0     0   4     FB1_6   3     I/O     O
 (unused)              0       0     0   5     FB1_7         (b)     
 (unused)              0       0     0   5     FB1_8   4     I/O     
-(unused)              0       0     0   5     FB1_9   5     GCK/I/O GCK
-(unused)              0       0     0   5     FB1_10        (b)     
+reset_chip/s_counter<0>
+                      1       0     0   4     FB1_9   5     GCK/I/O GCK
+reset_chip/s_counter<5>
+                      2       0     0   3     FB1_10        (b)     (b)
 o_oe                  0       0     0   5     FB1_11  6     GCK/I/O O
-(unused)              0       0     0   5     FB1_12        (b)     
-(unused)              0       0     0   5     FB1_13        (b)     
+reset_chip/s_counter<4>
+                      2       0     0   3     FB1_12        (b)     (b)
+reset_chip/s_counter<3>
+                      2       0     0   3     FB1_13        (b)     (b)
 o_we                  1       0     0   4     FB1_14  7     GCK/I/O O
 o_cs_ramh             1       0     0   4     FB1_15  8     I/O     O
-(unused)              0       0     0   5     FB1_16        (b)     
+reset_chip/s_counter<2>
+                      2       0     0   3     FB1_16        (b)     (b)
 o_cs_raml             1       0     0   4     FB1_17  9     I/O     O
-(unused)              0       0     0   5     FB1_18        (b)     
+reset_chip/s_counter<1>
+                      2       0     0   3     FB1_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: i_addr<0>          3: i_lds              5: i_uds 
-  2: i_addr<1>          4: i_rw               6: i_addr<7> 
+  1: i_addr<0>          6: i_rw                     10: reset_chip/s_counter<3> 
+  2: i_addr<1>          7: reset_chip/s_counter<0>  11: reset_chip/s_counter<4> 
+  3: i_as               8: reset_chip/s_counter<1>  12: reset_chip/s_counter<5> 
+  4: i_lds              9: reset_chip/s_counter<2>  13: reset_chip/s_rst_l 
+  5: i_uds            
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-o_cs_duart           .....X.................................. 1
-o_duart_rw           ...X.................................... 1
+o_cs_duart           XXXXX................................... 5
+o_duart_rw           .....X.................................. 1
+reset_chip/s_counter<0> 
+                     ......X.....X........................... 2
+reset_chip/s_counter<5> 
+                     ......XXXXXXX........................... 7
 o_oe                 ........................................ 0
-o_we                 ...X.................................... 1
-o_cs_ramh            XX..X................................... 3
-o_cs_raml            XXX..................................... 3
+reset_chip/s_counter<4> 
+                     ......XXXXX.X........................... 6
+reset_chip/s_counter<3> 
+                     ......XXXX..X........................... 5
+o_we                 .....X.................................. 1
+o_cs_ramh            XXX.X................................... 4
+reset_chip/s_counter<2> 
+                     ......XXX...X........................... 4
+o_cs_raml            XXXX.................................... 4
+reset_chip/s_counter<1> 
+                     ......XX....X........................... 3
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB2  ***********************************
-Number of function block inputs used/remaining:               4/50
-Number of signals used by logic mapping into function block:  4
+Number of function block inputs used/remaining:               6/48
+Number of signals used by logic mapping into function block:  6
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB2_1         (b)     
@@ -195,19 +229,19 @@ o_cs_romh             1       0     0   4     FB2_15  43    I/O     O
 (unused)              0       0     0   5     FB2_18        (b)     
 
 Signals Used by Logic in Function Block
-  1: i_addr<0>          3: i_lds              4: i_uds 
-  2: i_addr<1>        
+  1: i_addr<0>          3: i_as               5: i_uds 
+  2: i_addr<1>          4: i_lds              6: i_rw 
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-o_cs_roml            XXX..................................... 3
+o_cs_roml            XXXX.X.................................. 5
 o_duart_iack         ........................................ 0
-o_cs_romh            XX.X.................................... 3
+o_cs_romh            XXX.XX.................................. 5
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB3  ***********************************
-Number of function block inputs used/remaining:               2/52
-Number of signals used by logic mapping into function block:  2
+Number of function block inputs used/remaining:               13/41
+Number of signals used by logic mapping into function block:  13
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB3_1         (b)     
@@ -220,31 +254,40 @@ o_ipl<0>              0       0     0   5     FB3_5   12    I/O     O
 (unused)              0       0     0   5     FB3_8   13    I/O     
 o_ipl<1>              0       0     0   5     FB3_9   14    I/O     O
 (unused)              0       0     0   5     FB3_10        (b)     
-o_berr                0       0     0   5     FB3_11  18    I/O     O
+o_berr                4       0     0   1     FB3_11  18    I/O     O
 (unused)              0       0     0   5     FB3_12        (b)     
-(unused)              0       0     0   5     FB3_13        (b)     
-(unused)              0       0     0   5     FB3_14  19    I/O     
+reset_chip/s_rst_l    2       0     0   3     FB3_13        (b)     (b)
+reset_chip/Mtrien_s_hlt
+                      2       0     0   3     FB3_14  19    I/O     (b)
 o_ipl<2>              0       0     0   5     FB3_15  20    I/O     O
-o_dtack               1       0     0   4     FB3_16  24    I/O     O
-io_hlt                1       0     0   4     FB3_17  22    I/O     O
-(unused)              0       0     0   5     FB3_18        (b)     
+o_dtack               5       0     0   0     FB3_16  24    I/O     O
+o_hlt                 1       0     0   4     FB3_17  22    I/O     O
+s_dtack               4       0     0   1     FB3_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: i_rst              2: s_step           
+  1: i_addr<0>          6: i_rst             10: reset_chip/Mtrien_s_hlt 
+  2: i_addr<1>          7: i_uds             11: reset_chip/s_counter<11> 
+  3: i_as               8: o_berr            12: reset_chip/s_rst_l 
+  4: i_duart_dtack      9: i_rw              13: s_dtack 
+  5: i_lds            
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
 o_ipl<0>             ........................................ 0
 o_ipl<1>             ........................................ 0
-o_berr               ........................................ 0
+o_berr               XXX...XXX............................... 6
+reset_chip/s_rst_l   .....X....XX............................ 3
+reset_chip/Mtrien_s_hlt 
+                     .....X...XX............................. 3
 o_ipl<2>             ........................................ 0
-o_dtack              .X...................................... 1
-io_hlt               X....................................... 1
+o_dtack              XX.XX..X....X........................... 6
+o_hlt                .........X.............................. 1
+s_dtack              XXX...XXX...X........................... 7
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *********************************** FB4  ***********************************
-Number of function block inputs used/remaining:               3/51
-Number of signals used by logic mapping into function block:  3
+Number of function block inputs used/remaining:               13/41
+Number of signals used by logic mapping into function block:  13
 Signal              Total   Imp   Exp Unused  Loc     Pin   Pin     Pin
 Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB4_1         (b)     
@@ -257,58 +300,87 @@ Name                Pt      Pt    Pt  Pt               #    Type    Use
 (unused)              0       0     0   5     FB4_8   27    I/O     I
 (unused)              0       0     0   5     FB4_9         (b)     
 (unused)              0       0     0   5     FB4_10        (b)     
-(unused)              0       0     0   5     FB4_11  28    I/O     
+(unused)              0       0     0   5     FB4_11  28    I/O     I
 (unused)              0       0     0   5     FB4_12        (b)     
-(unused)              0       0     0   5     FB4_13        (b)     
-(unused)              0       0     0   5     FB4_14  29    I/O     
-(unused)              0       0     0   5     FB4_15  33    I/O     
-(unused)              0       0     0   5     FB4_16        (b)     
-s_step                1       0     0   4     FB4_17  34    I/O     I
-s_switched            2       0     0   3     FB4_18        (b)     (b)
+reset_chip/s_counter<9>
+                      2       0     0   3     FB4_13        (b)     (b)
+reset_chip/s_counter<8>
+                      2       0     0   3     FB4_14  29    I/O     (b)
+reset_chip/s_counter<7>
+                      2       0     0   3     FB4_15  33    I/O     (b)
+reset_chip/s_counter<6>
+                      2       0     0   3     FB4_16        (b)     (b)
+reset_chip/s_counter<11>
+                      2       0     0   3     FB4_17  34    I/O     (b)
+reset_chip/s_counter<10>
+                      2       0     0   3     FB4_18        (b)     (b)
 
 Signals Used by Logic in Function Block
-  1: i_duart_dtack      2: s_step             3: s_switched 
+  1: reset_chip/s_counter<0>    6: reset_chip/s_counter<3>  10: reset_chip/s_counter<7> 
+  2: reset_chip/s_counter<10>   7: reset_chip/s_counter<4>  11: reset_chip/s_counter<8> 
+  3: reset_chip/s_counter<11>   8: reset_chip/s_counter<5>  12: reset_chip/s_counter<9> 
+  4: reset_chip/s_counter<1>    9: reset_chip/s_counter<6>  13: reset_chip/s_rst_l 
+  5: reset_chip/s_counter<2>  
 
 Signal                        1         2         3         4 FB
 Name                0----+----0----+----0----+----0----+----0 Inputs
-s_step               X.X..................................... 2
-s_switched           XXX..................................... 3
+reset_chip/s_counter<9> 
+                     X..XXXXXXXXXX........................... 11
+reset_chip/s_counter<8> 
+                     X..XXXXXXXX.X........................... 10
+reset_chip/s_counter<7> 
+                     X..XXXXXXX..X........................... 9
+reset_chip/s_counter<6> 
+                     X..XXXXXX...X........................... 8
+reset_chip/s_counter<11> 
+                     XXXXXXXXXXXXX........................... 13
+reset_chip/s_counter<10> 
+                     XX.XXXXXXXXXX........................... 12
                     0----+----1----+----2----+----3----+----4
                               0         0         0         0
 *******************************  Equations  ********************************
 
 ********** Mapped Logic **********
 
-
-io_hlt_I <= '0';
-io_hlt <= io_hlt_I when io_hlt_OE = '1' else 'Z';
-io_hlt_OE <= NOT i_rst;
-
-
-o_berr <= '1';
+FDCPE_o_berr: FDCPE port map (o_berr,o_berr_D,NOT i_clk,'0','0');
+o_berr_D <= ((i_as)
+	OR (o_berr AND NOT i_addr(1) AND i_addr(0))
+	OR (o_berr AND NOT i_addr(1) AND i_rw)
+	OR (o_berr AND i_uds AND i_addr(1) AND NOT i_addr(0)));
 
 
-o_cs_duart <= i_addr(7);
+o_cs_duart <= NOT ((NOT i_as AND i_uds AND i_addr(1) AND NOT i_addr(0) AND NOT i_lds));
 
 
-o_cs_ramh <= NOT ((NOT i_uds AND NOT i_addr(1) AND i_addr(0)));
+o_cs_ramh <= NOT ((NOT i_as AND NOT i_uds AND NOT i_addr(1) AND i_addr(0)));
 
 
-o_cs_raml <= NOT ((NOT i_addr(1) AND i_addr(0) AND NOT i_lds));
+o_cs_raml <= NOT ((NOT i_as AND NOT i_addr(1) AND i_addr(0) AND NOT i_lds));
 
 
-o_cs_romh <= NOT ((NOT i_uds AND NOT i_addr(1) AND NOT i_addr(0)));
+o_cs_romh <= NOT ((NOT i_as AND NOT i_uds AND NOT i_addr(1) AND NOT i_addr(0) AND i_rw));
 
 
-o_cs_roml <= NOT ((NOT i_addr(1) AND NOT i_addr(0) AND NOT i_lds));
+o_cs_roml <= NOT ((NOT i_as AND NOT i_addr(1) AND NOT i_addr(0) AND NOT i_lds AND i_rw));
 
-FDCPE_o_dtack: FDCPE port map (o_dtack,s_step,i_clk,'0','0');
+
+o_dtack <= ((NOT o_berr AND s_dtack)
+	OR (s_dtack AND NOT i_addr(1))
+	OR (s_dtack AND i_addr(0))
+	OR (s_dtack AND i_lds)
+	OR (o_berr AND i_addr(1) AND NOT i_addr(0) AND NOT i_lds AND 
+	i_duart_dtack));
 
 
 o_duart_iack <= '1';
 
 
 o_duart_rw <= i_rw;
+
+
+o_hlt_I <= '0';
+o_hlt <= o_hlt_I when o_hlt_OE = '1' else 'Z';
+o_hlt_OE <= NOT reset_chip/Mtrien_s_hlt;
 
 
 o_ipl(0) <= '1';
@@ -325,12 +397,91 @@ o_oe <= '0';
 
 o_we <= i_rw;
 
-FDCPE_s_step: FDCPE port map (s_step,s_step_D,i_clk,'0','0');
-s_step_D <= (NOT i_duart_dtack AND s_switched);
+FDCPE_reset_chip/Mtrien_s_hlt: FDCPE port map (reset_chip/Mtrien_s_hlt,reset_chip/Mtrien_s_hlt_D,NOT i_clk,'0','0');
+reset_chip/Mtrien_s_hlt_D <= ((i_rst AND reset_chip/Mtrien_s_hlt)
+	OR (i_rst AND reset_chip/s_counter(11)));
 
-FDCPE_s_switched: FDCPE port map (s_switched,s_switched_D,i_clk,'0','0');
-s_switched_D <= ((i_duart_dtack)
-	OR (NOT s_step AND s_switched));
+FDCPE_reset_chip/s_counter0: FDCPE port map (reset_chip/s_counter(0),reset_chip/s_counter_D(0),i_clk,'0','0');
+reset_chip/s_counter_D(0) <= (NOT reset_chip/s_rst_l AND NOT reset_chip/s_counter(0));
+
+FDCPE_reset_chip/s_counter1: FDCPE port map (reset_chip/s_counter(1),reset_chip/s_counter_D(1),i_clk,'0','0');
+reset_chip/s_counter_D(1) <= ((NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	NOT reset_chip/s_counter(1))
+	OR (NOT reset_chip/s_rst_l AND NOT reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1)));
+
+FTCPE_reset_chip/s_counter2: FTCPE port map (reset_chip/s_counter(2),reset_chip/s_counter_T(2),i_clk,'0','0');
+reset_chip/s_counter_T(2) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(2))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1)));
+
+FTCPE_reset_chip/s_counter3: FTCPE port map (reset_chip/s_counter(3),reset_chip/s_counter_T(3),i_clk,'0','0');
+reset_chip/s_counter_T(3) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(3))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2)));
+
+FTCPE_reset_chip/s_counter4: FTCPE port map (reset_chip/s_counter(4),reset_chip/s_counter_T(4),i_clk,'0','0');
+reset_chip/s_counter_T(4) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(4))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3)));
+
+FTCPE_reset_chip/s_counter5: FTCPE port map (reset_chip/s_counter(5),reset_chip/s_counter_T(5),i_clk,'0','0');
+reset_chip/s_counter_T(5) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(5))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+	reset_chip/s_counter(4)));
+
+FTCPE_reset_chip/s_counter6: FTCPE port map (reset_chip/s_counter(6),reset_chip/s_counter_T(6),i_clk,'0','0');
+reset_chip/s_counter_T(6) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(6))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+	reset_chip/s_counter(4) AND reset_chip/s_counter(5)));
+
+FTCPE_reset_chip/s_counter7: FTCPE port map (reset_chip/s_counter(7),reset_chip/s_counter_T(7),i_clk,'0','0');
+reset_chip/s_counter_T(7) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(7))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6)));
+
+FTCPE_reset_chip/s_counter8: FTCPE port map (reset_chip/s_counter(8),reset_chip/s_counter_T(8),i_clk,'0','0');
+reset_chip/s_counter_T(8) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(8))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6) AND 
+	reset_chip/s_counter(7)));
+
+FTCPE_reset_chip/s_counter9: FTCPE port map (reset_chip/s_counter(9),reset_chip/s_counter_T(9),i_clk,'0','0');
+reset_chip/s_counter_T(9) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(9))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6) AND 
+	reset_chip/s_counter(7) AND reset_chip/s_counter(8)));
+
+FTCPE_reset_chip/s_counter10: FTCPE port map (reset_chip/s_counter(10),reset_chip/s_counter_T(10),i_clk,'0','0');
+reset_chip/s_counter_T(10) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(10))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND reset_chip/s_counter(3) AND 
+	reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND reset_chip/s_counter(6) AND 
+	reset_chip/s_counter(7) AND reset_chip/s_counter(8) AND reset_chip/s_counter(9)));
+
+FTCPE_reset_chip/s_counter11: FTCPE port map (reset_chip/s_counter(11),reset_chip/s_counter_T(11),i_clk,'0','0');
+reset_chip/s_counter_T(11) <= ((reset_chip/s_rst_l AND reset_chip/s_counter(11))
+	OR (NOT reset_chip/s_rst_l AND reset_chip/s_counter(0) AND 
+	reset_chip/s_counter(10) AND reset_chip/s_counter(1) AND reset_chip/s_counter(2) AND 
+	reset_chip/s_counter(3) AND reset_chip/s_counter(4) AND reset_chip/s_counter(5) AND 
+	reset_chip/s_counter(6) AND reset_chip/s_counter(7) AND reset_chip/s_counter(8) AND 
+	reset_chip/s_counter(9)));
+
+FDCPE_reset_chip/s_rst_l: FDCPE port map (reset_chip/s_rst_l,reset_chip/s_rst_l_D,NOT i_clk,'0','0');
+reset_chip/s_rst_l_D <= ((i_rst AND reset_chip/s_rst_l)
+	OR (i_rst AND reset_chip/s_counter(11)));
+
+FDCPE_s_dtack: FDCPE port map (s_dtack,s_dtack_D,NOT i_clk,'0','0');
+s_dtack_D <= ((i_as)
+	OR (o_berr AND s_dtack AND NOT i_uds AND i_addr(1))
+	OR (o_berr AND s_dtack AND i_addr(1) AND i_addr(0))
+	OR (o_berr AND s_dtack AND NOT i_addr(1) AND NOT i_addr(0) AND 
+	NOT i_rw));
 
 Register Legend:
  FDCPE (Q,D,C,CLR,PRE,CE); 
@@ -366,13 +517,13 @@ No. Name                           No. Name
   3 o_duart_rw                       25 i_rw                          
   4 KPR                              26 i_lds                         
   5 i_clk                            27 i_uds                         
-  6 o_oe                             28 KPR                           
+  6 o_oe                             28 i_as                          
   7 o_we                             29 KPR                           
   8 o_cs_ramh                        30 TDO                           
   9 o_cs_raml                        31 GND                           
  10 GND                              32 VCC                           
  11 KPR                              33 KPR                           
- 12 o_ipl<0>                         34 i_addr<7>                     
+ 12 o_ipl<0>                         34 KPR                           
  13 KPR                              35 KPR                           
  14 o_ipl<1>                         36 KPR                           
  15 TDI                              37 i_addr<1>                     
@@ -382,7 +533,7 @@ No. Name                           No. Name
  19 KPR                              41 VCC                           
  20 o_ipl<2>                         42 o_duart_iack                  
  21 VCC                              43 o_cs_romh                     
- 22 io_hlt                           44 i_rst                         
+ 22 o_hlt                            44 i_rst                         
 
 
 Legend :  NC  = Not Connected, unbonded pin

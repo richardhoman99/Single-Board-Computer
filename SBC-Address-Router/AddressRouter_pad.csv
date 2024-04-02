@@ -1,7 +1,7 @@
 Release 8.1i - Fit P.20131013
 Copyright(c) 1995-2003 Xilinx Inc. All rights reserved
 
- 3-25-2024  5:14PM
+ 4- 1-2024  2:27AM
 
 NOTE: This file is designed to be imported into a spreadsheet program
 such as Microsoft Excel for viewing, printing and sorting. The comma ','
@@ -39,19 +39,19 @@ P18,o_berr,O,I/O,OUTPUT,,,,,,,,,
 P19,TIE,,I/O,,,,,,,,,,
 P20,o_ipl<2>,O,I/O,OUTPUT,,,,,,,,,
 P21,VCC,,VCCINT,,,,,,,,,,
-P22,io_hlt,O,I/O,OUTPUT,,,,,,,,,
+P22,o_hlt,O,I/O,OUTPUT,,,,,,,,,
 P23,GND,,GND,,,,,,,,,,
 P24,o_dtack,O,I/O,OUTPUT,,,,,,,,,
 P25,i_rw,I,I/O,INPUT,,,,,,,,,
 P26,i_lds,I,I/O,INPUT,,,,,,,,,
 P27,i_uds,I,I/O,INPUT,,,,,,,,,
-P28,TIE,,I/O,,,,,,,,,,
+P28,i_as,I,I/O,INPUT,,,,,,,,,
 P29,TIE,,I/O,,,,,,,,,,
 P30,TDO,,TDO,,,,,,,,,,
 P31,GND,,GND,,,,,,,,,,
 P32,VCC,,VCCIO,,,,,,,,,,
 P33,TIE,,I/O,,,,,,,,,,
-P34,i_addr<7>,I,I/O,INPUT,,,,,,,,,
+P34,TIE,,I/O,,,,,,,,,,
 P35,TIE,,I/O,,,,,,,,,,
 P36,TIE,,I/O,,,,,,,,,,
 P37,i_addr<1>,I,I/O,INPUT,,,,,,,,,

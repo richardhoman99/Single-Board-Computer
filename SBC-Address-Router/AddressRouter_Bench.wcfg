@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/ise/Single-Board-Computer/SBC-Address-Router/AddressRounter_Bench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="addressrounter_bench" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/addressrounter_bench/i_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_clk</obj_property>
+      <obj_property name="ObjectShortName">i_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/i_rw" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_rw</obj_property>
+      <obj_property name="ObjectShortName">i_rw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/i_lds" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_lds</obj_property>
+      <obj_property name="ObjectShortName">i_lds</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/i_uds" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_uds</obj_property>
+      <obj_property name="ObjectShortName">i_uds</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/i_as" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_as</obj_property>
+      <obj_property name="ObjectShortName">i_as</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/i_addr[1]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">i_addr[1]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/i_addr[0]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">i_addr[0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_cs_roml" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_cs_roml</obj_property>
+      <obj_property name="ObjectShortName">o_cs_roml</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_cs_romh" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_cs_romh</obj_property>
+      <obj_property name="ObjectShortName">o_cs_romh</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_cs_raml" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_cs_raml</obj_property>
+      <obj_property name="ObjectShortName">o_cs_raml</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_cs_ramh" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_cs_ramh</obj_property>
+      <obj_property name="ObjectShortName">o_cs_ramh</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_cs_duart" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_cs_duart</obj_property>
+      <obj_property name="ObjectShortName">o_cs_duart</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_berr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_berr</obj_property>
+      <obj_property name="ObjectShortName">o_berr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/addressrounter_bench/o_dtack" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_dtack</obj_property>
+      <obj_property name="ObjectShortName">o_dtack</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/ise/Single-Board-Computer/SBC-Address-Router/Reset_Bench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="reset_bench" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="5" />
+   <wvobject fp_name="/reset_bench/i_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_clk</obj_property>
+      <obj_property name="ObjectShortName">i_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/reset_bench/i_rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">i_rst</obj_property>
+      <obj_property name="ObjectShortName">i_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/reset_bench/o_hlt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">o_hlt</obj_property>
+      <obj_property name="ObjectShortName">o_hlt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/reset_bench/uut/s_counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">s_counter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_counter[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/reset_bench/uut/s_rst_l" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">s_rst_l</obj_property>
+      <obj_property name="ObjectShortName">s_rst_l</obj_property>
+   </wvobject>
+</wave_config>
