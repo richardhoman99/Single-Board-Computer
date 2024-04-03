@@ -26,7 +26,7 @@ const char a5_str[] = "a5";
 const char fp_str[] = "fp";
 const char sp_str[] = "sp";
 
-const char *reg_str[] =
+const char * const reg_str[] =
 {
 	d0_str,	a0_str,
 	d1_str,	a1_str,

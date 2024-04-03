@@ -99,6 +99,13 @@ command_func gcommand(const char *commname)
 
 	index = index % 16;
 
+	// char debug_buf[5];
+	// btoah(index, debug_buf);
+	// debug_buf[2] = '\r';
+	// debug_buf[3] = '\n';
+	// debug_buf[4] = '\0';
+	// serial_puts(debug_buf, 5);
+
 	command = command_vec[index];
 
 	return command;

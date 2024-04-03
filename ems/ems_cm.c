@@ -16,13 +16,13 @@ int ems_cm(const char **argv, int argc)
 	ubyte b, val;
 	register int i, r;
 
-	if (argv[1][4] != '\0' || // address not len 4
+	if (argv[1][6] != '\0' || // address not len 6
 		argv[2][2] != '\0')   // value not len 2
 		return EMS_BAD_ARG;
 
 	addr = 0;
 	val = 0;
-	for (i = 0; i < 4; i+=2)
+	for (i = 0; i < 6; i+=2)
 	{
 		r = ahtob(&(argv[1][i]), &b);
 		if (r != 0)

@@ -8,34 +8,78 @@
 #include "serial.h"
 
 #ifndef SIM
+#include "def_68681.h"
 
-void serial_puts(const char *in, ubyte len)
+#define MR1A_VAL (ubyte)0x13
+#define MR2A_VAL (ubyte)0x07
+// #define MR2A_VAL (ubyte)0x47 // enable automatic echo
+#define CSRA_VAL (ubyte)0xbb
+
+#define CRA_VAL0 (ubyte)0x30 // reset transmitter
+#define CRA_VAL1 (ubyte)0x20 // reset reciever
+#define CRA_VAL2 (ubyte)0x01 // enable reciever
+#define CRA_VAL3 (ubyte)0x05 // enable transmitter and reciever
+
+#define ACR_VAL  (ubyte)0x00 // clock set select 1
+
+inline
+void serial_init()
 {
-	// TODO
+	*CRA_PTR = CRA_VAL0;
+	*CRA_PTR = CRA_VAL1;
+	*CRA_PTR = CRA_VAL2;
+	*ACR_PTR = ACR_VAL;
+	*CSRA_PTR = CSRA_VAL;
+	*MR1A_PTR = MR1A_VAL;
+	*MR2A_PTR = MR2A_VAL;
+	*CRA_PTR = CRA_VAL3;
 	return;
 }
 
+void serial_puts(const char *in, int len)
+{
+	register int i;
+	char c;
+
+	for (i = 0; i < len; i++)
+	{
+		c = in[i];
+		if (c == '\0') break;
+
+		serial_putc(c);
+	}
+
+	return;
+}
+
+inline
 void serial_putc(char c)
 {
-	// TODO
+	while ((*SRA_PTR & 0x4) == 0) ;
+	*TBA_PTR = (ubyte)c;
 	return;
 }
 
+inline
 byte serial_isc()
 {
-	// TODO
-	return 0;
+	return (*SRA_PTR & 0x1);
 }
 
+inline
 char serial_getc()
 {
-	// TODO
-	return '\0';
+	return *(char *)RBA_PTR;
 }
 
 #else
+void serial_init()
+{
+	return;
+}
+
 // trap 15, d0=1, a1=string, d1=string len
-void serial_puts(const char *in, ubyte len)
+void serial_puts(const char *in, int len)
 {
 	__asm__ __volatile__ ("move.l	%/a1,-(%/sp)\n" // save registers
 						  "move.l	%/d1,-(%/sp)\n"

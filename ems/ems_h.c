@@ -17,7 +17,7 @@ const char help_str4[] = "l              : load srecord executable";
 const char help_str5[] = "r              : run srecord executable";
 const char help_str6[] = "h              : display this message";
 
-const char *help_str[] =
+const char * const help_str[] =
 {
 	help_str0,
 	help_str1,
@@ -28,7 +28,7 @@ const char *help_str[] =
 	help_str6
 };
 
-const ubyte help_str_len[] =
+const int help_str_len[] =
 {
 	ARR_LEN(help_str0),
 	ARR_LEN(help_str1),
@@ -42,10 +42,10 @@ const ubyte help_str_len[] =
 // no arguments
 int ems_h(const char **argv, int argc)
 {
-	int i;
+	register int i;
 	for (i = 0; i < ARR_LEN(help_str); i++)
 	{
-		serial_puts(help_str[i], help_str_len[i]);
+		serial_puts((const char *)help_str[i], (ubyte)help_str_len[i]);
 		serial_puts(nl_str, NL_STR_LEN);
 	}
 

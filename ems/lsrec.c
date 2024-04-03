@@ -56,25 +56,25 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 		return r;
 	}
 
-	switch (type) // don't support S2, S3, S4, S6, S7, S8
+	switch (type) // don't support S1, S3, S4, S5, S7, S9
 	{
-	case 2: err = LSREC_ERR_UNSUPPORTED_TYPE_S2;
-		err = LSREC_ERR_UNSUPPORTED_TYPE_S2;
+	case 1:
+		err = LSREC_ERR_UNSUPPORTED_TYPE_S1;
 		break;
-	case 3: err = LSREC_ERR_UNSUPPORTED_TYPE_S3;
+	case 3:
 		err = LSREC_ERR_UNSUPPORTED_TYPE_S3;
 		break;
-	case 4: err = LSREC_ERR_UNSUPPORTED_TYPE_S4;
+	case 4:
 		err = LSREC_ERR_UNSUPPORTED_TYPE_S4;
 		break;
-	case 6: err = LSREC_ERR_UNSUPPORTED_TYPE_S6;
-		err = LSREC_ERR_UNSUPPORTED_TYPE_S6;
+	case 5:
+		err = LSREC_ERR_UNSUPPORTED_TYPE_S5;
 		break;
-	case 7: err = LSREC_ERR_UNSUPPORTED_TYPE_S7;
+	case 7:
 		err = LSREC_ERR_UNSUPPORTED_TYPE_S7;
 		break;
-	case 8: err = LSREC_ERR_UNSUPPORTED_TYPE_S8;
-		err = LSREC_ERR_UNSUPPORTED_TYPE_S8;
+	case 9:
+		err = LSREC_ERR_UNSUPPORTED_TYPE_S9;
 		break;
 	default:
 		break;
@@ -104,10 +104,10 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 		return r;
 	}
 
-	if (type == 5) // verify that we got the number of S1 records specified
-				   // in S5
+	if (type == 6) // verify that we got the number of S2 records specified
+				   // in S6
 	{
-		if (count != 3) // S5 record count should only be 3
+		if (count != 3) // S6 record count should only be 4
 		{
 			err = LSREC_ERR_INVALID_FORMAT;
 			return err;
@@ -124,7 +124,7 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 	}
 	if (type == 9) // entry is specified
 	{
-		if (count != 3) // S9 record count should only be 3
+		if (count != 4) // S8 record count should only be 4
 		{
 			err = LSREC_ERR_INVALID_FORMAT;
 			return err;
@@ -163,8 +163,9 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 
 	// initialize calculated checksum
 	calc_chksum = count +
-				  (addr >> 8 & 0xff) + // add addr high
-				  (addr & 0xff); // add addr low
+				  ((addr >> 16) & 0xff) + // add addr high
+				  ((addr >>  8) & 0xff) + // add addr semi
+				  ((addr >>  0) & 0xff); // add addr low
 	for (i = 0; i < count-2-1; i++)
 	{
 		ubyte *baddr;
@@ -226,7 +227,7 @@ int srec_gaddr(const char *recstr, uword *ret)
 	register int i, r;
 
 	addr = 0;
-	for (i = 4; i < 7; i+=2)
+	for (i = 4; i < 9; i+=2)
 	{
 		r = ahtob(&(recstr[i]), &b);
 		if (r != 0)

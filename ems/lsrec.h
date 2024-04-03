@@ -10,17 +10,17 @@
 #ifndef LSREC_H
 #define LSREC_H
 
-#define LSREC_MIN_ADDR	0x8000
-#define LSREC_MAX_ADDR	0xffff
+#define LSREC_MIN_ADDR	0x10000 // start of ram
+#define LSREC_MAX_ADDR	0x20000 // start of duart
 
 #define LSREC_SUCCESS 0
 #define LSREC_ERR_NOT_SREC_FORMAT -1 // below minimum length, or doesn't start with 'S'
-#define LSREC_ERR_UNSUPPORTED_TYPE_S2 -2
+#define LSREC_ERR_UNSUPPORTED_TYPE_S1 -2
 #define LSREC_ERR_UNSUPPORTED_TYPE_S3 -3
 #define LSREC_ERR_UNSUPPORTED_TYPE_S4 -4
-#define LSREC_ERR_UNSUPPORTED_TYPE_S6 -5
+#define LSREC_ERR_UNSUPPORTED_TYPE_S5 -5
 #define LSREC_ERR_UNSUPPORTED_TYPE_S7 -6
-#define LSREC_ERR_UNSUPPORTED_TYPE_S8 -7
+#define LSREC_ERR_UNSUPPORTED_TYPE_S9 -7
 #define LSREC_ERR_ADDRESS_OUT_OF_BOUNDS -8 // valid address from 0x8000-0xffff
 #define LSREC_ERR_LENGTH_NONEQUAL -9 // given srec len does not equal actual len
 #define LSREC_ERR_LENGTH_EXTENDS_OUT_OF_BOUNDS -10

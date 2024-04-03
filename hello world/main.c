@@ -5,11 +5,11 @@
  * Entry point for Hello, world! program
  */
 
-#include "serial-sim.h"
+#include "serial.h"
 
 #define ARR_LEN(v) sizeof(v)/sizeof(v[0])
 
-const char hello_str[] = "VADIUM BLAYT";
+const char hello_str[] = "Hello, World!";
 const char nl_str[] = "\r\n";
 
 int main(void)

@@ -34,7 +34,7 @@
 __interrupt_vector:
 	.long __stack					/* 0 */
 	.long __reset					/* 1 */
-*	.long __access_error			/* 2 */
+	.long __access_error			/* 2 */
 *	.long __address_error			/* 3 */
 *	.long __illegal_instruction		/* 4 */
 *	.long __divide_by_zero			/* 5 */
