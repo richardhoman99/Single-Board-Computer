@@ -12,8 +12,8 @@
 // argv[1] = address, argv[2] = value
 int ems_cm(const char **argv, int argc)
 {
-	word addr;
-	ubyte b, val;
+	ulword addr;
+	byte b, val;
 	register int i, r;
 
 	if (argv[1][6] != '\0' || // address not len 6
@@ -35,7 +35,7 @@ int ems_cm(const char **argv, int argc)
 		return r;
 	val = b;
 
-	*(byte *)((lword)addr & 0xffff) = val;
+	*(byte *)addr = val;
 
 	return 0;
 }

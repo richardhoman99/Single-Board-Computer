@@ -26,7 +26,7 @@ ENTRY(main)
  */
 SECTIONS
 {
-	.text 0x8000 : /* start of ram on real system */
+	.text 0x10100 : /* start of ram on real system */
 	{
 		*(.text);
 	}

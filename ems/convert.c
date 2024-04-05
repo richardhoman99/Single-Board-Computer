@@ -9,13 +9,13 @@
 #include "err.h"
 
 // char to half, -1 for error
-int ctoh(char i, ubyte *ret);
+int ctoh(char i, byte *ret);
 // half to char, -1 for error (never)
-char htoc(ubyte i);
+char htoc(byte i);
 
-int ahtob(const char *in, ubyte *ret)
+int ahtob(const char *in, byte *ret)
 {
-	ubyte a, b;
+	byte a, b;
 	int i, r;
 
 	a = 0;
@@ -41,7 +41,7 @@ int btoah(byte in, char *ret)
 	return 0;
 }
 
-inline int ctoh(char i, ubyte *ret)
+inline int ctoh(char i, byte *ret)
 {
 	if (i >= '0' && i <= '9' ) // digit
 	{
@@ -62,7 +62,7 @@ inline int ctoh(char i, ubyte *ret)
 	return EMS_NOT_HEX;
 }
 
-inline char htoc(ubyte i)
+inline char htoc(byte i)
 {
 	if (i < 0xa)
 		return i + '0';

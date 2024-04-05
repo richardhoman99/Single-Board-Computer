@@ -14,7 +14,7 @@
 int ems_cr(const char **argv, int argc)
 {
 	register int i, r;
-	ubyte b;
+	byte b;
 	lword val;
 
 	if (argv[1][2] != '\0' || // arg 1 isn't len 2
@@ -27,7 +27,7 @@ int ems_cr(const char **argv, int argc)
 		r = ahtob(&(argv[2][i]), &b);
 		if (r != 0)
 			return r;
-		val = (val << 8) | b;
+		val = (val << 8) | (ubyte)b;
 	}
 
 	if (argv[1][0] == 'd')

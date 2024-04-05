@@ -6,6 +6,7 @@
  */
 
 #include "lsrec.h"
+#include "serial.h"
 #include "convert.h"
 
 static uword drec_count;
@@ -16,8 +17,8 @@ static lword err;
 
 int srec_gtype(const char *, ubyte *); // get type
 int srec_gcount(const char *, ubyte *); // get count
-int srec_gaddr(const char *, uword *); // get address
-int srec_gdatab(const char *, ubyte, ubyte *); // gets one byte from data section
+int srec_gaddr(const char *, ulword *); // get address
+int srec_gdatab(const char *, ubyte, byte *); // gets one byte from data section
 
 void lsrec_init()
 {
@@ -31,13 +32,16 @@ void lsrec_init()
 int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 {
 	register int i, r;
-	ubyte type, count, calc_chksum, chksum;
-	uword addr;
+	ubyte type, count;
+	byte calc_chksum, chksum;
+	ulword addr;
 	
 	err = 0;
-	len -= 1;
 	if (len < 10) // absolute minimum length is 10
-		return LSREC_ERR_NOT_SREC_FORMAT;
+	{
+		err = LSREC_ERR_NOT_SREC_FORMAT;
+		return err;
+	}
 
 	if (has_entry)  // entry should be the last value given, if we get any more
 					// records, give an error
@@ -45,8 +49,6 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 		err = LSREC_ERR_DATA_GIVEN_AFTER_ENTRY;
 		return err;
 	}
-
-	*entry_func = 0x0;
 
 	// get type value
 	r = srec_gtype(recstr, &type);
@@ -58,6 +60,9 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 
 	switch (type) // don't support S1, S3, S4, S5, S7, S9
 	{
+	case 0:
+		err = LSREC_SUCCESS;
+		return LSREC_SUCCESS;
 	case 1:
 		err = LSREC_ERR_UNSUPPORTED_TYPE_S1;
 		break;
@@ -122,7 +127,7 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 		drec_count = 0;
 		return LSREC_SUCCESS;
 	}
-	if (type == 9) // entry is specified
+	if (type == 8) // entry is specified
 	{
 		if (count != 4) // S8 record count should only be 4
 		{
@@ -137,7 +142,7 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 		}
 
 		// cast to ulword then to func pointer
-		*entry_func = (int (*)(void))(ulword)addr;
+		*entry_func = (int (*)(void))addr;
 		return LSREC_SUCCESS;
 	}
 
@@ -168,8 +173,8 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 				  ((addr >>  0) & 0xff); // add addr low
 	for (i = 0; i < count-2-1; i++)
 	{
-		ubyte *baddr;
-		ubyte b;
+		byte *baddr;
+		byte b;
 
 		r = srec_gdatab(recstr, i, &b);
 		if (r != 0)
@@ -179,12 +184,12 @@ int lsrec_in(const char *recstr, ubyte len, int (**entry_func)(void))
 		}
 		calc_chksum += b;
 
-		baddr = (ubyte *)((ulword)addr + (ulword)i);
+		baddr = (byte *)(addr + (ulword)i);
 		*baddr = b;
 	}
 
 	calc_chksum = 0xff - (calc_chksum & 0xff); // do final calculation
-	r = srec_gdatab(recstr, count-3, &chksum);
+	r = srec_gdatab(recstr, count-4, &chksum);
 	if (r != 0)
 	{
 		err = r;
@@ -209,40 +214,40 @@ int srec_gtype(const char *recstr, ubyte *ret)
 
 int srec_gcount(const char *recstr, ubyte *ret)
 {
-	ubyte b;
+	byte b;
 	int r;
 
 	r = ahtob(&(recstr[2]), &b);
 	if (r != 0)
 		return r;
 
-	*ret = b;
+	*ret = (ubyte)b;
 	return 0;
 }
 
-int srec_gaddr(const char *recstr, uword *ret)
+int srec_gaddr(const char *recstr, ulword *ret)
 {
-	ubyte b;
-	uword addr;
+	byte b;
+	ulword addr;
 	register int i, r;
 
 	addr = 0;
-	for (i = 4; i < 9; i+=2)
+	for (i = 4; i < 10; i+=2)
 	{
 		r = ahtob(&(recstr[i]), &b);
 		if (r != 0)
 			return r;
-		addr = (addr << 8) | b;
+		addr = (addr << 8) | (ubyte)b;
 	}
 
 	*ret = addr;
 	return 0;
 }
 
-int srec_gdatab(const char *recstr, ubyte byte_num, ubyte *ret)
+int srec_gdatab(const char *recstr, ubyte byte_num, byte *ret)
 {
-	const ubyte b_idx = 2+2+4+(byte_num*2);
-	ubyte b;
+	const ubyte b_idx = 2+2+6+(byte_num*2);
+	byte b;
 	register int r;
 
 	r = ahtob(&(recstr[b_idx]), &b);

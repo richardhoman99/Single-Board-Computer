@@ -7,6 +7,7 @@
 
 #include "types.h"
 #include "convert.h"
+#include "strings.h"
 #include "serial.h"
 
 const char d0_str[] = "d0";
@@ -44,7 +45,7 @@ const char * const reg_str[] =
 int ems_dr(const char **argv, int argc)
 {
 	lword v[16];
-	char out[28];
+	char out[26];
 	register int i, j;
 
 	GET_REG(d0, v[ 0]);	GET_REG(a0, v[ 1]);
@@ -61,9 +62,7 @@ int ems_dr(const char **argv, int argc)
 	out[12] = ' ';
 	out[15] = ':';
 	out[16] = ' ';
-	out[25] = '\r';
-	out[26] = '\n';
-	out[27] = '\0';
+	out[25] = '\0';
 	for (i = 0; i < 16; )
 	{
 		// set reg names to out string
@@ -86,6 +85,7 @@ int ems_dr(const char **argv, int argc)
 		i++;
 
 		serial_puts(out, ARR_LEN(out));
+		serial_puts(nl_str, NL_STR_LEN);
 	}
 
 	return 0;

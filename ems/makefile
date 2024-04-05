@@ -1,14 +1,14 @@
 PROG_NAME=ems
 
-PROG_CSRCS = main.c serial.c convert.c lsrec.c ems_cr.c ems_cm.c ems_dr.c \
-			 ems_dm.c ems_l.c ems_r.c ems_h.c command.c isr.c
+PROG_CSRCS = isr.c strings.c prompt.c convert.c serial.c command.c main.c \
+			 lsrec.c ems_cr.c ems_cm.c ems_dr.c ems_dm.c ems_l.c ems_r.c ems_h.c 
 PROG_SSRCS= isv.s
 PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))
 PROG_LDSRPT= ems.ld
 
-SIM_CSRCS = main.c serial.c convert.c lsrec.c ems_cr.c ems_cm.c ems_dr.c \
-			ems_dm.c ems_l.c ems_r.c ems_h.c command.c
+SIM_CSRCS = strings.c prompt.c convert.c serial.c command.c main.c \
+			lsrec.c ems_cr.c ems_cm.c ems_dr.c ems_dm.c ems_l.c ems_r.c ems_h.c
 SIM_SSRCS= 
 SIM_COBJS= $(patsubst %.c,%.sim.o,$(SIM_CSRCS))
 SIM_SOBJS= $(patsubst %.s,%.sim.o,$(SIM_SSRCS))
@@ -28,6 +28,7 @@ all: $(PROG_COBJS) $(PROG_SOBJS)
 	$(LD) $(LDFLAGS) -T ${PROG_LDSRPT} $(PROG_COBJS) $(PROG_SOBJS) -o $(PROG_NAME).out
 	$(OBJCOPY) $(OBJCOPYFLAGS) $(PROG_NAME).out $(PROG_NAME).srec
 
+sim: CCFLAGS += -DSIM
 sim: $(SIM_COBJS) $(SIM_SOBJS)
 	$(LD) $(LDFLAGS) -T ${SIM_LDSRPT} $(SIM_COBJS) $(SIM_SOBJS) -o $(PROG_NAME).sim.out
 	$(OBJCOPY) $(OBJCOPYFLAGS) $(PROG_NAME).sim.out $(PROG_NAME).sim.S68

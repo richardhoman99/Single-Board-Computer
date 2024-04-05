@@ -10,7 +10,8 @@ ENTRY(main)
 MEMORY
 {
 	rom	(rx)	:	ORIGIN = 0x00000, LENGTH = 0x10000
-	ram	(rwx)	:	ORIGIN = 0x10000, LENGTH = 0x10000
+	na_ram	(r)	:	ORIGIN = 0x10000, LENGTH =   0x100
+	ram (rwx)   :	ORIGIN = 0x10100, LENGTH = 0x10000 - 0x100
 }
 
 /* reset vector points to main */

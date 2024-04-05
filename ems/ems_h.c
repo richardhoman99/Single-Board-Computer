@@ -9,13 +9,13 @@
 #include "strings.h"
 #include "serial.h"
 
-const char help_str0[] = "cr [reg] [val] : change register";
-const char help_str1[] = "cm [loc] [val] : change memory";
-const char help_str2[] = "dr             : dump registers";
-const char help_str3[] = "dm [loc] [len] : dump memory";
-const char help_str4[] = "l              : load srecord executable";
-const char help_str5[] = "r              : run srecord executable";
-const char help_str6[] = "h              : display this message";
+const char help_str0[] = "cr reg val : change register";
+const char help_str1[] = "cm loc val : change memory";
+const char help_str2[] = "dr         : dump registers";
+const char help_str3[] = "dm loc len : dump memory";
+const char help_str4[] = "l          : load srecord executable";
+const char help_str5[] = "r          : run srecord executable";
+const char help_str6[] = "h          : display this message";
 
 const char * const help_str[] =
 {

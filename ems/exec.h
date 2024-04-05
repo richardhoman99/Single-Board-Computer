@@ -8,6 +8,8 @@
 #ifndef EXEC_H
 #define EXEC_H
 
+#include "types.h"
+
 extern byte has_exec;
 extern int (*exec_entry_ptr)(void);
 

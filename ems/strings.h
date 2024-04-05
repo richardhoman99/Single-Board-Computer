@@ -8,13 +8,20 @@
 #ifndef STRINGS_H
 #define STRINGS_H
 
-extern const char del_str[];// = " \b\b \b";
-#define DEL_STR_LEN sizeof(" \b\b \b")/sizeof(char)
-extern const char cur_str[];// = "_\b";
-#define CUR_STR_LEN sizeof("_\b")/sizeof(char)
-extern const char nl_str [];// = "\r\n";
-#define NL_STR_LEN  sizeof("\r\n")/sizeof(char)
-extern const char err_str[];// = "error ";
-#define ERR_STR_LEN sizeof("error ")/sizeof(char)
+#define ARR_LEN(a) sizeof(a)/sizeof(a[0])
+
+extern const char nl_str [];
+extern const int  NL_STR_LEN;
+
+extern const char err_str[];
+extern const int  ERR_STR_LEN;
+
+#ifdef SIM
+extern const char cur_str[];
+extern const int  CUR_STR_LEN;
+
+extern const char del_str[];
+extern const int  DEL_STR_LEN;
+#endif
 
 #endif

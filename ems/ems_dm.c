@@ -7,8 +7,8 @@
 
 #include "err.h"
 #include "types.h"
-#include "strings.h"
 #include "convert.h"
+#include "strings.h"
 #include "serial.h"
 
 // argv[1] = address, argv[2] = n lines of 16 bytes
@@ -16,8 +16,8 @@ int ems_dm(const char **argv, int argc)
 {
 	char header[9];
 	char sbyte[4];
-	uword addr;
-	ubyte b, len;
+	ulword addr;
+	byte b, len;
 	register int i, j, r;
 
 	if (argv[1][6] != '\0' ||
