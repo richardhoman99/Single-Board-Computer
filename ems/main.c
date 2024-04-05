@@ -7,21 +7,14 @@
 
 #include "types.h"
 #include "convert.h"
+#include "strings.h"
 #include "command.h"
 #include "exec.h"
 #include "serial.h"
 #include "prompt.h"
-#include "strings.h"
-
-#define REVISION "0.02"
 
 #define INBUF_SIZE 16
 #define ARG_MAX 3
-
-const char welcome_str[] =
-"Enemigo Monitor System\r\n\
-r" REVISION " @ " __TIME__ " " __DATE__ "\r\n\
-Designed by Richard Homan\r\n";
 
 const char parse_err_str[]  = "error parsing arguments";
 const char inv_comm_str[]   = "unknown command";
@@ -47,7 +40,7 @@ int main(void)
 	exec_entry_ptr = 0x0;
 	serial_init();
 
-	serial_puts(welcome_str, ARR_LEN(welcome_str));
+	serial_puts(welcome_str, WELCOME_STR_LEN);
 
 mpmt:
 	inbuf_len = user_prompt(inbuf, INBUF_SIZE, pmt_str, ARR_LEN(pmt_str), 0);

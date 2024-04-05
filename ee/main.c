@@ -9,7 +9,7 @@
 
 #define ARR_LEN(v) sizeof(v)/sizeof(v[0])
 
-const char hello_str[] = "Hello, World!";
+const char hello_str[] = "Auto society = best society!";
 const char nl_str[] = "\r\n";
 
 int main(void)

@@ -24,12 +24,12 @@ LDFLAGS=
 OBJCOPY=m68k-elf-objcopy
 OBJCOPYFLAGS=-I elf32-m68k -O srec --srec-len=16
 
-all: $(PROG_COBJS) $(PROG_SOBJS)
+all: stamp_gen $(PROG_COBJS) $(PROG_SOBJS)
 	$(LD) $(LDFLAGS) -T ${PROG_LDSRPT} $(PROG_COBJS) $(PROG_SOBJS) -o $(PROG_NAME).out
 	$(OBJCOPY) $(OBJCOPYFLAGS) $(PROG_NAME).out $(PROG_NAME).srec
 
 sim: CCFLAGS += -DSIM
-sim: $(SIM_COBJS) $(SIM_SOBJS)
+sim: stamp_gen $(SIM_COBJS) $(SIM_SOBJS)
 	$(LD) $(LDFLAGS) -T ${SIM_LDSRPT} $(SIM_COBJS) $(SIM_SOBJS) -o $(PROG_NAME).sim.out
 	$(OBJCOPY) $(OBJCOPYFLAGS) $(PROG_NAME).sim.out $(PROG_NAME).sim.S68
 
@@ -44,6 +44,9 @@ $(SIM_COBJS): %.sim.o: %.c
 
 $(SIM_SOBJS): %.sim.o: %.s
 	$(AS) $(ASFLAGS) -o $@ $<
+
+.phony stamp_gen:
+	touch strings.c
 
 # generate assembly source for c file
 %.s: %.c

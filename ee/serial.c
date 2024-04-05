@@ -60,17 +60,17 @@ void serial_putc(char c)
 	return;
 }
 
-inline
-byte serial_isc()
-{
-	return (*SRA_PTR & 0x1);
-}
+// inline
+// byte serial_isc()
+// {
+// 	return (*SRA_PTR & 0x1);
+// }
 
-inline
-char serial_getc()
-{
-	return *(char *)RBA_PTR;
-}
+// inline
+// char serial_getc()
+// {
+// 	return *(char *)RBA_PTR;
+// }
 
 #else
 void serial_init()

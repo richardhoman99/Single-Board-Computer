@@ -7,6 +7,7 @@
 
 #include "strings.h"
 #include "serial.h"
+#include "convert.h"
 
 int user_prompt(char *inbuf,		 int inbuf_size,
 				const char *pmt_str, int pmt_str_len,
@@ -46,27 +47,27 @@ waitc:
 		if (inbuf_len > 0)
 		{
 			inbuf_len--;
-		#ifndef SIM
-			serial_putc('\x7f');
-		#else
 			serial_puts(del_str, DEL_STR_LEN);
-		#endif
 		}
 	}
 	else // any other input
 	{
-		if(inbuf_len >= inbuf_size-1) // buffer overflow protection
-		{							 // sub 2 because we add '\0' at end
-		#ifdef SIM
-			serial_putc('\x7f'); // eat char off terminal
-		#endif
-		}
-		else
-		{
+		if (inbuf_len < inbuf_size-1)	// buffer overflow protection
+		{								// sub 1 because we add '\0' at end
 			inbuf[inbuf_len] = inchar;
 			inbuf_len++;
 		#ifndef SIM
 			serial_putc(inchar);
+			// btoah(inchar, &(inbuf[0]));
+			// inbuf[2] = '\0';
+			// serial_puts(inbuf, 2);
+			// inbuf_len = 0;
+		#endif
+		}
+		else // prevent overflow
+		{
+		#ifdef SIM
+			serial_putc(del_str, DEL_STR_LEN); // eat char off terminal
 		#endif
 		}
 	}
