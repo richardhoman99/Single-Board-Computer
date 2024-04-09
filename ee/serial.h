@@ -16,7 +16,7 @@
 void serial_init();
 void serial_puts(const char *, int);
 void serial_putc(char);
-// byte serial_isc();
-// char serial_getc();
+byte serial_isc();
+char serial_getc();
 
 #endif

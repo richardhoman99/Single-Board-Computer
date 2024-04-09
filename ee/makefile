@@ -1,12 +1,12 @@
 PROG_NAME=ee
 
-PROG_CSRCS = main.c serial.c
+PROG_CSRCS = main.c serial.c convert.c
 PROG_SSRCS= 
 PROG_COBJS= $(patsubst %.c,%.o,$(PROG_CSRCS))
 PROG_SOBJS= $(patsubst %.s,%.o,$(PROG_SSRCS))
 PROG_LDSRPT= ee.ld
 
-SIM_CSRCS = main.c serial.c
+SIM_CSRCS = main.c serial.c convert.c
 SIM_SSRCS= 
 SIM_COBJS= $(patsubst %.c,%.sim.o,$(SIM_CSRCS))
 SIM_SOBJS= $(patsubst %.s,%.sim.o,$(SIM_SSRCS))
