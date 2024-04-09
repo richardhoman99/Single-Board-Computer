@@ -11,7 +11,7 @@
 
 #define ARR_LEN(v) sizeof(v)/sizeof(v[0])
 
-const ubyte random_insertion[8] = { 1, 2, 1, 1, 2, 1, 1, 1}
+const ubyte random_insertion[8] = { 1, 2, 1, 1, 2, 1, 1, 1};
 
 const char clr_screen_str[] = "\033[2J";
 const char row_divider_str[] = "+--+--+--+";
@@ -29,8 +29,15 @@ void move_right();
 void move_up();
 void move_down();
 
-void move_ascending(int transpose);
-void move_decending(int transpose);
+// void move_ascending(int transpose);
+// void move_decending(int transpose);
+
+void move();
+
+int order_init(int order);
+int order_compare(int val, int low, int high, int order);
+int order_next(int val, int order);
+
 ubyte *value_ptr(int r, int c, int t); // 1 for transpose row and column
 
 int zeros();
@@ -45,8 +52,6 @@ poll_user:
 	draw();
 	while (!serial_isc()) ;
 	c = serial_getc();
-
-
 
 	switch (c)
 	{
@@ -116,98 +121,201 @@ ubyte *value_ptr(int r, int c, int transpose)
 	return &(board_values[r][c]);
 }
 
-void move_ascending(int transpose)
+// 0,0: left
+// 1,0: right
+// 0,1: up
+// 1,1: down
+void move(int order, int transpose)
 {
-	register int row, col, col1;
-	ubyte b;
+	register int row, col, idx, len, n;
+	register ubyte b;
 	ubyte move[3];
-	ubyte move_len;
 
 	for (row = 0; row < 3; row++)
 	{
-		move_len = 0;
-		for (col = 0; col < 3; col++)
+		len = !order ? order_init(order) : order_init(order)+1;
+		for (col = order_init(order);
+			 order_compare(col, 0, 3, order);
+			 col = order_next(col, order))
 		{
 			b = *value_ptr(row, col, transpose);
 			if (b != 0)
 			{
-				move[move_len++] = b;
+				if (order) // predecrement
+					len = order_next(len, order);
+				move[len] = b;
+				if (!order) // postincrement
+					len = order_next(len, order);
 			}
 		}
 
-		for (col = 1; col < move_len; col++)
+		for (col = 1;
+			 order_compare(col, len, len, order);
+			 col = order_next(col, order))
 		{
-			if (move[col-1] == move[col])
+			n = order_next(col, !order);
+			if (move[n] == move[col])
 			{
-				move[col-1] = move[col] << 1;
+				move[n] = move[n] << 1;
 				move[col] = 0;
 			}
 		}
 
-		col = 0;
-		for(col1 = 0; col1 < move_len; col1++)
+		col = order_init(order);
+		for (idx = order_init(order);
+			 order_compare(idx, len, len, order);
+			 idx = order_next(idx, order))
 		{
-			b = move[col1];
+			b = move[idx];
 			if (b != 0)
 			{
-				*value_ptr(row, col, transpose) = move[col1];
-				col++;
+				*value_ptr(row, col, transpose) = move[idx];
+				col = order_next(col, order);
 			}
 		}
 
-		for (; col < 3; col++)
+		for (;
+			 order_compare(col, 0, 3, order);
+			 col = order_next(col, order))
+		{
 			*value_ptr(row, col, transpose) = 0;
+		}
 	}
 }
 
-void move_decending(int transpose)
+inline void move_left()
 {
-	register int row, col, col1;
-	ubyte b;
-	ubyte move[3];
-	ubyte move_len;
-
-	for (row = 0; row < 3; row++)
-	{
-		move_len = 3;
-		for (col = 2; col >= 0; col--)
-		{
-			b = *value_ptr(row, col, transpose);
-			if (b != 0)
-			{
-				move[--move_len] = b;
-			}
-		}
-
-		for (col = 1; col >= move_len; col--)
-		{
-			if (move[col+1] == move[col])
-			{
-				move[col+1] = move[col] << 1;
-				move[col] = 0;
-			}
-		}
-
-		col = 2;
-		for(col1 = 2; col1 >= move_len; col1--)
-		{
-			b = move[col1];
-			if (b != 0)
-			{
-				*value_ptr(row, col, transpose) = move[col1];
-				col--;
-			}
-		}
-
-		for (; col >= 0; col--)
-			*value_ptr(row, col, transpose) = 0;
-	}
+	// move_ascending(0);
+	move(0, 0);
 }
 
-inline void move_left()		{ move_ascending(0); }
-inline void move_right()	{ move_decending(0); }
-inline void move_up()		{ move_ascending(1); }
-inline void move_down()		{ move_decending(1); }
+inline void move_right()
+{
+	// move_decending(0);
+	move(1, 0);
+}
+
+inline void move_up()
+{
+	// move_ascending(1);
+	move(0, 1);
+}
+
+inline void move_down()
+{
+	// move_decending(1);
+	move(1, 1);
+}
+
+inline
+int order_init(int order)
+{
+	if (!order) // begin at bottom
+		return 0;
+	return 2; // begin at top
+}
+
+inline
+int order_compare(int val, int low, int high, int order)
+{
+	if (!order)
+		return val < high;
+	return val >= low;
+}
+
+inline
+int order_next(int val, int order)
+{
+	if (!order)
+		return val+1;
+	return val-1;
+}
+
+// void move_ascending(int transpose)
+// {
+// 	register int row, col, move_idx, move_len;
+// 	ubyte b;
+// 	ubyte move[3];
+
+// 	for (row = 0; row < 3; row++)
+// 	{
+// 		move_len = 0;
+// 		for (col = 0; col < 3; col++)
+// 		{
+// 			b = *value_ptr(row, col, transpose);
+// 			if (b != 0)
+// 			{
+// 				move[move_len++] = b;
+// 			}
+// 		}
+
+// 		for (col = 1; col < move_len; col++)
+// 		{
+// 			if (move[col-1] == move[col])
+// 			{
+// 				move[col-1] = move[col] << 1;
+// 				move[col] = 0;
+// 			}
+// 		}
+
+// 		col = 0;
+// 		for(move_idx = 0; move_idx < move_len; move_idx++)
+// 		{
+// 			b = move[move_idx];
+// 			if (b != 0)
+// 			{
+// 				*value_ptr(row, col, transpose) = move[move_idx];
+// 				col++;
+// 			}
+// 		}
+
+// 		for (; col < 3; col++)
+// 			*value_ptr(row, col, transpose) = 0;
+// 	}
+// }
+
+// void move_decending(int transpose)
+// {
+// 	register int row, col, move_idx, move_len;
+// 	ubyte b;
+// 	ubyte move[3];
+
+// 	for (row = 0; row < 3; row++)
+// 	{
+// 		move_len = 3;
+// 		for (col = 2; col >= 0; col--)
+// 		{
+// 			b = *value_ptr(row, col, transpose);
+// 			if (b != 0)
+// 			{
+// 				move[--move_len] = b;
+// 			}
+// 		}
+
+// 		for (col = 1; col >= move_len; col--)
+// 		{
+// 			if (move[col+1] == move[col])
+// 			{
+// 				move[col+1] = move[col] << 1;
+// 				move[col] = 0;
+// 			}
+// 		}
+
+// 		col = 2;
+// 		for(move_idx = 2; move_idx >= move_len; move_idx--)
+// 		{
+// 			b = move[move_idx];
+// 			if (b != 0)
+// 			{
+// 				*value_ptr(row, col, transpose) = move[move_idx];
+// 				col--;
+// 			}
+// 		}
+
+// 		for (; col >= 0; col--)
+// 			*value_ptr(row, col, transpose) = 0;
+// 	}
+// }
 
 inline
 void init_values()
