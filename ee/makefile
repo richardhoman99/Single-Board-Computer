@@ -20,9 +20,12 @@ LD=m68k-elf-ld
 LDFLAGS=
 OBJCOPY=m68k-elf-objcopy
 OBJCOPYFLAGS=-I elf32-m68k -O srec --srec-len=16
+STRIP=m68k-elf-strip
+STRIPFLAGS=-F elf32-m68k -s
 
 all: $(PROG_COBJS) $(PROG_SOBJS)
 	$(LD) $(LDFLAGS) -T ${PROG_LDSRPT} $(PROG_COBJS) $(PROG_SOBJS) -o $(PROG_NAME).out
+	$(STRIP) $(STRIPFLAGS) $(PROG_NAME).out
 	$(OBJCOPY) $(OBJCOPYFLAGS) $(PROG_NAME).out $(PROG_NAME).srec
 
 sim: CCFLAGS += -DSIM

@@ -2,7 +2,7 @@
  * main.c
  * Richard Homan
  * 02/17/2024
- * Entry point for x20 game
+ * Entry point for 80h game
  */
 
 #include "types.h"
@@ -11,64 +11,87 @@
 
 #define ARR_LEN(v) sizeof(v)/sizeof(v[0])
 
-const ubyte random_insertion[8] = { 1, 2, 1, 1, 2, 1, 1, 1};
+#define MOVE_LEFT(mutate)	move(mutate, 0, 0)
+#define MOVE_RIGHT(mutate)	move(mutate, 1, 0)
+#define MOVE_UP(mutate)		move(mutate, 0, 1)
+#define MOVE_DOWN(mutate)	move(mutate, 1, 1)
+
+#define WIN_NUM	0x80
 
 const char clr_screen_str[] = "\033[2J";
 const char row_divider_str[] = "+--+--+--+";
+const char loss_str[] = "Game Over";
+const char win_str[] = "You Win!";
 const char nl_str[] = "\r\n";
 const char blank_str[] = "  ";
 
-ubyte board_values[3][3];
+ubyte board_values[3][3] __attribute__ ((aligned (4)));
 
 void draw();
 void init_values();
 void clear_screen();
 
-void move_left();
-void move_right();
-void move_up();
-void move_down();
-
-// void move_ascending(int transpose);
-// void move_decending(int transpose);
-
-void move();
-
 int order_init(int order);
 int order_compare(int val, int low, int high, int order);
 int order_next(int val, int order);
-
 ubyte *value_ptr(int r, int c, int t); // 1 for transpose row and column
-
-int zeros();
+// >= 2 if 0x80 was reached, 1 if made changes, 0 otherwise
+int move(int mutate, int order, int transpose);
+// 1 if insertion could be made, 0 otherwise (game over)
+// move_count use as "random generation seed"
+int insert(int move_count);
 
 int main(void)
 {
 	char c;
+	int count, change;
 
 	init_values();
+	count = 0;
 
 poll_user:
 	draw();
+
 	while (!serial_isc()) ;
 	c = serial_getc();
 
 	switch (c)
 	{
 	case 'i':
-		move_up();
+		change = MOVE_UP(1);
 		break;
 	case 'k':
-		move_down();
+		change = MOVE_DOWN(1);
 		break;
 	case 'j':
-		move_left();
+		change = MOVE_LEFT(1);
 		break;
 	case 'l':
-		move_right();
+		change = MOVE_RIGHT(1);
 		break;
 	default:
+		change = 0;
 		break;
+	}
+
+	if (change == 1)
+	{
+		if (!insert(count))
+		{
+			// couldn't insert any values, game over
+			draw(); // show user the final board
+			serial_puts(loss_str, ARR_LEN(loss_str));
+			serial_puts(nl_str, ARR_LEN(nl_str));
+			return 0;
+		}
+		count++;
+	}
+	else if (change >= 2)
+	{
+		draw();
+		serial_puts(win_str, ARR_LEN(win_str));
+		serial_puts(nl_str, ARR_LEN(nl_str));
+		return 0;
 	}
 
 	goto poll_user;
@@ -78,6 +101,7 @@ poll_user:
 	return 0;
 }
 
+inline
 void draw()
 {
 	register int i, j;
@@ -121,16 +145,49 @@ ubyte *value_ptr(int r, int c, int transpose)
 	return &(board_values[r][c]);
 }
 
+int insert(int move_count)
+{
+	register int i;
+	int s;
+	register ubyte *p;
+	
+	i = move_count % 8;
+	if (move_count % 2 == 0)
+		i = 9-i;
+	s = i;
+	do
+	{
+		p = (ubyte *)((ubyte *)board_values + (ulword)i);
+		if (*p == 0)
+		{
+			*p = move_count % 8 == 0 ? 2 : 1;
+			s = 0;
+			// check that we have more moves
+			for (i = 0; i < 4; i++)
+				s = s || move(0, i & 0x1, i & 0x2);
+			return s;
+		}
+		i++;
+		if (i >= 9)
+			i = 0;
+	}
+	while (i != s);
+
+	// no more open spots, no more moves
+	return 0;
+}
+
 // 0,0: left
 // 1,0: right
 // 0,1: up
 // 1,1: down
-void move(int order, int transpose)
+int move(int mutate, int order, int transpose)
 {
-	register int row, col, idx, len, n;
+	register int row, col, idx, len, n, c;
 	register ubyte b;
 	ubyte move[3];
 
+	c = 0;
 	for (row = 0; row < 3; row++)
 	{
 		len = !order ? order_init(order) : order_init(order)+1;
@@ -158,6 +215,10 @@ void move(int order, int transpose)
 			{
 				move[n] = move[n] << 1;
 				move[col] = 0;
+				if (move[n] == WIN_NUM)
+					c = 2;
+				else
+					c |= 1; // keep win state
 			}
 		}
 
@@ -169,45 +230,26 @@ void move(int order, int transpose)
 			b = move[idx];
 			if (b != 0)
 			{
-				*value_ptr(row, col, transpose) = move[idx];
+				c = c | (*value_ptr(row, col, transpose) != move[idx]);
+				if (mutate) *value_ptr(row, col, transpose) = move[idx];
 				col = order_next(col, order);
 			}
 		}
 
-		for (;
-			 order_compare(col, 0, 3, order);
-			 col = order_next(col, order))
+		if (mutate)
 		{
-			*value_ptr(row, col, transpose) = 0;
+			for (;
+				 order_compare(col, 0, 3, order);
+				 col = order_next(col, order))
+			{
+				*value_ptr(row, col, transpose) = 0;
+			}
 		}
 	}
+
+	return c;
 }
 
-inline void move_left()
-{
-	// move_ascending(0);
-	move(0, 0);
-}
-
-inline void move_right()
-{
-	// move_decending(0);
-	move(1, 0);
-}
-
-inline void move_up()
-{
-	// move_ascending(1);
-	move(0, 1);
-}
-
-inline void move_down()
-{
-	// move_decending(1);
-	move(1, 1);
-}
-
-inline
 int order_init(int order)
 {
 	if (!order) // begin at bottom
@@ -215,7 +257,6 @@ int order_init(int order)
 	return 2; // begin at top
 }
 
-inline
 int order_compare(int val, int low, int high, int order)
 {
 	if (!order)
@@ -223,99 +264,12 @@ int order_compare(int val, int low, int high, int order)
 	return val >= low;
 }
 
-inline
 int order_next(int val, int order)
 {
 	if (!order)
 		return val+1;
 	return val-1;
 }
-
-// void move_ascending(int transpose)
-// {
-// 	register int row, col, move_idx, move_len;
-// 	ubyte b;
-// 	ubyte move[3];
-
-// 	for (row = 0; row < 3; row++)
-// 	{
-// 		move_len = 0;
-// 		for (col = 0; col < 3; col++)
-// 		{
-// 			b = *value_ptr(row, col, transpose);
-// 			if (b != 0)
-// 			{
-// 				move[move_len++] = b;
-// 			}
-// 		}
-
-// 		for (col = 1; col < move_len; col++)
-// 		{
-// 			if (move[col-1] == move[col])
-// 			{
-// 				move[col-1] = move[col] << 1;
-// 				move[col] = 0;
-// 			}
-// 		}
-
-// 		col = 0;
-// 		for(move_idx = 0; move_idx < move_len; move_idx++)
-// 		{
-// 			b = move[move_idx];
-// 			if (b != 0)
-// 			{
-// 				*value_ptr(row, col, transpose) = move[move_idx];
-// 				col++;
-// 			}
-// 		}
-
-// 		for (; col < 3; col++)
-// 			*value_ptr(row, col, transpose) = 0;
-// 	}
-// }
-
-// void move_decending(int transpose)
-// {
-// 	register int row, col, move_idx, move_len;
-// 	ubyte b;
-// 	ubyte move[3];
-
-// 	for (row = 0; row < 3; row++)
-// 	{
-// 		move_len = 3;
-// 		for (col = 2; col >= 0; col--)
-// 		{
-// 			b = *value_ptr(row, col, transpose);
-// 			if (b != 0)
-// 			{
-// 				move[--move_len] = b;
-// 			}
-// 		}
-
-// 		for (col = 1; col >= move_len; col--)
-// 		{
-// 			if (move[col+1] == move[col])
-// 			{
-// 				move[col+1] = move[col] << 1;
-// 				move[col] = 0;
-// 			}
-// 		}
-
-// 		col = 2;
-// 		for(move_idx = 2; move_idx >= move_len; move_idx--)
-// 		{
-// 			b = move[move_idx];
-// 			if (b != 0)
-// 			{
-// 				*value_ptr(row, col, transpose) = move[move_idx];
-// 				col--;
-// 			}
-// 		}
-
-// 		for (; col >= 0; col--)
-// 			*value_ptr(row, col, transpose) = 0;
-// 	}
-// }
 
 inline
 void init_values()
@@ -330,28 +284,7 @@ void init_values()
 	}
 
 	board_values[0][0] = 1;
-	board_values[0][1] = 2;
 	board_values[0][2] = 1;
-
-	board_values[1][1] = 8;
-}
-
-inline int zeros()
-{
-	register int i, j, c;
-	ubyte b;
-
-	c = 0;
-	for (i = 0; i < 3; i++)
-	{
-		for (j = 0; j < 3; j++)
-		{
-			b = board_values[i][j];
-			if (b == 0)
-				c++;
-		}
-	}
-	return c;
 }
 
 inline
