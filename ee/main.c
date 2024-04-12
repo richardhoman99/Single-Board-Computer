@@ -17,13 +17,22 @@
 #define MOVE_DOWN(mutate)	move(mutate, 1, 1)
 
 #define WIN_NUM	0x80
+#define WIN_NUM_STR "80"
 
+const char welcome_str[] = "\
+80h!\r\n\
+Use I, J, K, and L to move the board.\r\n\
+Get up to " WIN_NUM_STR " to win!\r\n\
+Written by Richard Homan with inspiration from 2048 by Gabriele Cirulli\r\n\
+\r\n\
+PRESS ANY KEY\r\n";
 const char clr_screen_str[] = "\033[2J";
 const char row_divider_str[] = "+--+--+--+";
 const char loss_str[] = "Game Over";
 const char win_str[] = "You Win!";
 const char nl_str[] = "\r\n";
 const char blank_str[] = "  ";
+const char ctrl_c_str[] = "^C";
 
 ubyte board_values[3][3] __attribute__ ((aligned (4)));
 
@@ -46,8 +55,14 @@ int main(void)
 	char c;
 	int count, change;
 
-	init_values();
 	count = 0;
+	init_values();
+
+	// print welcome
+	clear_screen();
+	serial_puts(welcome_str, ARR_LEN(welcome_str));
+	while (!serial_isc()) ;
+	serial_getc(); // discard input
 
 poll_user:
 	draw();
@@ -69,6 +84,10 @@ poll_user:
 	case 'l':
 		change = MOVE_RIGHT(1);
 		break;
+	case '\x03': // ctrl c
+		serial_puts(ctrl_c_str, ARR_LEN(ctrl_c_str));
+		serial_puts(nl_str, ARR_LEN(nl_str));
+		return 0;
 	default:
 		change = 0;
 		break;
