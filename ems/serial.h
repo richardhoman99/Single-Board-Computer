@@ -2,13 +2,11 @@
  * serial.h
  * Richard Homan
  * 02/11/2024
- * Declarations for serial control. Uncomment the SIM variable directive to
- *	apply simulator (SIM68K) serial functions.
+ * Declarations for serial control. Use sim make target for EASy68K simulator
+ *	target.
  */
 
 #include "types.h"
-
-// #define SIM
 
 #ifndef SERIAL_H
 #define SERIAL_H
